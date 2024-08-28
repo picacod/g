@@ -5,7 +5,7 @@ import { FaUserCircle } from 'react-icons/fa'; // Import the user icon
 function Header() {
     return (
         <div>
-            <Navbar expand="lg" className="bg-dark fixed-top">
+            <Navbar expand="lg" className=" fixed-top">
                 <Container>
                     {/* Logo on the left */}
                     <Navbar.Brand href="#home">
