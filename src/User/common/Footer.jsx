@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div>
       <footer className="footer" style={{backgroundColor:'black'}}>
-        <div className="text-light py-3 py-md-5 py-xl-8 border-top border-dark">
+        <div className="text-light py-3 py-md-5 py-xl-8 ">
           <div className="container overflow-hidden">
             <div className="row gy-3 gy-md-5 gy-xl-0 align-items-sm-center">
               <div className="col-xs-12 col-sm-6 col-xl-3 order-0 order-xl-0">

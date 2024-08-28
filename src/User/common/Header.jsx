@@ -1,20 +1,22 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa'; // Import the user icon
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 function Header() {
     return (
         <div>
-            <Navbar expand="lg" className=" fixed-top">
+            <Navbar expand="lg" className="fixed-top">
                 <Container>
                     {/* Logo on the left */}
-                    <Navbar.Brand href="#home">
+                    <Navbar.Brand href="/home">
                         <img
-                            width={100}
-                            src="https://cdn.freebiesupply.com/images/large/2x/apex-legends-logo-png-transparent.png"
+                            width={200}
+                            src={logo}
                             alt="Logo"
                             style={{
-                                filter: 'invert(1) brightness(2)', // Apply color filter to make image white
+                                filter: 'invert(1) brightness(100)', // Invert colors and set brightness to 100%
                             }}
                         />
                     </Navbar.Brand>
@@ -27,7 +29,7 @@ function Header() {
                         {/* Middle text links */}
                         <Nav className="mx-auto">
                             <Nav.Link href="#home" className='text-light fs-5'>Overview</Nav.Link>
-                            <Nav.Link href="#link" className='text-light fs-5'>About</Nav.Link>
+                            <Link to={'/about'}><Nav.Link href="#link" className='text-light fs-5'>About</Nav.Link></Link>
                             <Nav.Link href="#link" className='text-light fs-5'>Battlepass</Nav.Link>
                             <Nav.Link href="#link" className='text-light fs-5'>Buy</Nav.Link>
                             <NavDropdown
