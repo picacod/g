@@ -69,7 +69,7 @@ function HomeContent() {
                     <div className='row h-100 d-flex align-items-center justify-content-center no-gutters'>
 
                         <div className="col-lg-6">
-                            <img width={1000}  data-aos-easing="ease-in-sine" data-aos="fade-up" src='https://png.pngtree.com/png-vector/20240201/ourmid/pngtree-lord-hanuman-3d-png-image_11672379.png' className='img-fluid' alt="" />
+                            <img width={1000}   data-aos="fade-up" src='https://png.pngtree.com/png-vector/20240201/ourmid/pngtree-lord-hanuman-3d-png-image_11672379.png' className='img-fluid' alt="" />
                         </div>
                         <div className="col-lg-6 text-light" data-aos="fade-up">
                             <h3>Welcome to Mahabharath</h3>
