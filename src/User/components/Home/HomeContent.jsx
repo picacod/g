@@ -1,21 +1,24 @@
-import React, { useEffect } from 'react'
-import ravana from '../../../assets/ravana.png'
+import React, { useEffect } from 'react';
+import ravana from '../../../assets/ravana.png';
 import Aos from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
-
 
 function HomeContent() {
     useEffect(() => {
         Aos.init({ duration: 1000 }); // Initialize AOS with a custom duration
     }, []);
+
     return (
-        <div style={{ minHeight: 'fit-content', maxHeight: 'fit-content' }}>
+        <div style={{ minHeight: '200vh', maxHeight: '200vh' }}>
             <div style={{
                 backgroundImage: 'url("https://c.wallhere.com/photos/3d/26/1680x1050_px_action_Dark_fantasy_fi_Fighting_sci_war-1610933.jpg!d")',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                height: '100vh',
+                height: '100vh', // Responsive height
+                display: 'flex', // Flexbox for alignment
+                alignItems: 'center', // Center vertically
+                justifyContent: 'center', // Center horizontally
                 position: 'relative',
             }}>
                 {/* Dark Overlay */}
@@ -29,18 +32,29 @@ function HomeContent() {
                     zIndex: 1,
                 }}></div>
 
-                <div className='container h-100' style={{ position: 'relative', zIndex: 2 }}>
-                    <div className='row h-100 d-flex align-items-center justify-content-center no-gutters'>
-                        <div className="col-lg-6 text-light" data-aos="fade-up">
-                            <h3>Welcome to Mahabharath</h3>
-                            <h1 className='mb-4 fw-bold' style={{ fontSize: '3rem' }}>Ravana is a ten-headed demon king and the main antagonist in the Hindu epic Ramayana.</h1>
-                            <div className='d-flex align-items-center justify-content-start gap-4 mt-4'>
+                <div className='container' style={{ position: 'relative', zIndex: 2 }}>
+                    <div className='row d-flex align-items-center justify-content-center no-gutters'>
+                        <div className="col-lg-6 text-light" data-aos="fade-up" style={{
+                            textAlign: 'start',
+                            padding: '10px',
+                            fontSize: '1rem',
+                        }}>
+                            <h3>Welcome to Ramayana</h3>
+                            <h1 className='mb-4 fw-bold' style={{ 
+                                fontSize: '2.5rem', 
+                                marginBottom: '1rem',
+                                lineHeight: '1.2' 
+                            }}>Ravana is a ten-headed demon king and the main antagonist in the Hindu epic Ramayana.</h1>
+                            <div className='d-flex align-items-center justify-content-start gap-3 mt-4'>
                                 <button className='btn btn-lg btn-outline-light rounded-0'>More About</button>
                                 <button className='btn btn-lg btn-outline-light rounded-0'>Buy Now</button>
                             </div>
                         </div>
-                        <div className="col-lg-6">
-                            <img width={500} src={ravana} className='img-fluid' data-aos="fade-up" alt="" />
+                        <div className="col-lg-6" style={{
+                            textAlign: 'center',
+                            padding: '10px',
+                        }}>
+                            <img width={400} src={ravana} className='img-fluid' data-aos="fade-up" alt="" />
                         </div>
                     </div>
                 </div>
@@ -51,7 +65,10 @@ function HomeContent() {
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                height: '100vh',
+                height: '100vh', // Responsive height
+                display: 'flex', // Flexbox for alignment
+                alignItems: 'center', // Center vertically
+                justifyContent: 'center', // Center horizontally
                 position: 'relative',
             }}>
                 {/* Dark Overlay */}
@@ -65,16 +82,26 @@ function HomeContent() {
                     zIndex: 1,
                 }}></div>
 
-                <div className='container h-100' style={{ position: 'relative', zIndex: 2 }}>
-                    <div className='row h-100 d-flex align-items-center justify-content-center no-gutters'>
-
-                        <div className="col-lg-6">
-                            <img width={1000}   data-aos="fade-up" src='https://png.pngtree.com/png-vector/20240201/ourmid/pngtree-lord-hanuman-3d-png-image_11672379.png' className='img-fluid' alt="" />
+                <div className='container' style={{ position: 'relative', zIndex: 2 }}>
+                    <div className='row d-flex align-items-center justify-content-center no-gutters'>
+                        <div className="col-lg-6" style={{
+                            textAlign: 'center',
+                            padding: '10px',
+                        }}>
+                            <img width={800} data-aos="fade-up" src='https://png.pngtree.com/png-vector/20240428/ourmid/pngtree-lord-hanuman-realistic-image-png-image_12338980.png' className='img-fluid' alt="" />
                         </div>
-                        <div className="col-lg-6 text-light" data-aos="fade-up">
+                        <div className="col-lg-6 text-light" data-aos="fade-up" style={{
+                            textAlign: 'start',
+                            padding: '10px',
+                            fontSize: '1rem',
+                        }}>
                             <h3>Welcome to Mahabharath</h3>
-                            <h1 className='mb-4 fw-bold' style={{ fontSize: '3rem' }}> Hanuman had the shape of a monkey like his mother Anjana, but Vayu took the young boy to be his own son, and so Hanuman is considered to be a God.</h1>
-                            <div className='d-flex align-items-center justify-content-start gap-4 mt-4'>
+                            <h1 className='mb-4 fw-bold' style={{ 
+                                fontSize: '2.5rem', 
+                                marginBottom: '1rem',
+                                lineHeight: '1.2' 
+                            }}>Hanuman had the shape of a monkey like his mother Anjana, but Vayu took the young boy to be his own son, and so Hanuman is considered to be a God.</h1>
+                            <div className='d-flex align-items-center justify-content-start gap-3 mt-4'>
                                 <button className='btn btn-lg btn-outline-light rounded-0'>More About</button>
                                 <button className='btn btn-lg btn-outline-light rounded-0'>Buy Now</button>
                             </div>
@@ -83,8 +110,7 @@ function HomeContent() {
                 </div>
             </div>
         </div>
-
-    )
+    );
 }
 
-export default HomeContent
+export default HomeContent;
