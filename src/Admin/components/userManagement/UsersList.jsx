@@ -1,10 +1,14 @@
 import React from 'react'
 import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function UsersList() {
     return (
-        <div className='vh-100 d-flex flex-column align-items-center justify-content-center' style={{ backgroundColor: 'black' }}>
-            <p className='text-light'>All Users</p>
+        <div className='vh-100 d-flex flex-column ' style={{ backgroundColor: 'black',paddingTop:'10rem' }}>
+            <div className='w-100 container d-flex justify-content-between'>
+                <p className='text-light'>All Users</p>
+                <Link to={'/admin/overview'}>Back</Link>
+            </div>
             {/* Search bar */}
             <div className='w-100 container'>
                 <div className='p-1 bg-light rounded-0 shadow-sm mb-3'>

@@ -63,7 +63,7 @@ function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 5))',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 10), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 10))',
           zIndex: 1,
         }}></div>
 
