@@ -1,80 +1,189 @@
 
 body {
-    font-family: "Lato", sans-serif;
-  }
+  font-family: "Lato", sans-serif;
+}
 
-  .fixed-top {
-   
-    /* background-color: black; */
-    color: white;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  
-  @media (max-width: 768px) {
-    .desktop-login {
-      display: none !important; /* Hide desktop login button on mobile */
-    }
-  }
-  
-  @media (min-width: 769px) {
-    .mobile-login {
-      display: none !important; /* Hide mobile login button on desktop */
-    }
-  }
-  
-   .top-bar {
-    color: white !important; /* Default color for links */
-    transition: color 0.3s ease; /* Smooth transition for color change */
-    font-size: 1.3rem !important;
-  }
-  
-  .top-bar:hover {
-    color: grey !important;
-    
-  }
-  .custom-dropdown-toggle .dropdown-toggle::after {
-    color: white; /* Set the color of the dropdown arrow */
+.fixed-top {
+ 
+  /* background-color: black; */
+  color: white;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 
-  /* dropdown */
-  /* Hide the default down arrow */
+@media (max-width: 768px) {
+  .desktop-login {
+    display: none !important; /* Hide desktop login button on mobile */
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-login {
+    display: none !important; /* Hide mobile login button on desktop */
+  }
+}
+
+ .top-bar {
+  color: white !important; /* Default color for links */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.top-bar:hover {
+  color: grey !important; /* Red color on hover */
+}
+.custom-dropdown-toggle .dropdown-toggle::after {
+  color: white; /* Set the color of the dropdown arrow */
+}
+
+
+/* dropdown */
+/* Hide the default down arrow */
 .custom-dropdown .dropdown-toggle::after {
-    display: none;
+  display: none;
 }
 
 /* Ensure dropdown opens on click */
 .custom-dropdown .dropdown-menu {
-    display: none;
+  display: none;
 }
 
 .custom-dropdown .dropdown-menu.show {
-    display: block;
+  display: block;
 }
 
 /* Adjust the position of the dropdown items */
 .custom-dropdown .dropdown-menu {
-    position: absolute;
-    top: 50px !important;
-    left: -250px !important;
-    z-index: 1000;
-    margin-top: 4rem;
-    width: 200px; 
-    background-color: #171717; /* Set background color */
-    border: 1px solid #333;
+  position: absolute;
+  top: 65px !important;
+  left: -250px !important;
+  z-index: 1000;
+  margin-top: 4rem;
+  width: 300px !important; 
+  background-color: #171717; /* Set background color */
+  border: 1px solid #333;
 }
 
 /* Optional: Adjust the width based on your design needs */
 .custom-dropdown .dropdown-menu {
-    width: 300px; /* Adjust width as needed */
+  width: 300px; /* Adjust width as needed */
 }
 /* Optional: Style dropdown items */
 .custom-dropdown .dropdown-menu .dropdown-item {
-    color: #ffffff; /* Set text color to white for contrast */
+  color: #ffffff; /* Set text color to white for contrast */
 }
 
 .custom-dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #333333; /* Highlight color on hover */
+  background-color: #333333; /* Highlight color on hover */
+}
+
+
+
+
+.custom-dropdown {
+background-color: none;
+}
+/* dropdown */
+/* Hide the default down arrow */
+.custom-dropdown1 .dropdown-toggle::after {
+  display: none;
+}
+
+
+
+
+/* Ensure dropdown opens on click */
+.custom-dropdown1 .dropdown-menu {
+  display: none;
+}
+
+.custom-dropdown1 .dropdown-menu.show {
+  display: block;
+}
+
+/* Adjust the position of the dropdown items */
+.custom-dropdown1 .dropdown-menu {
+  position: absolute;
+  top: -10px;
+  left: 0px;
+  z-index: 1000;
+  margin-top: 4rem;
+  width: 200px; 
+  background-color: #171717; /* Set background color */
+  border: 1px solid #333;
+}
+
+/* Optional: Adjust the width based on your design needs */
+.custom-dropdown1 .dropdown-menu {
+  width: 380px; /* Adjust width as needed */
+}
+/* Optional: Style dropdown items */
+.custom-dropdown1 .dropdown-menu .dropdown-item {
+  color: #ffffff; /* Set text color to white for contrast */
+}
+
+.custom-dropdown1 .dropdown-menu .dropdown-item:hover {
+  background-color: #333333; /* Highlight color on hover */
+}
+.custom-dropdown1 {
+background-color: none;
+}
+
+
+/* Ensure dropdown opens on click */
+.custom-dropdown2 .dropdown-menu {
+display: none;
+}
+
+.custom-dropdown2 .dropdown-menu.show {
+display: block;
+}
+
+/* Adjust the position of the dropdown items */
+.custom-dropdown2 .dropdown-menu {
+position: absolute;
+top: -10px;
+left: 0px;
+z-index: 1000;
+margin-top: 4rem;
+width: 200px; 
+background-color: #171717; /* Set background color */
+border: 1px solid #333;
+}
+
+/* Optional: Adjust the width based on your design needs */
+.custom-dropdown2 .dropdown-menu {
+width: 380px; /* Adjust width as needed */
+}
+/* Optional: Style dropdown items */
+.custom-dropdown2 .dropdown-menu .dropdown-item {
+color: #ffffff; /* Set text color to white for contrast */
+}
+
+.custom-dropdown2 .dropdown-menu .dropdown-item:hover {
+background-color: #333333; /* Highlight color on hover */
+}
+.custom-dropdown2 {
+background-color: none;
+}
+
+
+/* Only apply this background color on mobile view */
+@media (max-width: 768px) {
+.navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 70px; /* Adjust according to the height of your Navbar */
+    left: 0;
+    width: 100%;
+    /* height: 100vh; */
+    height: 3rem;
+    z-index: 1; /* Ensure it is above other content */
+    padding-left: 20px;
+}
+
+.navbar-nav .nav-link, 
+.navbar-nav .dropdown-toggle {
+    color: white; /* Change text color to white for better contrast */
+}
 }
