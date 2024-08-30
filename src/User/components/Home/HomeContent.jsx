@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import han from '../../../assets/hanuman.png';
-import rav from '../../../assets/03.png';
-import rav2 from '../../../assets/04.png';
+import rav from '../../../assets/04.png';
+import ram from '../../../assets/05.png';
+
 import bg1 from '../../../assets/bg-1.png';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -243,7 +244,7 @@ function HomeContent() {
                             <img style={{
                                 width: 'auto',      // Maintain aspect ratio
                                 maxHeight: '100vh', // Ensure it fits within the viewport height
-                            }} src={rav} className='img-fluid' data-aos="fade-up" alt="" />
+                            }} src={rav} className='img-fluid' data-aos="fade-in" alt="" />
                         </div>
                         <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
                             textAlign: 'start',
@@ -320,7 +321,7 @@ function HomeContent() {
                             <img style={{
                                 width: 'auto',      // Maintain aspect ratio
                                 maxHeight: '100vh', // Ensure it fits within the viewport height
-                            }} src={rav2} className='img-fluid' data-aos="fade-up" alt="" />
+                            }} src={ram} className='img-fluid' data-aos="fade-up" alt="" />
                         </div>
                         <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
                             textAlign: 'start',
