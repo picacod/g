@@ -1,23 +1,78 @@
 
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Form, FloatingLabel } from 'react-bootstrap';
 import logo from '../../assets/logo.png'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { Link, useNavigate } from 'react-router-dom';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'; 
+import axios from 'axios';
+
 // import '../styles/Authentication.css'
 function Authentication({ insideRegister }) {
     const [userInputs, setUserInputs] = useState({
-        username: "",
-        email: "",
-        password: ""
+        username: '',
+        email: '',
+        password: ''
     });
+    const navigate = useNavigate(); 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const endpoint = insideRegister ? 'http://localhost:8000/api/register/' : 'http://localhost:8000/api/login/';
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Add your form submission logic here
-        console.log(userInputs);
+        const data = insideRegister ? {
+            username: userInputs.username,
+            email: userInputs.email,
+            password: userInputs.password
+        } : {
+            email: userInputs.email,
+            password: userInputs.password
+        };
+    
+        console.log("Submitting data to:", endpoint);
+        console.log("Data:", data);
+    
+        try {
+            const response = await axios.post(endpoint, data);
+            console.log("Response:", response);
+            if (insideRegister) {
+                alert(response.data.message);
+                navigate('/login');
+            } else {
+                // Store tokens or handle login success
+                localStorage.setItem('access_token', response.data.access_token);
+                localStorage.setItem('refresh_token', response.data.refresh_token);
+                sessionStorage.setItem('user_id', response.data.user_id);
+                alert(response.data.message);
+                navigate('/home');
+            }
+        } catch (error) {
+            console.error("Error during API call:", error);
+            alert(error.response?.data?.error || 'An error occurred');
+        }
     };
+    
+    const handleGoogleLoginSuccess = async (credentialResponse) => {
+      try {
+          const response = await axios.post('http://localhost:8000/api/google-login/', {
+              token: credentialResponse.credential
+          });
+
+          localStorage.setItem('access_token', response.data.access_token);
+          localStorage.setItem('refresh_token', response.data.refresh_token);
+          sessionStorage.setItem('user_id', response.data.user_id);
+          alert(response.data.message);
+          navigate('/home');
+      } catch (error) {
+          console.error("Error during Google login:", error);
+          alert(error.response?.data?.error || 'Google login failed');
+      }
+  };
+
+  const handleGoogleLoginFailure = (error) => {
+      console.error("Google login failed:", error);
+      alert('Google login failed. Please try again.');
+  };
 
     return (
         <div style={{ height: '100vh', position: 'relative', backgroundColor: 'black' ,  msOverflowY: 'hidden', overflowX: 'hidden' }} className='d-flex flex-wrap'>
@@ -112,6 +167,13 @@ function Authentication({ insideRegister }) {
                                 </p>
                             </div>
                         </Form>
+                        <div className='mt-4 text-center'>
+                              <GoogleLogin
+                                  onSuccess={handleGoogleLoginSuccess}
+                                  onError={handleGoogleLoginFailure}
+                                  useOneTap
+                              />
+                          </div>
                     </div>
                 </div>
 
@@ -207,6 +269,13 @@ function Authentication({ insideRegister }) {
                                 </p>
                             </div>
                         </Form>
+                        <div className='mt-4 text-center'>
+                              <GoogleLogin
+                                  onSuccess={handleGoogleLoginSuccess}
+                                  onError={handleGoogleLoginFailure}
+                                  useOneTap
+                              />
+                          </div>
                     </div>
                 </div>
             </div>

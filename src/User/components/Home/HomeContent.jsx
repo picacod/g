@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import han from '../../../assets/hanuman.png';
+import rav from '../../../assets/03.png';
+import rav2 from '../../../assets/04.png';
 import bg1 from '../../../assets/bg-1.png';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -79,7 +81,7 @@ function HomeContent() {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1))',
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1))',
                     zIndex: 1,
                 }}></div>
 
@@ -88,16 +90,18 @@ function HomeContent() {
                         {/* <div className="col-lg-6 " style={{ textAlign: 'center', padding: '10px' }}>
                             <img width={500} src={ravana} className='img-fluid' data-aos="fade-up" alt="" />
                         </div> */}
-                        <div className="text-light" data-aos="fade-in" data-aos-delay="500" style={{
-                            textAlign: 'start',
+                        <div className="text-light" data-aos="fade-in" data-aos-delay="100" style={{
                             padding: '10px',
                             fontSize: '1rem',
                         }}>
-                            <h3 className='h1-anim' style={{ color: '#a67c00', fontSize: '3rem' }}>The Rebirth of Legends</h3>
-                            <h1 className='mb-4 fw-bold c-anim'
+                            <h3 className='h1-anim text-center' style={{ color: '#a67c00', fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
+                            <h1 className='fw-bold'
                                 style={{
-                                    fontSize: '3rem',
-                                    marginBottom: '0.1rem',
+                                    color: 'grey',
+                                    fontSize: '2.5rem',
+                                    marginTop: '1rem',
+                                    marginBottom: '0.5rem',
+                                    textAlign: 'justify',
                                     lineHeight: '1.2',
                                     ...(isMobile && { fontSize: '1.5rem' }),
                                 }}>It's a journey into the heart of one of the greatest stories ever told. Step into a universe
@@ -105,131 +109,7 @@ function HomeContent() {
                                 crafted to reflect the grandeur of the Ramayana. Experience the thrill of battle, the
                                 wisdom of sages, and the power of divine weapons as you forge your path through a
                                 world of myth and legend.</h1>
-                            <p className='text-secondary'>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Repeat the blended overlay for other content sections */}
-            <div style={{
-    backgroundImage: 'url("https://c.wallhere.com/photos/3d/26/1680x1050_px_action_Dark_fantasy_fi_Fighting_sci_war-1610933.jpg!d")',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-}}>
-
-    {/* Existing Blended Overlay */}
-    <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1))',
-        zIndex: 1,
-    }}></div>
-
-    {/* Left Side Blended Overlay */}
-    <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '60%',  // Adjust width as needed
-        height: '100%',
-        background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
-        zIndex: 4, // Ensure this is above the existing blended overlay
-    }}></div>
-
-    {/* Bottom Blended Overlay */}
-    <div style={{
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: '60%',  // Adjust height as needed
-        background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
-        zIndex: 4, // Ensure this is above the existing blended overlay
-    }}></div>
-
-    <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
-        <div className='row d-flex align-items-center justify-content-center no-gutters'>
-            <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px' }}>
-                <img style={{
-                    width: 'auto',      // Maintain aspect ratio
-                    maxHeight: '100vh', // Ensure it fits within the viewport height
-                }} src={han} className='img-fluid' data-aos="fade-up" alt="" />
-            </div>
-            <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
-                textAlign: 'start',
-                padding: '10px',
-                fontSize: '1rem',
-                
-            }}>
-                <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
-                <h3 className='mb-4 '
-                    style={{
-                        fontSize: '1.5rem',
-                        marginBottom: '1rem',
-                        lineHeight: '1.2', letterSpacing: '2px',
-                        ...(isMobile && { fontSize: '1.5rem' }),
-                    }}>His wisdom and might a dark force to <br /> pierce the heavens' light as he weaves shadows <br />
-                    in an epic strife.</h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-            {/* Repeat the blended overlay for other content sections */}
-            <div style={{
-                backgroundImage: 'url("https://c.wallhere.com/photos/3d/26/1680x1050_px_action_Dark_fantasy_fi_Fighting_sci_war-1610933.jpg!d")',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                height: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-            }}>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1))',
-                    zIndex: 1,
-                }}></div>
-
-                <div className='container' style={{ position: 'relative', zIndex: 2 }}>
-                    <div className={`row d-flex align-items-center justify-content-center no-gutters ${isMobile ? 'flex-column-reverse' : ''}`}>
-                        <div className="col-lg-6 text-light" data-aos="fade-up" data-aos-delay="400" style={{
-                            textAlign: 'start',
-                            padding: '10px',
-                            fontSize: '1rem',
-                        }}>
-                            <h3 className='' style={{}}>Welcome to Mahabharath</h3>
-                            <h1 className='mb-4 fw-bold h2-anim'
-                                style={{
-                                    fontSize: '2.5rem',
-                                    marginBottom: '1rem',
-                                    lineHeight: '1.2',
-                                    ...(isMobile && { fontSize: '1.5rem' }),
-                                }}>Hanuman had the shape of a monkey like his mother Anjana, but Vayu took the young boy to be his own son, and so Hanuman is considered to be a God.</h1>
-                            <div className='d-flex align-items-center justify-content-start gap-3 mt-4'>
-                                <button className='btn btn-lg btn-outline-light rounded-0'>More About</button>
-                            </div>
-                        </div>
-                        <div className="col-lg-6" style={{ textAlign: 'center', padding: '10px' }}>
-                            <img style={{ width: '100rem' }} data-aos="fade-up" src='https://png.pngtree.com/png-vector/20240428/ourmid/pngtree-lord-hanuman-realistic-image-png-image_12338980.png' className='img-fluid' alt="Hanuman" />
+                            <p className='text-secondary text-end'>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</p>
                         </div>
                     </div>
                 </div>
@@ -247,6 +127,8 @@ function HomeContent() {
                 justifyContent: 'center',
                 position: 'relative',
             }}>
+
+                {/* Existing Blended Overlay */}
                 <div style={{
                     position: 'absolute',
                     top: 0,
@@ -257,29 +139,206 @@ function HomeContent() {
                     zIndex: 1,
                 }}></div>
 
-                <div className='container' style={{ position: 'relative', zIndex: 2 }}>
+                {/* Left Side Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '60%',  // Adjust width as needed
+                    height: '100%',
+                    background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                {/* Bottom Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '60%',  // Adjust height as needed
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
                     <div className='row d-flex align-items-center justify-content-center no-gutters'>
-                        <div className="col-lg-6" style={{ textAlign: 'center', padding: '10px' }}>
-                            <img style={{ width: '100rem' }} data-aos="fade-up" src='https://png.pngtree.com/png-vector/20240428/ourmid/pngtree-lord-hanuman-realistic-image-png-image_12338980.png' className='img-fluid' alt="" />
+                        <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px' }}>
+                            <img style={{
+                                width: 'auto',      // Maintain aspect ratio
+                                maxHeight: '100vh', // Ensure it fits within the viewport height
+                            }} src={han} className='img-fluid' data-aos="fade-up" alt="" />
                         </div>
-                        <div className="col-lg-6 text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
                             textAlign: 'start',
                             padding: '10px',
                             fontSize: '1rem',
+
                         }}>
-                            <h3 className='h1-anim' style={{ color: '#a67c00' }}>Welcome to Mahabharath</h3>
-                            <h1 className='mb-4 fw-bold'
+                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
+                            <h3 className='mb-4 '
                                 style={{
-                                    fontSize: '2.5rem',
+                                    fontSize: '1.5rem',
+                                    paddingRight: '20rem',
+                                    color: 'grey',
                                     marginBottom: '1rem',
-                                    lineHeight: '1.2'
-                                    ,
-                                    ...(isMobile && { fontSize: '1.5rem' }),
-                                }}>Hanuman had the shape of a monkey like his mother Anjana, but Vayu took the young boy to be his own son, and so Hanuman is considered to be a God.</h1>
-                            <div className='d-flex align-items-center justify-content-start gap-3 mt-4'>
-                                <button className='btn btn-lg btn-outline-light rounded-0'>More About</button>
-                                {/* <button className='btn btn-lg btn-outline-light rounded-0'>Buy Now</button> */}
-                            </div>
+                                    lineHeight: '1.2', letterSpacing: '2px',
+                                    ...(isMobile && { fontSize: '1.5rem', paddingRight: '0' }),
+                                }}>His wisdom and might a dark force to  pierce the heavens' light as he weaves shadows
+                                in an epic strife.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Repeat the blended overlay for other content sections */}
+            <div style={{
+                backgroundImage: 'url("https://c.wallhere.com/photos/3d/26/1680x1050_px_action_Dark_fantasy_fi_Fighting_sci_war-1610933.jpg!d")',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                height: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+            }}>
+
+                {/* Existing Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1))',
+                    zIndex: 1,
+                }}></div>
+
+                {/* Left Side Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '60%',  // Adjust width as needed
+                    height: '100%',
+                    background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                {/* Bottom Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '60%',  // Adjust height as needed
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
+                    <div className='row d-flex align-items-center justify-content-center no-gutters'>
+                        <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px' }}>
+                            <img style={{
+                                width: 'auto',      // Maintain aspect ratio
+                                maxHeight: '100vh', // Ensure it fits within the viewport height
+                            }} src={rav} className='img-fluid' data-aos="fade-up" alt="" />
+                        </div>
+                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                            textAlign: 'start',
+                            padding: '10px',
+                            fontSize: '1rem',
+
+                        }}>
+                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
+                            <h3 className='mb-4 '
+                                style={{
+                                    fontSize: '1.5rem',
+                                    paddingRight: '20rem',
+                                    color: 'grey',
+                                    marginBottom: '1rem',
+                                    lineHeight: '1.2', letterSpacing: '2px',
+                                    ...(isMobile && { fontSize: '1.5rem', paddingRight: '0' }),
+                                }}>His wisdom and might a dark force to  pierce the heavens' light as he weaves shadows
+                                in an epic strife.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* Repeat the blended overlay for other content sections */}
+            <div style={{
+                backgroundImage: 'url("https://c.wallhere.com/photos/3d/26/1680x1050_px_action_Dark_fantasy_fi_Fighting_sci_war-1610933.jpg!d")',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                height: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+            }}>
+
+                {/* Existing Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1))',
+                    zIndex: 1,
+                }}></div>
+
+                {/* Left Side Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '60%',  // Adjust width as needed
+                    height: '100%',
+                    background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                {/* Bottom Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '60%',  // Adjust height as needed
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
+                    <div className='row d-flex align-items-center justify-content-center no-gutters'>
+                        <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px' }}>
+                            <img style={{
+                                width: 'auto',      // Maintain aspect ratio
+                                maxHeight: '100vh', // Ensure it fits within the viewport height
+                            }} src={rav2} className='img-fluid' data-aos="fade-up" alt="" />
+                        </div>
+                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                            textAlign: 'start',
+                            padding: '10px',
+                            fontSize: '1rem',
+
+                        }}>
+                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
+                            <h3 className='mb-4 '
+                                style={{
+                                    fontSize: '1.5rem',
+                                    paddingRight: '20rem',
+                                    color: 'grey',
+                                    marginBottom: '1rem',
+                                    lineHeight: '1.2', letterSpacing: '2px',
+                                    ...(isMobile && { fontSize: '1.5rem', paddingRight: '0' }),
+                                }}>His wisdom and might a dark force to  pierce the heavens' light as he weaves shadows
+                                in an epic strife.</h3>
                         </div>
                     </div>
                 </div>
