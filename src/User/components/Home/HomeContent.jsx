@@ -113,74 +113,77 @@ function HomeContent() {
 
             {/* Repeat the blended overlay for other content sections */}
             <div style={{
-                backgroundImage: 'url("https://c.wallhere.com/photos/3d/26/1680x1050_px_action_Dark_fantasy_fi_Fighting_sci_war-1610933.jpg!d")',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                height: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-            }}>
+    backgroundImage: 'url("https://c.wallhere.com/photos/3d/26/1680x1050_px_action_Dark_fantasy_fi_Fighting_sci_war-1610933.jpg!d")',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+}}>
 
-                {/* Existing Blended Overlay */}
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1))',
-                    zIndex: 1,
-                }}></div>
+    {/* Existing Blended Overlay */}
+    <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1))',
+        zIndex: 1,
+    }}></div>
 
-                {/* Left Side Blended Overlay */}
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '60%',  // Adjust width as needed
-                    height: '100%',
-                    background: 'linear-gradient(to right, rgba(0, 0, 0, 5), rgba(0, 0, 0, 0))',
-                    zIndex: 4, // Ensure this is above the existing blended overlay
-                }}></div>
+    {/* Left Side Blended Overlay */}
+    <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '60%',  // Adjust width as needed
+        height: '100%',
+        background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+        zIndex: 4, // Ensure this is above the existing blended overlay
+    }}></div>
 
-                {/* Bottom Blended Overlay */}
-                <div style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: '60%',  // Adjust height as needed
-                    background: 'linear-gradient(to top, rgba(0, 0, 0, 5), rgba(0, 0, 0, 0))',
-                    zIndex: 4, // Ensure this is above the existing blended overlay
-                }}></div>
+    {/* Bottom Blended Overlay */}
+    <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: '60%',  // Adjust height as needed
+        background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+        zIndex: 4, // Ensure this is above the existing blended overlay
+    }}></div>
 
-                <div className='container' style={{ position: 'relative', zIndex: 3 }}>
-                    <div className='row d-flex align-items-center justify-content-center no-gutters'>
-                        <div className="col-lg-8" style={{ textAlign: 'center', padding: '10px' }}>
-                            <img style={{ width: '100rem' }} src={han} className='img-fluid' data-aos="fade-up" alt="" />
-                        </div>
-                        <div className="col-lg-4 text-light" data-aos="fade-up" data-aos-delay="400" style={{
-                            textAlign: 'start',
-                            padding: '10px',
-                            fontSize: '1rem',
-                        }}>
-                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
-                            <h3 className='mb-4 '
-                                style={{
-                                    fontSize: '1.5rem',
-                                    marginBottom: '1rem',
-                                    lineHeight: '1.2', letterSpacing: '2px',
-                                    ...(isMobile && { fontSize: '1.5rem' }),
-                                }}>His wisdom and might a dark force to pierce the heavens' light as he weaves shadows
-                                in an epic strife.</h3>
-                           
-                        </div>
-                    </div>
-                </div>
+    <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
+        <div className='row d-flex align-items-center justify-content-center no-gutters'>
+            <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px' }}>
+                <img style={{
+                    width: 'auto',      // Maintain aspect ratio
+                    maxHeight: '100vh', // Ensure it fits within the viewport height
+                }} src={han} className='img-fluid' data-aos="fade-up" alt="" />
             </div>
+            <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                textAlign: 'start',
+                padding: '10px',
+                fontSize: '1rem',
+                
+            }}>
+                <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
+                <h3 className='mb-4 '
+                    style={{
+                        fontSize: '1.5rem',
+                        marginBottom: '1rem',
+                        lineHeight: '1.2', letterSpacing: '2px',
+                        ...(isMobile && { fontSize: '1.5rem' }),
+                    }}>His wisdom and might a dark force to <br /> pierce the heavens' light as he weaves shadows <br />
+                    in an epic strife.</h3>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
