@@ -4,34 +4,34 @@ function Footer() {
   return (
     <div>
       <footer className="footer" style={{backgroundColor:'black'}}>
-        <div className="text-light py-3 py-md-5 py-xl-8 ">
+        <div className="py-3 py-md-5 py-xl-8 ">
           <div className="container overflow-hidden">
             <div className="row gy-3 gy-md-5 gy-xl-0 align-items-sm-center">
               <div className="col-xs-12 col-sm-6 col-xl-3 order-0 order-xl-0">
                 <div className="footer-logo-wrapper text-center text-sm-start">
-                  <a href="about.html" className="link-light text-decoration-none">
+                  <a href="" className="link-light text-decoration-none">
                     {/* <img src="/images/logo.png" alt="Logo" width="60" height="50"> */}
                     Anxients Shadows
                   </a>
                 </div>
               </div>
 
-              <div className="col-xs-12 col-xl-6 order-2 order-xl-1">
+              <div className="col-xs-12 col-xl-6 order-2 order-xl-1" >
                 <ul className="nav justify-content-center">
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="#home">Home</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="" >Home</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="about.html">About</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="">About</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="contact.html">Contact</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="">Contact</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="#!">Terms</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="">Terms</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="#!">Privacy</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="">Privacy</a>
                   </li>
                 </ul>
               </div>
