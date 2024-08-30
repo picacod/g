@@ -43,6 +43,7 @@ function Hero() {
       checkIfPreordered();  // Check if the user has already pre-ordered
     } else {
       setLoggedIn(false);
+      setBooked(true)
     }
   }, [user_id]);
 
@@ -116,7 +117,7 @@ function Hero() {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 10), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 10))',
+          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 10), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 10))',
           zIndex: 1,
         }}></div>
 

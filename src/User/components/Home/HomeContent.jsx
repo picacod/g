@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ravana from '../../../assets/ravana.png';
-import rambg from '../../../assets/ram.jpeg';
+import han from '../../../assets/hanuman.png';
+import bg1 from '../../../assets/bg-1.png';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 // import { useMediaQuery } from 'react-responsive';
@@ -62,7 +62,7 @@ function HomeContent() {
     return (
         <div style={{ minHeight: '400vh' }}>
             <div style={{
-                backgroundImage: `url(${rambg})`,
+                backgroundImage: `url(${bg1})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
@@ -123,7 +123,8 @@ function HomeContent() {
                 justifyContent: 'center',
                 position: 'relative',
             }}>
-                {/* Blended Overlay */}
+
+                {/* Existing Blended Overlay */}
                 <div style={{
                     position: 'absolute',
                     top: 0,
@@ -134,33 +135,54 @@ function HomeContent() {
                     zIndex: 1,
                 }}></div>
 
-                <div className='container' style={{ position: 'relative', zIndex: 2 }}>
+                {/* Left Side Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '60%',  // Adjust width as needed
+                    height: '100%',
+                    background: 'linear-gradient(to right, rgba(0, 0, 0, 5), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                {/* Bottom Blended Overlay */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: '60%',  // Adjust height as needed
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 5), rgba(0, 0, 0, 0))',
+                    zIndex: 4, // Ensure this is above the existing blended overlay
+                }}></div>
+
+                <div className='container' style={{ position: 'relative', zIndex: 3 }}>
                     <div className='row d-flex align-items-center justify-content-center no-gutters'>
-                        <div className="col-lg-6 " style={{ textAlign: 'center', padding: '10px' }}>
-                            <img width={500} src={ravana} className='img-fluid' data-aos="fade-up" alt="" />
+                        <div className="col-lg-8" style={{ textAlign: 'center', padding: '10px' }}>
+                            <img style={{ width: '100rem' }} src={han} className='img-fluid' data-aos="fade-up" alt="" />
                         </div>
-                        <div className="col-lg-6 text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                        <div className="col-lg-4 text-light" data-aos="fade-up" data-aos-delay="400" style={{
                             textAlign: 'start',
                             padding: '10px',
                             fontSize: '1rem',
                         }}>
-                            <h1 className='h1-anim' style={{ color: '#a67c00',     fontSize: '4rem' }}>Welcome to Ramayana</h1>
+                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
                             <h3 className='mb-4 '
                                 style={{
-                                    fontSize: '1.9rem',
+                                    fontSize: '1.5rem',
                                     marginBottom: '1rem',
-                                    lineHeight: '1.2',letterSpacing:'2px',
+                                    lineHeight: '1.2', letterSpacing: '2px',
                                     ...(isMobile && { fontSize: '1.5rem' }),
                                 }}>His wisdom and might a dark force to pierce the heavens' light as he weaves shadows
                                 in an epic strife.</h3>
-                            <div className='d-flex align-items-center justify-content-start gap-3 mt-4'>
-                                <button className='btn btn-lg btn-outline-light rounded-0'>More About</button>
-                                {/* <button className='btn btn-lg btn-outline-light rounded-0'>Buy Now</button> */}
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
             </div>
+
+
 
             {/* Repeat the blended overlay for other content sections */}
             <div style={{
@@ -191,7 +213,7 @@ function HomeContent() {
                             padding: '10px',
                             fontSize: '1rem',
                         }}>
-                            <h3 className='' style={{ }}>Welcome to Mahabharath</h3>
+                            <h3 className='' style={{}}>Welcome to Mahabharath</h3>
                             <h1 className='mb-4 fw-bold h2-anim'
                                 style={{
                                     fontSize: '2.5rem',

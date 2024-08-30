@@ -17,13 +17,40 @@
 // }
 
 // export default Overview
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import '@fortawesome/fontawesome-free/css/all.min.css'; 
+import axios from 'axios'; 
 
 function Overview() {
+    const [userCounts, setUserCounts] = useState({ total_users: 0, prebooked_users: 0 });
     const isResponsive = useMediaQuery({ maxWidth: 768 });
+
+    useEffect(() => {
+        // Fetch the user counts from the backend
+        axios.get('http://localhost:8000/api/user_counts/')
+            .then(response => {
+                setUserCounts(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching user counts:', error);
+            });
+    }, []);
+
+    const handleLogout = () => {
+        axios.post('http://localhost:8000/api/adminlogout/')
+            .then(response => {
+                sessionStorage.clear();
+                localStorage.clear();
+                // Redirect to login page or handle successful logout
+                window.location.href = 'admin/admin-login'; // Change the redirect path as needed
+            })
+            .catch(error => {
+                console.error('Error logging out:', error);
+                alert('Error logging out. Please try again.');
+            });
+    };
 
     return (
         <div style={{
@@ -63,7 +90,7 @@ function Overview() {
                     </Link>
                     <div className='mt-auto d-flex align-items-center'>
                         <Link to='/logout' className='text-decoration-none w-100'>
-                            <button className='btn btn-lg btn-outline-light rounded-0 w-100'>
+                            <button className='btn btn-lg btn-outline-light rounded-0 w-100' onClick={handleLogout}>
                                 {!isResponsive ? 'Logout' : <i className='fas fa-sign-out-alt'></i>}
                             </button>
                         </Link>
@@ -75,7 +102,7 @@ function Overview() {
                         {/* Box 1 */}
                         <div className='bg-secondary text-light p-3 rounded d-flex flex-column align-items-center justify-content-center col-lg-4 col-12'>
                             <h4>Total Users</h4>
-                            <p>1234</p>
+                            <p>{userCounts.total_users}</p>
                         </div>
                         {/* Box 2 */}
                         <div className='bg-secondary text-light p-3 rounded d-flex flex-column align-items-center justify-content-center col-lg-4 col-12'>
@@ -85,7 +112,7 @@ function Overview() {
                         {/* Box 3 */}
                         <div className='bg-secondary text-light p-3 rounded d-flex flex-column align-items-center justify-content-center col-lg-4 col-12'>
                             <h4>Pre-Booked Users</h4>
-                            <p>89</p>
+                            <p>{userCounts.prebooked_users}</p>
                         </div>
                     </div>
                 </div>
