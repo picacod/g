@@ -5,13 +5,15 @@ import 'aos/dist/aos.css'; // Import AOS styles
 import vid from '../../../assets/intro.mp4'
 import logo from '../../../assets/logo.png'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 function Hero() {
 
   const [isMobile, setIsMobile] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isbooked,SetBooked] = useState(false)
+  const [isBooked, setBooked] = useState(false);
+  const user_id = sessionStorage.getItem('user_id');
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -36,20 +38,51 @@ function Hero() {
 
 
   useEffect(() => {
-    if (sessionStorage.getItem('user_id')) {
+    if (user_id) {
       setLoggedIn(true);
+      checkIfPreordered();  // Check if the user has already pre-ordered
     } else {
       setLoggedIn(false);
     }
-  }, []);
+  }, [user_id]);
 
-  const handleBooking = () =>{
-    if(isLoggedIn){
-      alert('Booked')
-    }else{
-      navigate('/login')
+  const checkIfPreordered = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/api/check_preorder/', {
+        params: {
+          user_id: user_id // Include user ID as a query parameter
+        }
+      });
+      if (response.data.preordered) {
+        setBooked(true);
+      } else {
+        setBooked(false);
+      }
+    } catch (error) {
+      console.error("Error checking pre-order status:", error);
     }
-  }
+  };
+
+  const handleBooking = async () => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.post('http://localhost:8000/api/preorder/', {
+          user_id: user_id // Include user ID in the request body
+        });
+        if (response.data.message === 'Pre-order successful.') {
+          alert('Booked successfully');
+          setBooked(true);
+        } else {
+          alert(response.data.message);
+        }
+      } catch (error) {
+        console.error("Error during booking:", error);
+        alert('An error occurred while booking.');
+      }
+    } else {
+      navigate('/login');
+    }
+  };
 
   
   return (
@@ -99,7 +132,7 @@ function Hero() {
               style={{ width: '100%', maxWidth: isMobile ? '320px' : 'auto' }}>
               <button  style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0'>Watch the trailer</button>
               {
-                isbooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-warning rounded-0' >Ordered</button>
+                isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-warning rounded-0' >Ordered</button>
               }
             </div>
             <p data-aos="fade-down" className='mt-2 text-warning'  style={{ fontSize: isMobile ? '0.7rem' : '0.9rem' }}>AVAILABLE 12 - 8 - 2026</p>

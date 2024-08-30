@@ -88,7 +88,7 @@ function HomeContent() {
                         {/* <div className="col-lg-6 " style={{ textAlign: 'center', padding: '10px' }}>
                             <img width={500} src={ravana} className='img-fluid' data-aos="fade-up" alt="" />
                         </div> */}
-                        <div className="text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                        <div className="text-light" data-aos="fade-in" data-aos-delay="500" style={{
                             textAlign: 'start',
                             padding: '10px',
                             fontSize: '1rem',
