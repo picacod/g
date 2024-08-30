@@ -19,13 +19,13 @@ function Footer() {
               <div className="col-xs-12 col-xl-6 order-2 order-xl-1" >
                 <ul className="nav justify-content-center">
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="" >Home</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="" >Overview</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="">About</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="">Login</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link link-secondary px-2 px-md-3" href="">Contact</a>
+                    <a className="nav-link link-secondary px-2 px-md-3" href="">Support</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link link-secondary px-2 px-md-3" href="">Terms</a>

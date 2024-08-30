@@ -49,8 +49,8 @@ function Backtotop() {
           onClick={scrollToTop}
           style={{
             position: 'fixed',
-            bottom: '20px',
-            right: '20px',
+            bottom: '10px',
+            right: '10px',
             backgroundColor: 'transparent',
             border: 'none',
             borderRadius: '50%',

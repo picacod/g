@@ -14,7 +14,7 @@ function HomeContent() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        Aos.init({ duration: 900 });
+        Aos.init({ duration: 500 });
     }, []);
 
     useEffect(() => {
@@ -95,11 +95,12 @@ function HomeContent() {
                             padding: '10px',
                             fontSize: '1rem',
                         }}>
-                            <h3 className='h1-anim text-center' style={{ color: '#a67c00', fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
+                            <h3 className='h1-anim text-center' style={{ color: '#a67c00',fontFamily:'"Caveat", cursive' , fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
                             <h1 className='fw-bold'
                                 style={{
                                     color: 'grey',
                                     fontSize: '2.5rem',
+                                    fontFamily:'"Caveat", cursive' ,
                                     marginTop: '1rem',
                                     marginBottom: '0.5rem',
                                     textAlign: 'justify',
@@ -149,6 +150,7 @@ function HomeContent() {
                     height: '100%',
                     background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
                     zIndex: 4, // Ensure this is above the existing blended overlay
+                    ...(isMobile && { display:'none'})
                 }}></div>
 
                 {/* Bottom Blended Overlay */}
@@ -160,25 +162,27 @@ function HomeContent() {
                     height: '60%',  // Adjust height as needed
                     background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
                     zIndex: 4, // Ensure this is above the existing blended overlay
+                    ...(isMobile && { display:'none'})
                 }}></div>
 
                 <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
                     <div className='row d-flex align-items-center justify-content-center no-gutters'>
-                        <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px' }}>
+                        <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px'}}>
                             <img style={{
                                 width: 'auto',      // Maintain aspect ratio
                                 maxHeight: '100vh', // Ensure it fits within the viewport height
                             }} src={han} className='img-fluid' data-aos="fade-up" alt="" />
                         </div>
-                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="300" style={{
                             textAlign: 'start',
                             padding: '10px',
                             fontSize: '1rem',
-
+                            ...(isMobile && { textAlign: 'justify'})
                         }}>
-                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
+                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem',fontFamily:'"Caveat", cursive' }}>Welcome to Ramayana</h1>
                             <h3 className='mb-4 '
                                 style={{
+                                    fontFamily:'"Caveat", cursive' ,
                                     fontSize: '1.5rem',
                                     paddingRight: '20rem',
                                     color: 'grey',
@@ -220,11 +224,12 @@ function HomeContent() {
                 <div style={{
                     position: 'absolute',
                     top: 0,
-                    left: 0,
+                    right: 0,
                     width: '60%',  // Adjust width as needed
                     height: '100%',
-                    background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
+                    background: 'linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
                     zIndex: 4, // Ensure this is above the existing blended overlay
+                    ...(isMobile && { display:'none'})
                 }}></div>
 
                 {/* Bottom Blended Overlay */}
@@ -236,33 +241,36 @@ function HomeContent() {
                     height: '60%',  // Adjust height as needed
                     background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
                     zIndex: 4, // Ensure this is above the existing blended overlay
+                    ...(isMobile && { display:'none'})
                 }}></div>
 
                 <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
-                    <div className='row d-flex align-items-center justify-content-center no-gutters'>
+                    <div className={`row d-flex align-items-center justify-content-center no-gutters ${isMobile ? 'flex-column-reverse' : ''}`}>
+                        
+                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="300" style={{
+                            textAlign: 'end',
+                            padding: '10px',
+                            fontSize: '1rem',
+                            ...(isMobile && { textAlign: 'justify',}),
+                        }}>
+                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem',fontFamily:'"Caveat", cursive'  }}>Welcome to Ramayana</h1>
+                            <h3 className='mb-4 '
+                                style={{
+                                    fontSize: '1.5rem',
+                                    fontFamily:'"Caveat", cursive' ,
+                                    paddingLeft: '20rem',
+                                    color: 'grey',
+                                    marginBottom: '1rem',
+                                    lineHeight: '1.2', letterSpacing: '2px',
+                                    ...(isMobile && { fontSize: '1.5rem', paddingLeft: '0' }),
+                                }}>His wisdom and might a dark force to  pierce the heavens' light as he weaves shadows
+                                in an epic strife.</h3>
+                        </div>
                         <div className="col-lg-7" style={{ textAlign: 'center', padding: '10px' }}>
                             <img style={{
                                 width: 'auto',      // Maintain aspect ratio
                                 maxHeight: '100vh', // Ensure it fits within the viewport height
-                            }} src={rav} className='img-fluid' data-aos="fade-in" alt="" />
-                        </div>
-                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
-                            textAlign: 'start',
-                            padding: '10px',
-                            fontSize: '1rem',
-
-                        }}>
-                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
-                            <h3 className='mb-4 '
-                                style={{
-                                    fontSize: '1.5rem',
-                                    paddingRight: '20rem',
-                                    color: 'grey',
-                                    marginBottom: '1rem',
-                                    lineHeight: '1.2', letterSpacing: '2px',
-                                    ...(isMobile && { fontSize: '1.5rem', paddingRight: '0' }),
-                                }}>His wisdom and might a dark force to  pierce the heavens' light as he weaves shadows
-                                in an epic strife.</h3>
+                            }} src={rav} className='img-fluid' data-aos="fade-up" alt="" />
                         </div>
                     </div>
                 </div>
@@ -302,10 +310,11 @@ function HomeContent() {
                     height: '100%',
                     background: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
                     zIndex: 4, // Ensure this is above the existing blended overlay
+                    ...(isMobile && { display:'none'})
                 }}></div>
 
                 {/* Bottom Blended Overlay */}
-                <div style={{
+                <div   style={{
                     position: 'absolute',
                     bottom: 0,
                     left: 0,
@@ -313,6 +322,8 @@ function HomeContent() {
                     height: '60%',  // Adjust height as needed
                     background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
                     zIndex: 4, // Ensure this is above the existing blended overlay
+                    ...(isMobile && { display:'none'})
+
                 }}></div>
 
                 <div className='container-fluid' style={{ position: 'relative', zIndex: 3 }}>
@@ -321,18 +332,20 @@ function HomeContent() {
                             <img style={{
                                 width: 'auto',      // Maintain aspect ratio
                                 maxHeight: '100vh', // Ensure it fits within the viewport height
+                                ...(isMobile && { width:'70%'})
                             }} src={ram} className='img-fluid' data-aos="fade-up" alt="" />
                         </div>
-                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="400" style={{
+                        <div className="col-lg-5 text-light" data-aos="fade-up" data-aos-delay="300" style={{
                             textAlign: 'start',
                             padding: '10px',
                             fontSize: '1rem',
-
+                            ...(isMobile && { textAlign: 'justify'})
                         }}>
-                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem' }}>Welcome to Ramayana</h1>
+                            <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '1.5rem',fontFamily:'"Caveat", cursive'  }}>Welcome to Ramayana</h1>
                             <h3 className='mb-4 '
                                 style={{
                                     fontSize: '1.5rem',
+                                    fontFamily:'"Caveat", cursive',
                                     paddingRight: '20rem',
                                     color: 'grey',
                                     marginBottom: '1rem',

@@ -7,6 +7,9 @@ import UserLayout from '../common/UserLayout';
 import Home from '../pages/Home';
 import Authentication from '../pages/Authentication';
 import Preloader from '../../Preloader';
+import ForgotPassword from '../components/Authentication/ForgotPassword';
+import VerifyOtp from '../components/Authentication/VerifyOtp';
+import ResetPassword from '../components/Authentication/ResetPassword';
 
 function UserRoutes() {
   return (
@@ -19,6 +22,10 @@ function UserRoutes() {
         <Route path='register' element={<Authentication insideRegister />} />
         <Route path="about" element={<UserLayout showHeaderAndFooter={true}><About /></UserLayout>} />
         <Route path='p' element={<Preloader/>} />
+        <Route path='forgot-password' element={<ForgotPassword/>} />
+        <Route path='verify-otp' element={<VerifyOtp/>} />
+        <Route path='resetpassword/:uid/:token' element={<ResetPassword/>} />
+
 
       </Routes>
     </div>

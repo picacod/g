@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Oswald", sans-serif;
+  /* font-family: "Caveat", cursive; */
   scroll-behavior: smooth;
 }
 
@@ -12,10 +13,8 @@
    font-size: 35px!important;
   font-weight: bold!important;
   /* font-family: monospace; */
-  letter-spacing: 5px!important;
   cursor: pointer;
-  text-transform: uppercase;
-  background: linear-gradient(to right, hsl(45, 100%, 40%) 0%, hsl(45, 100%, 70%) 10%, hsl(45, 100%, 40%) 20%); 
+  background: linear-gradient(to right, hsl(45, 100%, 40%) 0%, hsl(45, 100%, 70%) 10%, hsl(45, 100%, 40%) 20%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 3s infinite linear;
