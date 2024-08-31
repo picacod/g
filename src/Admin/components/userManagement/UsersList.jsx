@@ -9,7 +9,7 @@ function UsersList() {
 
     useEffect(() => {
         // Fetch users excluding the admin
-        axios.get('http://localhost:8000/api/users_list/')
+        axios.get('https://gamebackend.pythonanywhere.com/api/users_list/')
             .then(response => {
                 setUsers(response.data);
                 setLoading(false);
@@ -22,7 +22,7 @@ function UsersList() {
 
     const handleDelete = (userId) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
-            axios.delete(`http://localhost:8000/api/delete_user/${userId}/`)
+            axios.delete(`https://gamebackend.pythonanywhere.com/api/delete_user/${userId}/`)
                 .then(response => {
                     // Remove the deleted user from the state
                     setUsers(users.filter(user => user.id !== userId));

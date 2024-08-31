@@ -9,7 +9,7 @@ function BookedUsers() {
 
     useEffect(() => {
         // Fetch pre-booked users
-        axios.get('http://localhost:8000/api/prebooked_users/')
+        axios.get('https://gamebackend.pythonanywhere.com/api/prebooked_users/')
             .then(response => {
                 setUsers(response.data);
                 setLoading(false);
@@ -22,7 +22,7 @@ function BookedUsers() {
 
     const handleDelete = (userId) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
-            axios.delete(`http://localhost:8000/api/users/${userId}/`)  // Adjust the endpoint if necessary
+            axios.delete(`https://gamebackend.pythonanywhere.com/api/users/${userId}/`)  // Adjust the endpoint if necessary
                 .then(response => {
                     // Remove the deleted user from the state
                     setUsers(users.filter(user => user.id !== userId));

@@ -7,6 +7,8 @@ import '../styles/Header.css';
 
 function Header() {
     const [isMobile, setIsMobile] = useState(false);
+    const user_id = sessionStorage.getItem('user_id');
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -22,6 +24,11 @@ function Header() {
         // Clean up the event listener on component unmount
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    const handleLogout = () =>{
+        sessionStorage.removeItem('user_id');
+    }
+
 
     return (
         <div>
@@ -97,17 +104,28 @@ function Header() {
                                 className="desktop-login text-light fw-semibold me-3 custom-dropdown border border-dark rounded-5 px-1"
                                 drop="down"
                             >
-                                <Link to={'/login'} style={{ textDecoration: 'none' }}>
-                                    <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-                                </Link>
+                                {user_id ? (
+                                    <>
+                                        <NavDropdown.Item href="#action/3.3" onClick={{handleLogout}}>Logout</NavDropdown.Item>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                                            <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
+                                        </Link>
+                                        <NavDropdown.Divider />
+                                        <Link to={'/register'} style={{ textDecoration: 'none' }}>
+                                            <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                        </Link>
+                                    </>
+                                )}
+
                                 <NavDropdown.Divider />
-                                <Link to={'/register'} style={{ textDecoration: 'none' }}>
-                                    <NavDropdown.Item href="#action/3.1">Sign Up</NavDropdown.Item>
-                                </Link>
-                                <NavDropdown.Divider />
+
                                 <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
                             </NavDropdown>
                         </Nav.Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

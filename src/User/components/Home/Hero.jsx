@@ -43,13 +43,12 @@ function Hero() {
       checkIfPreordered();  // Check if the user has already pre-ordered
     } else {
       setLoggedIn(false);
-      setBooked(true)
     }
   }, [user_id]);
 
   const checkIfPreordered = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/check_preorder/', {
+      const response = await axios.get('https://gamebackend.pythonanywhere.com/api/check_preorder/', {
         params: {
           user_id: user_id // Include user ID as a query parameter
         }
@@ -67,7 +66,7 @@ function Hero() {
   const handleBooking = async () => {
     if (isLoggedIn) {
       try {
-        const response = await axios.post('http://localhost:8000/api/preorder/', {
+        const response = await axios.post('https://gamebackend.pythonanywhere.com/api/preorder/', {
           user_id: user_id // Include user ID in the request body
         });
         if (response.data.message === 'Pre-order successful.') {
@@ -84,6 +83,7 @@ function Hero() {
       navigate('/login');
     }
   };
+
 
 
   return (
@@ -133,7 +133,7 @@ function Hero() {
               style={{ width: '100%', maxWidth: isMobile ? '320px' : 'auto' }}>
               <button style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0'>Watch the trailer</button>
               {
-                isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-warning rounded-0' >Ordered</button>
+                !isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-warning rounded-0' >Ordered</button>
               }
             </div>
             <p data-aos="fade-down" className='mt-2 text-secondary' style={{ fontSize: isMobile ? '0.7rem' : '0.9rem' }}>AVAILABLE 12 - 8 - 2026</p>

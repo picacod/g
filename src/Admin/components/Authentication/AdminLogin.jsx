@@ -13,7 +13,7 @@ function AdminLogin() {
         setError('');
         setMessage('');
         try {
-            const response = await axios.post('http://localhost:8000/api/admin_login/', {
+            const response = await axios.post('https://gamebackend.pythonanywhere.com/api/admin_login/', {
                 username,
                 password
             });
@@ -22,7 +22,7 @@ function AdminLogin() {
             // Store tokens and admin ID in localStorage or sessionStorage
             localStorage.setItem('access_token', response.data.access_token);
             localStorage.setItem('refresh_token', response.data.refresh_token);
-            sessionStorage.setItem('user_id', response.data.user_id);
+            sessionStorage.setItem('admin_id', response.data.user_id);
             
             // Redirect or handle successful login
             window.location.href = '/admin/overview';  // Example redirect

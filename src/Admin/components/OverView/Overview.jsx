@@ -29,7 +29,7 @@ function Overview() {
 
     useEffect(() => {
         // Fetch the user counts from the backend
-        axios.get('http://localhost:8000/api/user_counts/')
+        axios.get('https://gamebackend.pythonanywhere.com/api/user_counts/')
             .then(response => {
                 setUserCounts(response.data);
             })
@@ -39,7 +39,7 @@ function Overview() {
     }, []);
 
     const handleLogout = () => {
-        axios.post('http://localhost:8000/api/adminlogout/')
+        axios.post('https://gamebackend.pythonanywhere.com/api/adminlogout/')
             .then(response => {
                 sessionStorage.clear();
                 localStorage.clear();
