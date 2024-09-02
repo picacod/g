@@ -93,8 +93,8 @@ function Backtotop() {
           onClick={scrollToTop}
           style={{
             position: 'fixed',
-            bottom: '20px',
-            right: '20px',
+            bottom: '0px',
+            right: '0px',
             backgroundColor: 'transparent',
             border: 'none',
             borderRadius: '50%',
@@ -132,7 +132,7 @@ function Backtotop() {
                   bottom: '0',
                   right:isMobile ? '16px':'40px', // Adjust positioning as needed
                   width: isMobile?'50px':'80px', // Adjust size as needed
-                  height: '200px', // Adjust size as needed
+                  height: '250px', // Adjust size as needed
                 }}
               />
             )}

@@ -26,7 +26,11 @@ function Header() {
     }, []);
 
     const handleLogout = () =>{
+        alert('logout')
         sessionStorage.removeItem('user_id');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+
     }
 
 
@@ -85,17 +89,28 @@ function Header() {
                             className="mobile-login text-light fw-semibold custom-dropdown1 rounded-5"
                             drop="down"
                         >
-                            <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                            {
+                                user_id ? (
+                                    <>
+                                        <NavDropdown.Item href="#action/3.3" className='btn' onClick={{handleLogout}}>Logout</NavDropdown.Item>
+                                    </>
+                                ) : (
+                                    <>
+                                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
                                 <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
                             </Link>
                             <NavDropdown.Divider />
                             <Link to={'/register'} style={{ textDecoration: 'none' }}>
                                 <NavDropdown.Item href="#action/3.1">Sign Up</NavDropdown.Item>
                             </Link>
+                                    </>
+                                )
+                            }
+                            
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
                         </NavDropdown>
-
+                        <Link to={'/overview'}><button className='btn btn-outline-light'>Buy Now</button></Link>
                         <Nav.Link>
                             <NavDropdown
                                 id="nav-dropdown-dark-example"
@@ -106,7 +121,7 @@ function Header() {
                             >
                                 {user_id ? (
                                     <>
-                                        <NavDropdown.Item href="#action/3.3" onClick={{handleLogout}}>Logout</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.3" onClick={handleLogout}>Logout</NavDropdown.Item>
                                     </>
                                 ) : (
                                     <>

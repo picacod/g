@@ -59,7 +59,7 @@ function ResetPassword() {
                 new_password: newPassword,
             });
     
-            const response = await axios.post('http://localhost:8000/api/password-reset-confirm/', {
+            const response = await axios.post('https://gamebackend.pythonanywhere.com/api/password-reset-confirm/', {
                 uid,
                 token,
                 new_password: newPassword,

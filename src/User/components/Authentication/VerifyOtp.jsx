@@ -26,7 +26,7 @@ function VerifyOtp() {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8000/api/verify_otp/', { user_id: userId, otp });
+            const response = await axios.post('https://gamebackend.pythonanywhere.com/api/verify_otp/', { user_id: userId, otp });
             setMessage(response.data.message);
             setError('');
             navigate('/login');

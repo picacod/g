@@ -7,6 +7,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { GoogleLogin } from '@react-oauth/google';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useSnackbar } from 'notistack';
+
 import styles from '../styles/ResetPassword.module.css'
 
 
@@ -39,6 +41,7 @@ function Authentication({ insideRegister }) {
     });
     const navigate = useNavigate(); 
     const [showPassword, setShowPassword] = useState(false);
+    const { enqueueSnackbar } = useSnackbar(); 
 
     axios.defaults.headers.common['X-CSRFToken'] = getCookie('csrftoken');
 
@@ -80,7 +83,11 @@ function Authentication({ insideRegister }) {
             localStorage.setItem('access_token', response.data.access_token);
             localStorage.setItem('refresh_token', response.data.refresh_token);
             sessionStorage.setItem('user_id', response.data.user_id);
-            alert(response.data.message);
+            // alert(response.data.message);
+            enqueueSnackbar('Loggined successfully!', {
+              variant: 'success',
+              autoHideDuration: 2500,
+          });
             navigate('/home');
         }
     } catch (error) {
@@ -101,6 +108,10 @@ function Authentication({ insideRegister }) {
         localStorage.setItem('access_token', res.data.access_token);
         localStorage.setItem('refresh_token', res.data.refresh_token);
         sessionStorage.setItem('user_id', res.data.user_id);
+        enqueueSnackbar('Loggined successfully!', {
+          variant: 'success',
+          autoHideDuration: 2500,
+      });
         navigate('/home');
       } catch (error) {
         console.error('Google login error:', error);

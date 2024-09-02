@@ -10,6 +10,7 @@ import Preloader from '../../Preloader';
 import ForgotPassword from '../components/Authentication/ForgotPassword';
 import VerifyOtp from '../components/Authentication/VerifyOtp';
 import ResetPassword from '../components/Authentication/ResetPassword';
+import Purchase from '../pages/Purchase';
 
 function UserRoutes() {
   return (
@@ -21,6 +22,8 @@ function UserRoutes() {
         <Route path='login' element={<Authentication />} />
         <Route path='register' element={<Authentication insideRegister />} />
         <Route path="about" element={<UserLayout showHeaderAndFooter={true}><About /></UserLayout>} />
+        <Route path='overview' element={<Overview/>} />
+        <Route path='purchase' element={<Purchase/>} />
         <Route path='p' element={<Preloader/>} />
         <Route path='forgot-password' element={<ForgotPassword/>} />
         <Route path='verify-otp' element={<VerifyOtp/>} />
