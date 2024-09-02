@@ -88,6 +88,17 @@ function Overview() {
                             {!isResponsive ? 'Pre-Booked Users' : <i className='fas fa-user-check'></i>}
                         </button>
                     </Link>
+                    <Link to='/admin/character' className='text-decoration-none mb-2 d-flex align-items-center'>
+                        <button className='btn btn-lg btn-outline-light rounded-0 w-100'>
+                            {!isResponsive ? 'Characters' : <i className='fas fa-user-check'></i>}
+                        </button>
+                    </Link>
+                    <Link to='/admin/add-character' className='text-decoration-none mb-2 d-flex align-items-center'>
+                        <button className='btn btn-lg btn-outline-light rounded-0 w-100'>
+                            {!isResponsive ? 'Add Characters' : <i className='fas fa-user-check'></i>}
+                        </button>
+                    </Link>
+                    
                     <div className='mt-auto d-flex align-items-center'>
                         <Link to='/logout' className='text-decoration-none w-100'>
                             <button className='btn btn-lg btn-outline-light rounded-0 w-100' onClick={handleLogout}>

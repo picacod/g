@@ -5,6 +5,9 @@ import UsersList from '../components/userManagement/UsersList';
 import BookedUsers from '../components/userManagement/BookedUsers';
 import AdminLogin from '../components/Authentication/AdminLogin';
 import ProtectedRoute from './ProtectedRoute';
+import Characters from '../components/gameManagement/Characters';
+import AddCharacter from '../components/gameManagement/AddCharacter';
+import EditCharacter from '../components/gameManagement/EditCharacter';
 
 function AdminRoutes() {
   return (
@@ -38,6 +41,29 @@ function AdminRoutes() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="character"
+          element={
+            <ProtectedRoute>
+              <Characters/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="add-character"
+          element={
+            <ProtectedRoute>
+             <AddCharacter/>
+            </ProtectedRoute>
+          }
+        /><Route
+        path="edit-character"
+        element={
+          <ProtectedRoute>
+            <EditCharacter/>
+          </ProtectedRoute>
+        }
+      />
       </Routes>
     </div>
   );

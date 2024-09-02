@@ -11,6 +11,7 @@ import ForgotPassword from '../components/Authentication/ForgotPassword';
 import VerifyOtp from '../components/Authentication/VerifyOtp';
 import ResetPassword from '../components/Authentication/ResetPassword';
 import Purchase from '../pages/Purchase';
+import Overview from '../pages/Overview';
 
 function UserRoutes() {
   return (
