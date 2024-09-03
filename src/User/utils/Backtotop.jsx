@@ -121,7 +121,7 @@ function Backtotop() {
               zIndex: 2000,
             }}
           >
-            <img width={80} src={showBow ? bow : arr} alt="arrow" />
+            <img width={80} src={showBow ? bow : arr} alt="arrow" className='img-fluid'/>
             
             {isAnimating && (
               <img

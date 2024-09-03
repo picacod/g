@@ -8,33 +8,35 @@ function AddCharacter() {
 
     return (
         <div className='vh-100 d-flex align-items-center justify-content-center' style={{ backgroundColor: 'black' }}>
-            <div className='container h-75 bg-secondary'>
-                <Form>
-                    <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
-                        <Form.Label>Id</Form.Label>
+            <div className='container h-75 bg-dark'>
+                <Form className='p-3'>
+                <p className='text-secondary text-center fs-4'>Add Characters</p>
+
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label className='text-secondary'>Id</Form.Label>
                         <Form.Control type="number" placeholder="Id" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label className='text-secondary'>Name</Form.Label>
                         <Form.Control type="text" placeholder="Name" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Image</Form.Label>
+                        <Form.Label className='text-secondary'>Image</Form.Label>
                         <Form.Control type="file" placeholder="Iamge" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Price</Form.Label>
+                        <Form.Label className='text-secondary'>Price</Form.Label>
                         <Form.Control type="text" placeholder="Price" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Description</Form.Label>
+                        <Form.Label className='text-secondary'>Description</Form.Label>
                         <Form.Control type="text" placeholder="Description" />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit
                     </Button>
-                    <Link to={'/admin/overview'} className='btn'>Back</Link>
+                    <Link to={'/admin/overview'} className='btn text-secondary'>Back</Link>
                 </Form>
             </div>
         </div>

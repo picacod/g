@@ -8,8 +8,31 @@
 }
 
 body{
-  background-color: black !important;
+  /* background-color: black !important; */
 
+}
+/* ================= [ Custom scrollbar styles ] ====================== */
+
+/* Width and height of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track (background) */
+::-webkit-scrollbar-track {
+  background: #8d8d8d;
+}
+
+/* Handle (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b6b6b6;
 }
 .anim {
   color: hsl(45, 100%, 50%); 
@@ -76,3 +99,6 @@ body{
     background-position: 600px;
   }
 }
+
+
+

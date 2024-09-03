@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import logoimg from '../../assets/logo.png';
 import '../styles/Header.css';
 
 function Header() {
     const [isMobile, setIsMobile] = useState(false);
+    const navigate = useNavigate();
     const user_id = sessionStorage.getItem('user_id');
 
 
@@ -25,7 +26,15 @@ function Header() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleLogout = () =>{
+    const BuyNow = () =>{
+        if(user_id){
+            navigate('/overview')
+        }else{
+            navigate('/login')
+        }
+    }
+
+    const handleLogout = () => {
         alert('logout')
         sessionStorage.removeItem('user_id');
         localStorage.removeItem('access_token');
@@ -82,6 +91,7 @@ function Header() {
 
                     {/* User icon on the right */}
                     <Nav className="ms-auto">
+                    <button onClick={BuyNow} className='btn btn-outline-light align-center me-2'>Buy Now</button>
                         <NavDropdown
                             id="nav-dropdown-dark-example"
                             title={<><FaUser style={{ color: 'white' }} /></>}
@@ -92,36 +102,7 @@ function Header() {
                             {
                                 user_id ? (
                                     <>
-                                        <NavDropdown.Item href="#action/3.3" className='btn' onClick={{handleLogout}}>Logout</NavDropdown.Item>
-                                    </>
-                                ) : (
-                                    <>
-                                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
-                                <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-                            </Link>
-                            <NavDropdown.Divider />
-                            <Link to={'/register'} style={{ textDecoration: 'none' }}>
-                                <NavDropdown.Item href="#action/3.1">Sign Up</NavDropdown.Item>
-                            </Link>
-                                    </>
-                                )
-                            }
-                            
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
-                        </NavDropdown>
-                        <Link to={'/overview'}><button className='btn btn-outline-light'>Buy Now</button></Link>
-                        <Nav.Link>
-                            <NavDropdown
-                                id="nav-dropdown-dark-example"
-                                title={<><FaUser style={{ color: 'white', fontSize: '1rem' }} /></>}
-                                menuVariant="dark"
-                                className="desktop-login text-light fw-semibold me-3 custom-dropdown border border-dark rounded-5 px-1"
-                                drop="down"
-                            >
-                                {user_id ? (
-                                    <>
-                                        <NavDropdown.Item href="#action/3.3" onClick={handleLogout}>Logout</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.3" className='btn' onClick={{ handleLogout }}>Logout</NavDropdown.Item>
                                     </>
                                 ) : (
                                     <>
@@ -130,17 +111,43 @@ function Header() {
                                         </Link>
                                         <NavDropdown.Divider />
                                         <Link to={'/register'} style={{ textDecoration: 'none' }}>
-                                            <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                            <NavDropdown.Item href="#action/3.1">Sign Up</NavDropdown.Item>
                                         </Link>
                                     </>
-                                )}
+                                )
+                            }
 
-                                <NavDropdown.Divider />
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown
+                            id="nav-dropdown-dark-example"
+                            title={<><FaUser style={{ color: 'white', fontSize: '1rem' }} /></>}
+                            menuVariant="dark"
+                            className="desktop-login text-light fw-semibold me-3 custom-dropdown border border-dark rounded-5 px-1"
+                            drop="down"
+                        >
+                            {user_id ? (
+                                <>
+                                    <NavDropdown.Item href="#action/3.3" onClick={handleLogout}>Logout</NavDropdown.Item>
+                                </>
+                            ) : (
+                                <>
+                                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                                        <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
+                                    </Link>
+                                    <NavDropdown.Divider />
+                                    <Link to={'/register'} style={{ textDecoration: 'none' }}>
+                                        <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                    </Link>
+                                </>
+                            )}
 
-                                <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
-                            </NavDropdown>
-                        </Nav.Link>
+                            <NavDropdown.Divider />
 
+                            <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
+                        </NavDropdown>
+                            
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
