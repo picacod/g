@@ -230,6 +230,12 @@ function Authentication({ insideRegister }) {
                   )}
                 </p>
               </div>
+              <div className='mt-3 d-flex align-items-center justify-content-center'>
+                <GoogleLogin
+                  onSuccess={handleGoogleSuccess}
+                  onError={handleGoogleError}
+                />
+              </div>
             </Form>
 
 
@@ -341,7 +347,7 @@ function Authentication({ insideRegister }) {
                 </p>
               </div>
 
-              <div className='mt-3'>
+              <div className='mt-3 d-flex align-items-center justify-content-center'>
                 <GoogleLogin
                   onSuccess={handleGoogleSuccess}
                   onError={handleGoogleError}
