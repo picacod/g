@@ -12,7 +12,7 @@ import { useSnackbar } from 'notistack';
 import styles from '../styles/ResetPassword.module.css'
 
 
-const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, name, value, onChange }) => (
+const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, name, value, onChange, validationErrors }) => (
   <FloatingLabel controlId={`floatingPassword-${label}`} label={label} className={`${styles.passwordField} mb-3`}>
     <Form.Control
       type={showPassword ? 'text' : 'password'}
@@ -21,6 +21,7 @@ const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, nam
       value={value}
       onChange={onChange}
       style={{ borderRadius: '0px' }}
+      isInvalid={!!validationErrors} // Highlight field if there are errors
     />
     <Button
       variant="link"
@@ -30,6 +31,9 @@ const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, nam
     >
       {showPassword ? <FaEye /> : <FaEyeSlash />}
     </Button>
+    <Form.Control.Feedback type="invalid">
+      {validationErrors}
+    </Form.Control.Feedback>
   </FloatingLabel>
 );
 
@@ -39,6 +43,7 @@ function Authentication({ insideRegister }) {
     email: '',
     password: ''
   });
+  const [validationErrors, setValidationErrors] = useState('');
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -51,8 +56,41 @@ function Authentication({ insideRegister }) {
     const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return cookieValue ? cookieValue.pop() : '';
   }
+
+  // Password validation function
+  const validatePassword = (password) => {
+    let errors = '';
+    const minLength = 8;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (password.length < minLength) {
+      errors = `Password must be at least ${minLength} characters long.`;
+    } else if (!hasUppercase) {
+      errors = 'Password must contain at least one uppercase letter.';
+    } else if (!hasLowercase) {
+      errors = 'Password must contain at least one lowercase letter.';
+    } else if (!hasNumber) {
+      errors = 'Password must contain at least one number.';
+    } else if (!hasSpecialChar) {
+      errors = 'Password must contain at least one special character.';
+    }
+
+    return errors;
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const passwordValidation = validatePassword(userInputs.password);
+    if (passwordValidation) {
+      setValidationErrors(passwordValidation);
+      return;
+    }
+
+
     const endpoint = insideRegister ? 'https://gamebackend.pythonanywhere.com/api/register/' : 'https://gamebackend.pythonanywhere.com/api/login/';
 
     // Prepare the data based on whether the user is registering or logging in
@@ -175,6 +213,7 @@ function Authentication({ insideRegister }) {
               {insideRegister ? 'Register' : 'Login to your account'}
             </h5>
 
+
             <Form onSubmit={handleSubmit}>
               {insideRegister &&
                 <FloatingLabel controlId="floatingUsername" label="Username" className="mb-3">
@@ -199,14 +238,21 @@ function Authentication({ insideRegister }) {
                 showPassword={showPassword}
                 placeholder="Password"
                 onTogglePassword={() => setShowPassword(!showPassword)}
+                name="password"
                 value={userInputs.password}
-                onChange={e => setUserInputs({ ...userInputs, password: e.target.value })}
+                onChange={e => {
+                  const password = e.target.value;
+                  setUserInputs({ ...userInputs, password });
+                  setValidationErrors(validatePassword(password));
+                }}
+                validationErrors={validationErrors}
               />
               <div className='mt-4'>
                 <button
                   type="submit"
                   style={{ backgroundColor: '#171717', color: 'white', width: '100%', height: '45px' }}
                   className='btn rounded-0'
+                  disabled={!!validationErrors} // Disable if there are validation errors
                 >
                   {insideRegister ? 'Register' : 'Login'}
                 </button>
@@ -237,8 +283,6 @@ function Authentication({ insideRegister }) {
                 />
               </div>
             </Form>
-
-
 
           </div>
         </div>
@@ -316,13 +360,19 @@ function Authentication({ insideRegister }) {
                 placeholder="Password"
                 onTogglePassword={() => setShowPassword(!showPassword)}
                 value={userInputs.password}
-                onChange={e => setUserInputs({ ...userInputs, password: e.target.value })}
+                onChange={e => {
+                  const password = e.target.value;
+                  setUserInputs({ ...userInputs, password });
+                  setValidationErrors(validatePassword(password));
+                }}
+                validationErrors={validationErrors}
               />
               <div className='mt-4'>
                 <button
                   type="submit"
                   style={{ backgroundColor: '#171717', color: 'white', width: '100%', height: '45px' }}
                   className='btn rounded-0'
+                  disabled={!!validationErrors}
                 >
                   {insideRegister ? 'Register' : 'Login'}
                 </button>
@@ -353,7 +403,6 @@ function Authentication({ insideRegister }) {
                   onError={handleGoogleError}
                 />
               </div>
-
             </Form>
 
 

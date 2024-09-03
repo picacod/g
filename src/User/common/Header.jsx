@@ -28,7 +28,7 @@ function Header() {
 
     const BuyNow = () =>{
         if(user_id){
-            navigate('/overview')
+            navigate('/purchase')
         }else{
             navigate('/login')
         }

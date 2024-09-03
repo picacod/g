@@ -17,7 +17,7 @@ function Purchase() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [cart, setCart] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
-  const [isBuyed, setIsBuyed] = useState(false)
+  const [isBuyed, setIsBuyed] = useState(true)
   const user_id = sessionStorage.getItem('user_id');
 
 

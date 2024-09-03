@@ -11,7 +11,7 @@ import ForgotPassword from '../components/Authentication/ForgotPassword';
 import VerifyOtp from '../components/Authentication/VerifyOtp';
 import ResetPassword from '../components/Authentication/ResetPassword';
 import Purchase from '../pages/Purchase';
-import Overview from '../pages/Overview';
+// import Overview from '../pages/Overview';
 import ProtectedRoute from './ProtectedRoute';
 
 function UserRoutes() {
@@ -24,7 +24,7 @@ function UserRoutes() {
         <Route path='login' element={<Authentication />} />
         <Route path='register' element={<Authentication insideRegister />} />
         <Route path="about" element={<UserLayout showHeaderAndFooter={true}><About /></UserLayout>} />
-        <Route path="overview" element={ <ProtectedRoute> <Overview/> </ProtectedRoute> }/>
+        {/* <Route path="overview" element={ <ProtectedRoute> <Overview/> </ProtectedRoute> }/> */}
         <Route path="purchase" element={ <ProtectedRoute> <Purchase/> </ProtectedRoute> }/>
         {/* <Route path='overview' element={<Overview/>} />
         <Route path='purchase' element={<Purchase/>} /> */}
