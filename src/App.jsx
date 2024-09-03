@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/admin/*" element={<AdminRoutes/>} />
           <Route path="/*" element={<UserRoutes/>} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path="/notfound" element={<NotFound/>} />
         </Routes>
     </div>
   )
