@@ -234,10 +234,12 @@ function Purchase() {
                         style={{
                           width: '50%',
                           height: '100%',
-                          objectFit: 'cover',
+                          backgroundImage: `url(https://img.freepik.com/premium-photo/close-up-paper_1048944-10199549.jpg?ga=GA1.1.1957609827.1725420836&semt=ais_hybrid)`, // Replace with your external image URL
+                          backgroundSize: 'cover', // Adjusts the background to cover the entire div
+                          backgroundPosition: 'center', // Centers the background image
+                          backgroundRepeat: 'no-repeat', // Ensures the image doesn’t repeat
                           borderRadius: '50%', // Makes the image circular
-                          backgroundColor:'yellow',
-                          border: '2px solid yellow', // Optional: Adds a border around the circle
+                          border: '2px solid grey', // Optional: Adds a border around the circle
                         }}
                       />
                       <div

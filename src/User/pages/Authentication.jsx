@@ -58,37 +58,37 @@ function Authentication({ insideRegister }) {
   }
 
   // Password validation function
-  const validatePassword = (password) => {
-    let errors = '';
-    const minLength = 8;
-    const hasUppercase = /[A-Z]/.test(password);
-    const hasLowercase = /[a-z]/.test(password);
-    const hasNumber = /[0-9]/.test(password);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+  // const validatePassword = (password) => {
+  //   let errors = '';
+  //   const minLength = 8;
+  //   const hasUppercase = /[A-Z]/.test(password);
+  //   const hasLowercase = /[a-z]/.test(password);
+  //   const hasNumber = /[0-9]/.test(password);
+  //   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-    if (password.length < minLength) {
-      errors = `Password must be at least ${minLength} characters long.`;
-    } else if (!hasUppercase) {
-      errors = 'Password must contain at least one uppercase letter.';
-    } else if (!hasLowercase) {
-      errors = 'Password must contain at least one lowercase letter.';
-    } else if (!hasNumber) {
-      errors = 'Password must contain at least one number.';
-    } else if (!hasSpecialChar) {
-      errors = 'Password must contain at least one special character.';
-    }
+  //   if (password.length < minLength) {
+  //     errors = `Password must be at least ${minLength} characters long.`;
+  //   } else if (!hasUppercase) {
+  //     errors = 'Password must contain at least one uppercase letter.';
+  //   } else if (!hasLowercase) {
+  //     errors = 'Password must contain at least one lowercase letter.';
+  //   } else if (!hasNumber) {
+  //     errors = 'Password must contain at least one number.';
+  //   } else if (!hasSpecialChar) {
+  //     errors = 'Password must contain at least one special character.';
+  //   }
 
-    return errors;
-  };
+  //   return errors;
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const passwordValidation = validatePassword(userInputs.password);
-    if (passwordValidation) {
-      setValidationErrors(passwordValidation);
-      return;
-    }
+    // const passwordValidation = validatePassword(userInputs.password);
+    // if (passwordValidation) {
+    //   setValidationErrors(passwordValidation);
+    //   return;
+    // }
 
 
     const endpoint = insideRegister ? 'https://gamebackend.pythonanywhere.com/api/register/' : 'https://gamebackend.pythonanywhere.com/api/login/';
@@ -128,7 +128,7 @@ function Authentication({ insideRegister }) {
           variant: 'success',
           autoHideDuration: 2500,
         });
-        navigate('/home');
+        navigate('/');
       }
     } catch (error) {
       // Handle error
@@ -152,7 +152,7 @@ function Authentication({ insideRegister }) {
         variant: 'success',
         autoHideDuration: 2500,
       });
-      navigate('/home');
+      navigate('/');
     } catch (error) {
       console.error('Google login error:', error);
       alert('An error occurred during Google login');
@@ -241,18 +241,17 @@ function Authentication({ insideRegister }) {
                 name="password"
                 value={userInputs.password}
                 onChange={e => {
-                  const password = e.target.value;
-                  setUserInputs({ ...userInputs, password });
-                  setValidationErrors(validatePassword(password));
+                 
+                  setUserInputs({ ...userInputs, password:e.target.value });
+                  // setValidationErrors(validatePassword(password));
                 }}
-                validationErrors={validationErrors}
+                // validationErrors={validationErrors}
               />
               <div className='mt-4'>
                 <button
                   type="submit"
                   style={{ backgroundColor: '#171717', color: 'white', width: '100%', height: '45px' }}
                   className='btn rounded-0'
-                  disabled={!!validationErrors} // Disable if there are validation errors
                 >
                   {insideRegister ? 'Register' : 'Login'}
                 </button>
@@ -361,18 +360,18 @@ function Authentication({ insideRegister }) {
                 onTogglePassword={() => setShowPassword(!showPassword)}
                 value={userInputs.password}
                 onChange={e => {
-                  const password = e.target.value;
-                  setUserInputs({ ...userInputs, password });
-                  setValidationErrors(validatePassword(password));
+                 
+                  setUserInputs({ ...userInputs, password:e.target.value });
+                  // setValidationErrors(validatePassword(password));
                 }}
-                validationErrors={validationErrors}
+                // validationErrors={validationErrors}
               />
               <div className='mt-4'>
                 <button
                   type="submit"
                   style={{ backgroundColor: '#171717', color: 'white', width: '100%', height: '45px' }}
                   className='btn rounded-0'
-                  disabled={!!validationErrors}
+                  // disabled={!!validationErrors}
                 >
                   {insideRegister ? 'Register' : 'Login'}
                 </button>

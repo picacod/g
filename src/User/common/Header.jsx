@@ -47,8 +47,8 @@ function Header() {
         <div>
             <Navbar expand="lg" className="fixed-top container-fluid">
                 {/* Logo on the left */}
-                <Navbar.Brand href="#home">
-                    <Link to={'/home'}>
+                <Navbar.Brand >
+                    <Link to={'/'}>
                         <img
                             style={{
                                 width: '10rem',
