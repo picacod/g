@@ -71,7 +71,7 @@ function Purchase() {
   };
 
   const handlePayment = async () => {
-    if(!user_id){
+    if (!user_id) {
       alert('login to payment')
       return;
     }
@@ -158,131 +158,102 @@ function Purchase() {
               </Navbar>
             </div>
 
-            <div className='container ' style={{ height: '80vh', overflowY: isMobile ? 'hidden' : 'hidden' }}>
-              <div className='row h-100'>
-                {/* Left Side: Swiper Image List with Navigation */}
-                <div
-                  className={`col-12 col-md-5 d-flex flex-column position-relative ${isMobile ? 'swiper-horizontal h-25' : 'h-100'}`}
-                  style={{
-                    height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0)', // Background color only, no image
-                  }}
-                >
-                  <div className='swiper-container' style={{ height: '100%', position: 'relative' }}>
-                    <Swiper
-                      modules={[Navigation]}
-                      spaceBetween={10}
-                      slidesPerView={isMobile ? 1 : 3}
-                      direction={isMobile ? 'horizontal' : 'vertical'}
-                      navigation={{
-                        prevEl: '.swiper-button-prev',
-                        nextEl: '.swiper-button-next',
+            <div className='container' style={{ height: '80vh', overflowY: 'hidden' }}>
+      <div className={`row h-100 ${isMobile ? 'flex-column-reverse' : ''}`}>
+        {/* Left Side: Swiper Image List with Navigation */}
+        <div
+          className={`col-12 col-md-3 d-flex flex-column position-relative ${isMobile ? 'swiper-horizontal h-25' : 'h-100'}`}
+          style={{
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0)', // Background color only, no image
+          }}
+        >
+          <div className='swiper-container' style={{ height: '100%', position: 'relative' }}>
+            <Swiper
+              modules={[Navigation]}
+              spaceBetween={isMobile ? 1 : 10}
+              slidesPerView={isMobile ? 3 : 3}
+              direction={isMobile ? 'horizontal' : 'vertical'}
+              navigation={{
+                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next',
+              }}
+              style={{ height: '100%' }}
+              onInit={(swiper) => {
+                swiper.navigation.init();
+                swiper.navigation.update();
+              }}
+            >
+              {characters.map((card) => (
+                <SwiperSlide key={card.id} style={{ height: isMobile ? '200px' : '400px', marginBottom: isMobile && '2rem' }}>
+                  <div
+                    className='position-relative d-flex align-items-center justify-content-center'
+                    style={{ cursor: 'pointer', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    onClick={() => handleCardClick(card)}
+                  >
+                    <img
+                      src={`https://gamebackend.pythonanywhere.com/${card.img}`}
+                      alt={card.name}
+                      style={{
+                        width: isMobile ? '80px' : '150px', // Adjusted width
+                        height: isMobile ? '80px' : '150px', // Adjusted height
+                        objectFit: 'cover', // Ensures the image covers the container
+                        borderRadius: '50%', // Makes the image circular
+                        border: '2px solid grey', // Optional: Adds a border around the circle
                       }}
-                      style={{ height: '100%' }}
-                      onInit={(swiper) => {
-                        swiper.navigation.init();
-                        swiper.navigation.update();
-                      }}
-                    >
-                      {characters.map((card) => (
-                        <SwiperSlide key={card.id} style={{ height: isMobile ? '500px' : '400px' }}>
-                          <div
-                            className='position-relative d-flex align-items-center justify-content-center '
-                            style={{ cursor: 'pointer', height: '100%' }}
-                            onClick={() => handleCardClick(card)}
-                          >
-                            <img
-                              src={`https://gamebackend.pythonanywhere.com/${card.img}`}
-                              alt={card.name}
-                              style={{
-                                width: '50%',
-                                height: '100%',
-                                backgroundImage: `url(https://img.freepik.com/premium-photo/close-up-paper_1048944-10199549.jpg?ga=GA1.1.1957609827.1725420836&semt=ais_hybrid)`, // Replace with your external image URL
-                                backgroundSize: 'cover', // Adjusts the background to cover the entire div
-                                backgroundPosition: 'center', // Centers the background image
-                                backgroundRepeat: 'no-repeat', // Ensures the image doesn’t repeat
-                                borderRadius: '50%', // Makes the image circular
-                                border: '2px solid grey', // Optional: Adds a border around the circle
-                              }}
-                            />
-                            <div
-                              className='position-absolute bottom-0 start-0 p-2 text-white w-100'
-                              style={{
-                                backgroundColor: 'rgba(0, 0, 0, 0.1)',
-                                textAlign: 'center',
-                              }}
-                            >
-                              <h5 style={{ color: 'white' }} className='m-0 text-uppercase'>{card.name}</h5>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                    {/* Swiper Navigation Buttons */}
-                    <div className='swiper-button-prev position-absolute top-50 start-0 translate-middle-x' style={{ transform: 'translateY(10px)', width: '10px', height: '10px', backgroundSize: '10px', color: 'grey' }}></div>
-                    <div className='swiper-button-next position-absolute bottom-0 start-100 translate-middle-x' style={{ transform: 'translateY(-10px)', width: '10px', height: '10px', backgroundSize: '10px', color: 'grey' }}></div>
+                    />
                   </div>
-                </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            {/* Swiper Navigation Buttons */}
+            <div className='swiper-button-prev position-absolute top-50 start-0 translate-middle-x' style={{ transform: 'translateY(10px)', color: 'grey' }}></div>
+            <div className='swiper-button-next position-absolute top-50 end-0 translate-middle-x' style={{ transform: 'translateY(-10px)', color: 'grey' }}></div>
+          </div>
+        </div>
 
-
-                {/* Middle Side: Display Selected Card Details */}
-                <div className={`col-12 col-md-7 d-flex align-items-center justify-content-center ${isMobile ? ' h-75' : 'h-100'}`} >
-                  <div style={{
-                    height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0)',
-                    backgroundImage: `url(${paper})`, // Replace with your external image URL
-                    backgroundSize: 'cover', // Adjusts the background to cover the entire div
-                    backgroundPosition: 'center', // Centers the background image
-                    backgroundRepeat: 'no-repeat' // Ensures the image doesn’t repeat
-                  }} className='card d-flex flex-column align-items-center h-100 w-100 p-4 text-center '>
-                    {selectedCard ? (
-                      <>
-                        <h4 style={{ color: 'grey' }} className='mb-3 mt-5 '>{selectedCard.name}</h4>
-                        <img
-                          src={`https://gamebackend.pythonanywhere.com/${selectedCard.img}`}
-                          style={{ width: '70%', marginBottom: '10px', height: isMobile ? '30%' : '50%' }}
-                          alt={selectedCard.name}
-                        />
-                        <p style={{ color: 'brown' }}>{selectedCard.desc}</p>
-                        <h5 className='text-light mb-4'>Price: {selectedCard.price}</h5>
-                        <div className='d-flex'>
-                          {
-                            isBuyed ? <>
-                              <button onClick={handlePayment} className='btn me-3 w-40 button-with-bg' >
-                                Buy Now
-                              </button>
-
-                            </> : <button className='btn button-with-bg'>Purchased</button>
-                          }
-                        </div>
-                      </>
+        {/* Middle Side: Display Selected Card Details */}
+        <div className={`col-12 col-md-9 d-flex align-items-center justify-content-center ${isMobile ? 'h-75' : 'h-100'}`}>
+          <div
+            style={{
+              height: '100%',
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              backgroundImage: `url(${paper})`, // Replace with your external image URL
+              backgroundSize: 'cover', // Adjusts the background to cover the entire div
+              backgroundPosition: 'center', // Centers the background image
+              backgroundRepeat: 'no-repeat', // Ensures the image doesn’t repeat
+            }}
+            className='card d-flex flex-column align-items-center h-100 w-100 p-4 text-center'
+          >
+            {selectedCard ? (
+              <>
+                <h4 style={{ color: 'grey' }} className='mb-3 mt-5'>{selectedCard.name}</h4>
+                <img
+                  src={`https://gamebackend.pythonanywhere.com/${selectedCard.img}`}
+                  style={{ width: '70%', marginBottom: '10px', height: isMobile ? '30%' : '50%' }}
+                  alt={selectedCard.name}
+                />
+                <p style={{ color: 'brown' }}>{selectedCard.desc}</p>
+                <h5 className='text-light mb-4'>Price: {selectedCard.price}</h5>
+                <div className='d-flex'>
+                  {
+                    isBuyed ? (
+                      <button onClick={handlePayment} className='btn me-3 w-40 button-with-bg'>
+                        Buy Now
+                      </button>
                     ) : (
-                      <p style={{ color: 'grey' }}>Select a character to see the details</p>
-                    )}
-                  </div>
+                      <button className='btn button-with-bg'>Purchased</button>
+                    )
+                  }
                 </div>
-
-                {/* Right Side: Display Price and Buttons */}
-                {/* <div className='col-3 d-flex align-items-center justify-content-center'>
-              <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} className='card  d-flex flex-column align-items-center justify-content-center h-100 w-100 p-4'>
-                {selectedCard ? (
-                  <>
-                    <h4 className='text-light mb-4'>Price: {selectedCard.price}</h4>
-                    <button className='btn border btn-outline-secondary text-light  mb-2 w-100' onClick={handleAddToCart}>
-                      Add to Cart
-                    </button>
-                    <button className='btn border btn-outline-secondary text-light w-100' onClick={handleAddToWishlist}>
-                      Add to Wishlist
-                    </button>
-                  </>
-                ) : (
-                  <p>Select a character to see the price and options</p>
-                )}
-              </div>
-            </div> */}
-
-              </div>
-            </div>
+              </>
+            ) : (
+              <p style={{ color: 'grey' }}>Select a character to see the details</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
           </div>
       }
     </>
