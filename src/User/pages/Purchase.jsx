@@ -236,7 +236,8 @@ function Purchase() {
                           height: '100%',
                           objectFit: 'cover',
                           borderRadius: '50%', // Makes the image circular
-                          border: '2px solid white', // Optional: Adds a border around the circle
+                          backgroundColor:'yellow',
+                          border: '2px solid yellow', // Optional: Adds a border around the circle
                         }}
                       />
                       <div
