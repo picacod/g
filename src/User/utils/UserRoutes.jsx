@@ -18,7 +18,7 @@ function UserRoutes() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<UserLayout showHeaderAndFooter={true}><Home /></UserLayout>} />
+        <Route path="home" element={<UserLayout showHeaderAndFooter={true}><Home /></UserLayout>} />
         {/* <Route path="login" element={<UserLogin />} />
         <Route path="register" element={<UserRegister />} /> */}
         <Route path='login' element={<Authentication />} />

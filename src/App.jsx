@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route path="/"  />
+          <Route path="/" element={<Navigate to="/home"  replace/>} />
           <Route path="/admin/*" element={<AdminRoutes/>} />
           <Route path="/*" element={<UserRoutes/>} />
           <Route path="/notfound" element={<NotFound/>} />
