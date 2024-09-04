@@ -26,7 +26,6 @@ import { SnackbarProvider } from 'notistack';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <GoogleOAuthProvider clientId="736263222806-ge18j4uubciif5rvlmjnbgdtmltl23tu.apps.googleusercontent.com">
-    <BrowserRouter>
       <React.StrictMode>
         <SnackbarProvider maxSnack={3}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
@@ -34,6 +33,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <App />
         </SnackbarProvider>
       </React.StrictMode>
-    </BrowserRouter>
   </GoogleOAuthProvider>
 );
