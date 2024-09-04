@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -5,39 +7,40 @@ import axios from 'axios';
 import EditCharacter from './EditCharacter';
 
 function Characters() {
-    const [users, setUsers] = useState([]);
+    const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [selectedCharacter, setSelectedCharacter] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
-    const handleShow = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
+    const handleShow = (character) => {
+        setSelectedCharacter(character);
+        setShowModal(true);
+    };
+    
+    const handleClose = () => setShowModal(false);
 
     useEffect(() => {
-        // Fetch pre-booked users
-        axios.get('https://gamebackend.pythonanywhere.com/api/prebooked_users/')
+        axios.get('https://gamebackend.pythonanywhere.com/api/admin_characters/')
             .then(response => {
-                setUsers(response.data);
+                setCharacters(response.data);
                 setLoading(false);
             })
             .catch(error => {
-                console.error('Error fetching pre-booked users:', error);
+                console.error('Error fetching characters:', error);
                 setLoading(false);
             });
     }, []);
 
-    const handleDelete = (userId) => {
-        if (window.confirm('Are you sure you want to delete this user?')) {
-            axios.delete(`https://gamebackend.pythonanywhere.com/api/users/${userId}/`)  // Adjust the endpoint if necessary
-                .then(response => {
-                    // Remove the deleted user from the state
-                    setUsers(users.filter(user => user.id !== userId));
-                    alert('User deleted successfully');
-                })
-                .catch(error => {
-                    console.error('Error deleting user:', error);
-                    alert('Error deleting user');
-                });
-        }
+    const handleDelete = (characterId) => {
+        axios.delete(`https://gamebackend.pythonanywhere.com/api/Update_character/${characterId}/`)
+            .then(() => {
+                // Remove the deleted character from the state
+                setCharacters(characters.filter(c => c.id !== characterId));
+            })
+            .catch(error => {
+                console.error('Error deleting character:', error.response ? error.response.data : error.message);
+                alert('Error deleting character');                
+            });
     };
 
 
@@ -76,28 +79,35 @@ function Characters() {
                     <thead className='sticky-top'>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">UserId</th>
-                            <th scope="col">Date</th>
+                            <th scope="col">CharacterId</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Image</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Uploaded Date</th>
+                            <th scope="col">Release Date</th>
                             <th scope="col">Edit</th>          
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                     {loading ? (
-                            <tr><td colSpan="7" className="text-center">Loading...</td></tr>
-                        ) : users.length > 0 ? (
-                            users.map((user, index) => (
-                                <tr key={user.id}>
+                            <tr><td colSpan="9" className="text-center">Loading...</td></tr>
+                        ) : characters.length > 0 ? (
+                            characters.map((character, index) => (
+                                <tr key={character.id}>
                                     <td>{index + 1}</td>
-                                    <th scope="row">{user.id}</th>
-                                    <td>{user.date_joined}</td>
-                                    <td>{user.email}</td>
-                                    <td><button onClick={handleShow}>Edit</button></td>
-                   
+                                    <th scope="row">{character.id }</th>
+                                    <td>{character.name}</td>
+                                    <td><img src={`https://gamebackend.pythonanywhere.com/${character.img}`} alt={character.name} style={{ width: '100px', height: 'auto' }} /></td>
+                                    <td>{character.desc}</td>
+                                    <td>{character.price}</td>
+                                    <td>{new Date(character.created_at).toLocaleDateString()}</td>
+                                    <td>{character.release_date}</td>
+                                    <td><button onClick={() => handleShow(character)}>Edit</button></td>
                                     <td>
                                         <div className='d-flex'>
-                                            <button className='btn text-light' onClick={() => handleDelete(user.id)}>
+                                            <button className='btn text-light' onClick={() => handleDelete(character.id)}>
                                                 <i className="fa-solid fa-trash"></i>
                                             </button>
                                         </div>
@@ -106,13 +116,19 @@ function Characters() {
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="7" className="text-center">No Caharcter found</td>
+                                <td colSpan="9" className="text-center">No Characters found</td>
                             </tr>
                         )}
                     </tbody>
                 </Table>
             </div>
-<EditCharacter show={showModal} handleClose={handleClose}/>
+            <EditCharacter
+                show={showModal}
+                handleClose={handleClose}
+                character={selectedCharacter}
+                setCharacters={setCharacters}
+                characters={characters}
+            />
         </div>
     )
 }

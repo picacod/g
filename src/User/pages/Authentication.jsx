@@ -203,7 +203,7 @@ function Authentication({ insideRegister }) {
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', maxWidth: '80%', zIndex: '100',
 
 
-          }} className='card-shadow rounded-0 mb-5'>
+          }} className='card-shadow rounded-0 mb-5 button-with-bg'>
             <Link className='text-secondary' style={{ textDecoration: 'none' }} to={'/home'}> <ArrowBackIosIcon style={{ fontSize: '1rem' }} /></Link>
             <h6 style={{ color: 'grey' }} className='text-center'>
               {insideRegister ? 'New user' : 'Sign in'}
@@ -288,7 +288,7 @@ function Authentication({ insideRegister }) {
         </div>
 
         {/* Main Content for Large Screens */}
-        <div className='d-none d-lg-flex flex-column align-items-center justify-content-center' style={{ height: '100%' }}>
+        <div className='d-none d-lg-flex flex-column align-items-center justify-content-center ' style={{ height: '100%' }}>
           <div className='text-center'>
             <p className='text-light' style={{
               fontSize: '40px',

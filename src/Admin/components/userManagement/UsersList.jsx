@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -6,10 +8,13 @@ import axios from 'axios';
 function UsersList() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const [searchTerm, setSearchTerm] = useState('');
     useEffect(() => {
-        // Fetch users excluding the admin
-        axios.get('https://gamebackend.pythonanywhere.com/api/users_list/')
+        fetchUsers();
+    }, [searchTerm]);
+
+    const fetchUsers = () => {
+        axios.get(`https://gamebackend.pythonanywhere.com/api/users_list/?search=${searchTerm}`)
             .then(response => {
                 setUsers(response.data);
                 setLoading(false);
@@ -18,7 +23,8 @@ function UsersList() {
                 console.error('Error fetching users:', error);
                 setLoading(false);
             });
-    }, []);
+    };
+
 
     const handleDelete = (userId) => {
         if (window.confirm('Are you sure you want to delete this user?')) {
@@ -46,13 +52,14 @@ function UsersList() {
             <div className='w-100 container'>
                 <div className='p-1 bg-light rounded-0 shadow-sm mb-3'>
                     <div className='input-group'>
-                        <input
+                    <input
                             type='text'
                             placeholder='Search Username'
                             aria-describedby='button-addon1'
                             className='form-control border-0 bg-light'
                             style={{ boxShadow: 'none', borderRadius: '1rem' }}
-
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                         />
                         <div className='input-group-append'>
                             <button

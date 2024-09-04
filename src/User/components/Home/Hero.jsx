@@ -124,16 +124,16 @@ function Hero() {
         <div className="container h-100" style={{ position: 'relative', zIndex: 2 }}>
           <div className='h-100 d-flex flex-column align-items-center justify-content-center text-light'>
             {/* <h1   style={{ fontSize: '5rem', fontFamily: 'fantasy', color: 'yellow' }}>Ancient Shadows</h1> */}
-            <img data-aos="fade-up" width={700} className='img-fluid' src={logo} alt="" style={{ width: isMobile ? '65%' : '30%', maxWidth: isMobile ? '300px' : '700px', marginBottom: isMobile ? '20px' : '10px' }} />
+            <img data-aos="fade-up" width={700} className='img-fluid' src={logo} alt="" style={{ width: isMobile ? '65%' : '70%', maxWidth: isMobile ? '300px' : '700px', marginBottom: isMobile ? '20px' : '10px' }} />
 
-            <h1 data-aos="fade-down" className='mb-3 fw-bold text-center anim' style={{ fontSize: isMobile ? '1.5rem' : '2rem' }}>Available for PS5 and PC</h1>
+            {/* <h1 data-aos="fade-down" className='mb-3 fw-bold text-center anim' style={{ fontSize: isMobile ? '1.5rem' : '2rem' }}>Available for PS5 and PC</h1> */}
             {/* <h5 data-aos="fade-down" className='text-center'  style={{ fontSize: isMobile ? '1rem' : '1.25rem' }}>Experience entertainment blockbusters , Ancient Shadows.</h5> */}
             <div data-aos="fade-down"
               className='d-flex flex-column flex-md-row gap-2 justify-content-center'
               style={{ width: '100%', maxWidth: isMobile ? '320px' : 'auto' }}>
-              <button style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0'>Watch the trailer</button>
+              <button style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg  rounded-0 button-with-bg'>Watch the trailer</button>
               {
-                !isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg btn-outline-light rounded-0' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem',backgroundColor:'#D1B000' }} className='btn btn-lg rounded-0' >Ordered <i className="fa-regular fa-lg fa-circle-check"></i></button>
+                !isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg  rounded-0 button-with-bg' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg rounded-0 button-with-bg' >Ordered <i className="fa-regular fa-lg fa-circle-check"></i></button>
               }
             </div>
             <p data-aos="fade-down" className='mt-2 text-secondary' style={{ fontSize: isMobile ? '0.7rem' : '0.9rem' }}>AVAILABLE 12 - 8 - 2026</p>

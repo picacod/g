@@ -45,14 +45,14 @@ function Header() {
 
     return (
         <div>
-            <Navbar expand="lg" className="fixed-top container">
+            <Navbar expand="lg" className="fixed-top container-fluid">
                 {/* Logo on the left */}
                 <Navbar.Brand href="#home">
                     <Link to={'/home'}>
                         <img
                             style={{
                                 width: '10rem',
-                                filter: 'invert(1) brightness(100)',
+                                // filter: 'invert(1) brightness(100)',
                                 ...(isMobile && { width: '7rem' }),
                             }}
                             src={logoimg}
@@ -91,7 +91,7 @@ function Header() {
 
                     {/* User icon on the right */}
                     <Nav className="ms-auto">
-                    <button onClick={BuyNow} className='btn btn-outline-light align-center me-2'>Buy Now</button>
+                    <button onClick={BuyNow} className='btn  align-center me-2 button-with-bg'>Buy Now</button>
                         <NavDropdown
                             id="nav-dropdown-dark-example"
                             title={<><FaUser style={{ color: 'white' }} /></>}

@@ -102,3 +102,29 @@ body{
 
 
 
+
+
+.button-with-bg {
+  background-image: url('https://t4.ftcdn.net/jpg/03/09/30/11/360_F_309301133_FeVFkJxwrgZmjSWQ0HWEu1nF3l6ZMCqS.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(59, 25, 25); /* Adjust based on image contrast */
+  border: 2px solid rgba(0, 0, 0, 0.2); /* Soft border color for vintage effect */
+  border-radius: 0.5rem; /* Rounded corners for a softer look */
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), /* Soft shadow for depth */
+              inset 0 0 8px rgba(0, 0, 0, 0.1); /* Inner shadow for a pressed effect */
+  font-family: 'Times New Roman', serif; /* Vintage font style */
+  text-transform: uppercase; /* Capitalize text for a classic look */
+}
+
+.button-with-bg:hover {
+  opacity: 0.8; /* Optional hover effect */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+
+
