@@ -131,12 +131,11 @@ function Hero() {
             <div data-aos="fade-down"
               className='d-flex flex-column flex-md-row gap-2 justify-content-center'
               style={{ width: '100%', maxWidth: isMobile ? '320px' : 'auto' }}>
-              <button style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg  rounded-0 button-with-bg'>Watch the trailer</button>
+              <button style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg   button-with-bg'>Watch the trailer</button>
               {
-                !isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg  rounded-0 button-with-bg' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg rounded-0 button-with-bg' >Ordered <i className="fa-regular fa-lg fa-circle-check"></i></button>
+                !isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg button-with-bg' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg button-with-bg' >Ordered <i className="fa-regular fa-lg fa-circle-check"></i></button>
               }
             </div>
-            <p data-aos="fade-down" className='mt-2 text-secondary' style={{ fontSize: isMobile ? '0.7rem' : '0.9rem' }}>AVAILABLE 12 - 8 - 2026</p>
 
           </div>
         </div>

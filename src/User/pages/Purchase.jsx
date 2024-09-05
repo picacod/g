@@ -158,14 +158,14 @@ function Purchase() {
               </Navbar>
             </div>
 
-            <div className='container' style={{ height: '80vh', overflowY: 'hidden' }}>
+            <div  className='container' style={{ height: '80vh', overflowY: 'hidden',backgroundColor: 'rgba(0, 0, 0, 0.6)', }} >
               <div className={`row h-100 ${isMobile ? 'flex-column-reverse' : ''}`}>
                 {/* Left Side: Swiper Image List with Navigation */}
                 <div
                   className={`col-12 col-md-3 d-flex flex-column position-relative ${isMobile ? 'swiper-horizontal h-25' : 'h-100'}`}
                   style={{
                     height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)', // Background color only, no image
+                    backgroundColor: 'rgba(0, 0, 0, 0)', // Background color only, no image
                   }}
                 >
                   <div className='swiper-container' style={{ height: '100%', position: 'relative' }}>
@@ -217,26 +217,26 @@ function Purchase() {
                   <div
                     style={{
                       height: '100%',
-                      backgroundColor: 'rgba(0, 0, 0, 0)',
+                      backgroundColor: 'rgba(0, 0, 0, 0  )',
                       backgroundImage: `url()`, // Replace with your external image URL
                       backgroundSize: 'cover', // Adjusts the background to cover the entire div
                       backgroundPosition: 'center', // Centers the background image
                       backgroundRepeat: 'no-repeat', // Ensures the image doesn’t repeat
-                      border:'none'
+                      border: 'none'
                     }}
                     className='card d-flex flex-column align-items-center h-100 w-100 p-4 text-center border-none'
                   >
                     {selectedCard ? (
                       <>
-                        <h1 className='h1-anim text-center text-uppercase w-100' style={{ color: '#a67c00', fontFamily: '"Caveat", cursive', fontSize: '5rem', ...(isMobile && { fontSize: '2rem' }), }}>{selectedCard.name}</h1>
+                        <h1 className='text-center text-uppercase w-100' style={{ color: '#a67c00', fontSize: '4rem', ...(isMobile && { fontSize: '2rem' }), }}>{selectedCard.name}</h1>
                         <img
                           src={`https://gamebackend.pythonanywhere.com/${selectedCard.img}`}
                           style={{ width: '70%', marginBottom: '10px', height: isMobile ? '20rem' : '30rem' }}
                           alt={selectedCard.name}
                           className='img-fluid'
                         />
-                        <p style={{ color: 'brown' }}>{selectedCard.desc}</p>
-                        <h5 className='text-light mb-4'>Price: {selectedCard.price}</h5>
+                        <p style={{ color: 'white' }}>{selectedCard.desc}</p>
+                        <h5 className='text-light mb-4'>₹ : {selectedCard.price}</h5>
                         <div className='d-flex'>
                           {
                             isBuyed ? (

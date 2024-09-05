@@ -94,7 +94,7 @@ function Header() {
                     <button onClick={BuyNow} className='btn  align-center me-2 button-with-bg'>Buy Now</button>
                         <NavDropdown
                             id="nav-dropdown-dark-example"
-                            title={<><FaUser style={{ color: 'white' }} /></>}
+                            title={<><FaUser style={{ color: 'white' }}  /></>}
                             menuVariant="dark"
                             className="mobile-login text-light fw-semibold custom-dropdown1 rounded-5"
                             drop="down"
@@ -122,7 +122,7 @@ function Header() {
                         </NavDropdown>
                         <NavDropdown
                             id="nav-dropdown-dark-example"
-                            title={<><FaUser style={{ color: 'white', fontSize: '1rem' }} /></>}
+                            title={<><FaUser style={{ color: '#ffbf00', fontSize: '1rem' }} /></>}
                             menuVariant="dark"
                             className="desktop-login text-light fw-semibold me-3 custom-dropdown border border-dark rounded-5 px-1"
                             drop="down"
