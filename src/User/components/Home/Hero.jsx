@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import HomeContent from './HomeContent';
 import Aos from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
-import vid from '../../../assets/intro.mp4'
-import logo from '../../../assets/logo.png'
+import vid from '../../../assets/intro.mp4';
+import logo from '../../../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import HomeContent from './HomeContent';
+import Preloader from '../../../Preloader';
 
 function Hero() {
-
   const [isMobile, setIsMobile] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isBooked, setBooked] = useState(false);
+  const [loadingVideo, setLoadingVideo] = useState(true); // Add loading state for video
   const user_id = sessionStorage.getItem('user_id');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,22 +35,20 @@ function Hero() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-
   useEffect(() => {
     if (user_id) {
       setLoggedIn(true);
-      checkIfPreordered();  // Check if the user has already pre-ordered
+      checkIfPreordered();
     } else {
       setLoggedIn(false);
     }
   }, [user_id]);
 
   const checkIfPreordered = async () => {
+    setLoadingVideo(true); // Set loading to true before making the API call
     try {
       const response = await axios.get('https://gamebackend.pythonanywhere.com/api/check_preorder/', {
-        params: {
-          user_id: user_id // Include user ID as a query parameter
-        }
+        params: { user_id }
       });
       if (response.data.preordered) {
         setBooked(true);
@@ -60,6 +57,8 @@ function Hero() {
       }
     } catch (error) {
       console.error("Error checking pre-order status:", error);
+    } finally {
+      setLoadingVideo(false); // Set loading to false after the API call is completed
     }
   };
 
@@ -67,7 +66,7 @@ function Hero() {
     if (isLoggedIn) {
       try {
         const response = await axios.post('https://gamebackend.pythonanywhere.com/api/preorder/', {
-          user_id: user_id // Include user ID in the request body
+          user_id
         });
         if (response.data.message === 'Pre-order successful.') {
           alert('Booked successfully');
@@ -84,11 +83,15 @@ function Hero() {
     }
   };
 
-
+  // Video event handlers
+  const handleVideoLoadStart = () => setLoadingVideo(true);
+  const handleVideoCanPlay = () => setLoadingVideo(false);
 
   return (
-
     <div>
+      {loadingVideo ? (
+        <Preloader/>
+      ) : null}
       <div style={{ position: 'relative', height: '100vh', fontFamily: '"Oswald", sans-serif' }}>
         {/* Background Video */}
         <video
@@ -96,6 +99,8 @@ function Hero() {
           loop
           muted
           playsInline
+          onLoadStart={handleVideoLoadStart} // Set loading state when video starts loading
+          onCanPlay={handleVideoCanPlay}    // Set loading state when video can play
           style={{
             position: 'absolute',
             top: 0,
@@ -123,15 +128,12 @@ function Hero() {
 
         <div className="container h-100" style={{ position: 'relative', zIndex: 2 }}>
           <div className='h-100 d-flex flex-column align-items-center justify-content-center text-light'>
-            {/* <h1   style={{ fontSize: '5rem', fontFamily: 'fantasy', color: 'yellow' }}>Ancient Shadows</h1> */}
             <img data-aos="fade-up" width={700} className='img-fluid' src={logo} alt="" style={{ width: isMobile ? '65%' : '70%', maxWidth: isMobile ? '300px' : '700px', marginBottom: isMobile ? '20px' : '10px' }} />
 
-            {/* <h1 data-aos="fade-down" className='mb-3 fw-bold text-center anim' style={{ fontSize: isMobile ? '1.5rem' : '2rem' }}>Available for PS5 and PC</h1> */}
-            {/* <h5 data-aos="fade-down" className='text-center'  style={{ fontSize: isMobile ? '1rem' : '1.25rem' }}>Experience entertainment blockbusters , Ancient Shadows.</h5> */}
             <div data-aos="fade-down"
               className='d-flex flex-column flex-md-row gap-2 justify-content-center'
               style={{ width: '100%', maxWidth: isMobile ? '320px' : 'auto' }}>
-              <button style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg   button-with-bg'>Watch the trailer</button>
+              <button style={{ fontSize: isMobile ? '0.8rem' : '1rem' }} className='btn btn-lg button-with-bg'>Watch the trailer</button>
               {
                 !isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg button-with-bg' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg button-with-bg' >Ordered <i className="fa-regular fa-lg fa-circle-check"></i></button>
               }

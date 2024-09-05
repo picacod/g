@@ -91,7 +91,7 @@ function Header() {
 
                     {/* User icon on the right */}
                     <Nav className="ms-auto">
-                    <button onClick={BuyNow} className='btn  align-center me-2 button-with-bg'>Buy Now</button>
+                    {/* <button onClick={BuyNow} className='btn  align-center me-2 button-with-bg'>Buy Now</button> */}
                         <NavDropdown
                             id="nav-dropdown-dark-example"
                             title={<><FaUser style={{ color: 'white' }}  /></>}

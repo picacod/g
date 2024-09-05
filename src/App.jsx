@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import UserRoutes from './User/utils/UserRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NotFound from './NotFound';
-
+import './index.css';
 function App() {
 
   return (
-    <div className="App">
+    <div className="App" >
 
       <Router>
         <Routes>

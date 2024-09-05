@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -11,7 +10,9 @@ function AddCharacter() {
         name: '',
         desc: '',
         img: null,
-        price: ''
+        video:null,
+        price: '',
+        release_date:''
     });
 
     const handleChange = (e) => {
@@ -23,9 +24,10 @@ function AddCharacter() {
     };
 
     const handleFileChange = (e) => {
+        const { name, files } = e.target;
         setCharacterData({
             ...characterData,
-            img: e.target.files[0]
+            [name]: files[0] // Handle file input
         });
     };
 
@@ -35,7 +37,9 @@ function AddCharacter() {
         formData.append('name', characterData.name);
         formData.append('desc', characterData.desc);
         formData.append('img', characterData.img);
+        formData.append('video', characterData.video); 
         formData.append('price', characterData.price);
+        formData.append('release_date', characterData.release_date);
 
         axios.post('https://gamebackend.pythonanywhere.com/api/add_character/', formData, {
             headers: {
@@ -44,7 +48,6 @@ function AddCharacter() {
         })
         .then(response => {
             console.log(response.data);
-            alert('Character added successfully')
         })
         .catch(error => {
             console.error('There was an error uploading the character!', error);
@@ -90,12 +93,33 @@ function AddCharacter() {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Video</Form.Label> {/* New video field */}
+                        <Form.Control 
+                            type="file" 
+                            placeholder="Video" 
+                            name="video" 
+                            onChange={handleFileChange} 
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Price</Form.Label>
                         <Form.Control 
                             type="text" 
                             placeholder="Price" 
                             name="price" 
                             value={characterData.price} 
+                            onChange={handleChange} 
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Release Date</Form.Label>
+                        <Form.Control 
+                            type="date" 
+                            placeholder="Release Date" 
+                            name="release_date" 
+                            value={characterData.release_date} 
                             onChange={handleChange} 
                         />
                     </Form.Group>

@@ -5,11 +5,12 @@
   font-family: "Oswald", sans-serif;
   /* font-family: "Caveat", cursive; */
   scroll-behavior: smooth;
+
 }
 
 body{
   background-color: black !important;
-
+  
 }
 /* ================= [ Custom scrollbar styles ] ====================== */
 
@@ -134,3 +135,60 @@ body{
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important;
 } */
 
+
+body{
+  cursor: url('pointer.png') 32 32, auto;/* Ensure the path points to your image */
+}
+
+
+/* pre loader */
+
+/* Preloader container styles */
+.preloader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  z-index: 9999;
+}
+
+/* Container for wheel and text */
+.wheel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;  /* Reduced the size of the container */
+  height: 150px;
+}
+
+/* Rotating wheel animation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-wheel {
+  position: absolute;
+  width: 100px;  /* Reduced the size by 50px */
+  height: 100px; /* Ensure width and height match for a circular effect */
+  animation: rotate 2s linear infinite;
+}
+
+/* Static logo text positioned over the wheel */
+.logo-text {
+  position: absolute;
+  width: 200px;  /* Increased width for the logo text by 50px */
+  height: auto;  /* Maintain aspect ratio */
+  z-index: 1;    /* Ensure it's on top of the wheel */
+  pointer-events: none; /* Ensure the text doesn't block interactions */
+}

@@ -82,6 +82,8 @@ function Characters() {
                             <th scope="col">CharacterId</th>
                             <th scope="col">Name</th>
                             <th scope="col">Image</th>
+                            <th scope="col">Image</th>
+                   
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col">Uploaded Date</th>
