@@ -41,7 +41,7 @@ function Footer() {
                   <ul className="list-unstyled m-0 p-0 d-flex justify-content-center justify-content-sm-end"
                       style={{ color: 'aliceblue' }}>
                     <li className="me-3">
-                      <a href="https://www.linkedin.com/company/picacod-consultancy-services-pvt-ltd">
+                      <a href="https://www.linkedin.com/company/">
                         <i className="fa-brands fa-linkedin-in fs-5 text-light"></i>
                       </a>
                     </li>
@@ -51,7 +51,7 @@ function Footer() {
                       </a>
                     </li>
                     <li className="me-3">
-                      <a href="https://www.instagram.com/picacod">
+                      <a href="https://www.instagram.com/">
                         <i className="fa-brands fa-instagram fs-5 text-light"></i>
                       </a>
                     </li>

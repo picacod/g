@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import bg1 from '../../../assets/bg-1.png';
-import video1 from '../../../assets/test-vid.mp4';
-import video2 from '../../../assets/test-vid.mp4';
-import video3 from '../../../assets/intro.mp4';
+import bg1 from '../../../assets/bg-2.jpg'; // First fixed background
+import fire from '../../../assets/fire.gif';
+import frame from '../../../assets/frame.png';
+import head2 from '../../../assets/head2.png';
+
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import Backtotop from '../../utils/Backtotop';
-import '../../styles/HomeContent.css'; // Ensure this CSS file contains your animation styles
 import axios from 'axios';
 
 function HomeContent() {
     const [currentContent, setCurrentContent] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
-    const [modalVideo, setModalVideo] = useState(null); // State for managing the modal and video source
+    const [modalVideo, setModalVideo] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [contentData, setContentData] = useState([]);
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as per your mobile view
+            setIsMobile(window.innerWidth <= 768);
         };
 
         handleResize();
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -32,13 +30,11 @@ function HomeContent() {
     }, []);
 
     useEffect(() => {
-        // Fetch content data from API
-        setIsLoading(true); // Set loading to true before fetch starts
+        setIsLoading(true);
         axios.get('https://gamebackend.pythonanywhere.com/api/admin_characters/')
             .then(response => {
                 setContentData(response.data);
                 if (response.data.length > 0) {
-                    // Set initial content index if data is available
                     setCurrentContent(0);
                 }
             })
@@ -46,7 +42,7 @@ function HomeContent() {
                 console.error('Error fetching content data:', error);
             })
             .finally(() => {
-                setIsLoading(false); // Set loading to false after fetch completes
+                setIsLoading(false);
             });
     }, []);
 
@@ -55,22 +51,23 @@ function HomeContent() {
     };
 
     const openModal = (videoSrc) => {
-        setModalVideo(videoSrc); // Set the video source for the modal
+        setModalVideo(videoSrc);
     };
 
     const closeModal = () => {
-        setModalVideo(null); // Close the modal
+        setModalVideo(null);
     };
 
     return (
         <div style={{ minHeight: '200vh' }}>
-            {/* Background Section */}
+            {/* Fixed Background Section */}
             <div style={{
                 backgroundImage: `url(${bg1})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                height: '100vh',
+                height: '200vh',
+                backgroundAttachment: 'fixed',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -82,127 +79,140 @@ function HomeContent() {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1))',
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1))',
                     zIndex: 1,
                 }}></div>
 
                 <div className='container' style={{ position: 'relative', zIndex: 2 }}>
-                    <div className='d-flex align-items-center justify-content-center no-gutters'>
+                    {/* conetnt */}
+                    <div className='d-flex align-items-center justify-content-center no-gutters vh-100'>
                         <div className="text-light" data-aos="fade-in" data-aos-delay="100" style={{
                             padding: '10px',
                             fontSize: '1rem',
                         }}>
-                            <h3 className='h1-anim text-center' style={{ color: '#a67c00', fontFamily: '"Caveat", cursive', fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
-                            <h1 className='fw-bold'
+                            <h3 className='h1-anim text-center' style={{ color: '#a67c00', fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
+                            <h1
                                 style={{
                                     color: 'grey',
                                     fontSize: '2.5rem',
-                                    fontFamily: '"Caveat", cursive',
                                     marginTop: '1rem',
                                     marginBottom: '0.5rem',
                                     textAlign: 'justify',
                                     lineHeight: '1.2',
                                     ...(isMobile && { fontSize: '1.5rem' }),
-                                }}>It's a journey into the heart of one of the greatest stories ever told. Step into a universe
+                                }}>
+                                It's a journey into the heart of one of the greatest stories ever told. Step into a universe
                                 filled with ancient cities, dense forests, and treacherous landscapes, all meticulously
-                                crafted to reflect the grandeur of the Ramayana. Experience the thrill of battle, the
-                                wisdom of sages, and the power of divine weapons as you forge your path through a
-                                world of myth and legend.</h1>
+                                crafted to reflect the grandeur of the Ramayana.
+                            </h1>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div style={{ padding: '50px 0' }}>
+                        <div className="container">
+                            <div className="row d-flex align-items-center no-gutters w-100 m-0">
+                                <div className="col-lg-8 col-md-12 d-flex flex-column align-items-center justify-content-center" style={{ textAlign: 'center', paddingRight: isMobile ? '0rem' : '10rem' }}>
+                                    {
+                                        isMobile ?
+                                            <img src={head2} alt="img" style={{ width: '100%' }} />
+                                            :
+                                            null
+                                    }
 
-            {/* Hero Section */}
-            <div style={{
-                backgroundImage: `url(${bg1})`,
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                height: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-            }}>
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1))',
-                    zIndex: 1,
-                }}></div>
 
-                <div className='container' style={{ position: 'relative', zIndex: 2 }}>
-                    <div className="row d-flex align-items-center no-gutters">
-                        <div className="col-lg-6 col-md-12" style={{ textAlign: 'center' }}>
-                            {isLoading ? (
-                                <p>Loading...</p>
-                            ) : contentData.length > 0 ? (
-                                <img
-                                    src={`https://gamebackend.pythonanywhere.com${contentData[currentContent].img}`}
-                                    alt={contentData[currentContent].desc}
-                                    className="img-fluid"
-                                    style={{ maxHeight: '80vh', width: 'auto', objectFit: 'cover', marginBottom: '20px' }} // Ensure uniform size
-                                />
-                            ) : (
-                                <p>No content available</p>
-                            )}
-                        </div>
-                        <div className="col-lg-6 col-md-12 text-light" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                            {isLoading ? (
-                                <p>Loading...</p>
-                            ) : contentData.length > 0 ? (
-                                <>
-                                    <h1 className='h1-anim' style={{ color: '#a67c00', fontSize: '3rem', fontFamily: '"Caveat", cursive' }}>
-                                        {contentData[currentContent].name}
-                                    </h1>
-                                    <h3 className='mb-4' style={{ color: 'grey', fontSize: isMobile ? '1rem' : '2rem', textAlign: 'center' }}>
-                                        {contentData[currentContent].desc}
-                                    </h3>
-                                    <button
-                                        onClick={() => openModal(`https://gamebackend.pythonanywhere.com${contentData[currentContent].video}`)} // Open modal with video
-                                        style={{
-                                            border: 'none',
-                                            background: 'none',
-                                            cursor: 'pointer',
-                                            padding: 0,
-                                            outline: 'none',
-                                        }}
-                                    >
-                                        <video
-                                            autoPlay
-                                            src={`https://gamebackend.pythonanywhere.com${contentData[currentContent].video}`}
+                                    {isLoading ? (
+                                        <p>Loading...</p>
+                                    ) : contentData.length > 0 ? (
+                                        <img
+                                            src={`https://gamebackend.pythonanywhere.com${contentData[currentContent].img}`}
                                             alt={contentData[currentContent].desc}
-                                            style={{ width: '100%', maxWidth: isMobile? '150px' : '350px', borderRadius: '8px' }}
+                                            className="img-fluid"
+                                            style={{
+                                                maxHeight: isMobile ? '30vh' : '100%',
+                                                maxWidth: '100%',
+                                                objectFit: 'cover',
+                                                marginBottom: '20px',
+                                                overflow: 'hidden',
+                                            }}
                                         />
-                                    </button>
-                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
-                                        {contentData.map((_, i) => (
-                                            <button
-                                                key={i}
-                                                onClick={() => handleButtonClick(i)}
-                                                className={`content-button ${currentContent === i ? 'active' : ''}`}
-                                                style={{
-                                                    width: '50px',
-                                                    height: '50px',
-                                                    borderRadius: '50%',
-                                                    padding: '0',
-                                                    background: `url(https://gamebackend.pythonanywhere.com${contentData[i].img}) center center / cover no-repeat`,
-                                                    border: 'none',
-                                                    cursor: 'pointer',
-                                                    outline: 'none',
-                                                    boxShadow: currentContent === i ? '0 0 0 3px rgba(255, 255, 255, 0.5)' : 'none',
-                                                }}
-                                            />
-                                        ))}
-                                    </div>
-                                </>
-                            ) : (
-                                <p>No content available</p>
-                            )}
+                                    ) : (
+                                        <p>No content available</p>
+                                    )}
+                                </div>
+                                <div className="col-lg-4 col-md-12 text-light ">
+                                    {isLoading ? (
+                                        <p>Loading...</p>
+                                    ) : contentData.length > 0 ? (
+                                        <>
+                                            {
+                                                !isMobile ?
+                                                    <img src={head2} alt="img" style={{ width: '100%' }} />
+                                                    :
+                                                    null
+                                            }
+
+                                            <h1 className='h1-anim' style={{ fontSize: isMobile ? '2rem' : '5rem', textAlign: 'start' }}>
+                                                {contentData[currentContent].name}
+                                            </h1>
+                                            <h3 style={{ color: 'grey', fontSize: isMobile ? '1rem' : '2rem', textAlign: 'start' }}>
+                                                {contentData[currentContent].desc}
+                                            </h3>
+
+                                            <div className='d-flex flex-column'>
+                                                <button role="button" class="golden-button mt-3 mb-3">
+                                                    <span className="golden-text">View more <i className="fa-solid fa-angles-right ms-3"></i></span>
+                                                </button>
+
+
+                                                <button
+                                                    onClick={() => openModal(`https://gamebackend.pythonanywhere.com${contentData[currentContent].video}`)}
+                                                    style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}
+                                                >
+                                                    <video
+                                                        loop
+                                                        autoPlay
+                                                        src={`https://gamebackend.pythonanywhere.com${contentData[currentContent].video}`}
+                                                        alt={contentData[currentContent].desc}
+                                                        style={{ width: '100%', maxWidth: '350px', borderRadius: '0px' }}
+                                                    />
+
+                                                </button>
+
+                                            </div>
+
+                                            {/* Button controls */}
+                                            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
+                                                {contentData.map((_, i) => (
+                                                    <button
+                                                        key={i}
+                                                        onClick={() => handleButtonClick(i)}
+                                                        style={{
+                                                            width: '80px',
+                                                            height: '80px',
+                                                            borderRadius: '50%',
+                                                            background: `url(https://gamebackend.pythonanywhere.com${contentData[i].img}) center center / cover no-repeat`,
+                                                            border: 'none',
+                                                            cursor: 'pointer',
+                                                            boxShadow: currentContent === i ? '0 0 0 3px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(255, 215, 0, 0.7)' : '0 0 0 3px rgba(255, 255, 255, 0.5)',
+                                                        }}
+                                                    />
+                                                ))}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <p>No content available</p>
+                                    )}
+
+
+                                </div>
+                            </div>
+                            
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -244,12 +254,11 @@ function HomeContent() {
                         >
                             &times;
                         </button>
-                        <video src={modalVideo}  autoPlay style={{ width: '100%', borderRadius: '8px' }} />
+                        <video src={modalVideo} autoPlay style={{ width: '100%', borderRadius: '8px' }} />
                     </div>
                 </div>
             )}
 
-            <Backtotop />
         </div>
     );
 }
