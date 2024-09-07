@@ -323,8 +323,8 @@ body{
 
 .decorative-line {
   position: relative;
-  padding: 20px; /* Adjust padding as needed */
-  height: 20px; /* Ensure there's enough height to accommodate the decorations */
+  height: 10px; /* Adjust height as needed */
+  margin: 10px 0; /* Adjust margin as needed */
 }
 
 .decorative-line::before {
@@ -332,45 +332,30 @@ body{
   position: absolute;
   height: 2px; /* Line thickness */
   background-color: var(--color-alpha);
-  width: calc(100% - 40px); /* Full width of the line minus space for decorations */
+  width: calc(100% - 40px); /* Full width of the container minus the width of decorations */
   top: 50%;
+  left: 20px; /* Offset to account for decoration width */
   transform: translateY(-50%); /* Center the line vertically */
   z-index: 1;
 }
 
-.decorative-line .decoration-left,
-.decorative-line .decoration-right {
+.decorative-line .decoration {
   position: absolute;
-  width: 20px; /* Width including decoration and line */
-  height: 20px; /* Height to accommodate decoration */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 10px; /* Width of decoration */
+  height: 10px; /* Height of decoration */
+  border: 2px solid var(--color-alpha); /* Border for decoration */
+  box-sizing: border-box;
   z-index: 2;
 }
 
 .decorative-line .decoration-left {
-  left: -10px; /* Half width of decoration */
-  top: 50%;
-  transform: translateY(-50%);
+  left: 0; /* Position at the left end */
 }
 
 .decorative-line .decoration-right {
-  right: -10px; /* Half width of decoration */
-  top: 50%;
-  transform: translateY(-50%);
+  right: 0; /* Position at the right end */
 }
 
-/* Decorative dots */
-.decorative-line .decoration-left::before,
-.decorative-line .decoration-right::before {
-  content: "•";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  font-size: 14px;
-  color: var(--color-alpha);
-  border: 2px solid var(--color-alpha);
-  line-height: 12px;
-  text-align: center;
-}
+
+/* footer */
+

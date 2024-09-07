@@ -8,6 +8,7 @@ import ico from '../../../assets/game-icon.png';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import axios from 'axios';
+import Footer from '../../common/Footer';
 
 function HomeContent() {
     const [currentContent, setCurrentContent] = useState(0);
@@ -60,14 +61,14 @@ function HomeContent() {
     };
 
     return (
-        <div style={{ minHeight: '250vh' }}>
+        <div style={{ minHeight: '300vh' }}>
             {/* Fixed Background Section */}
             <div style={{
                 backgroundImage: `url(${bg1})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                height: '250vh',
+                height: '300vh',
                 backgroundAttachment: 'fixed',
                 display: 'flex',
                 alignItems: 'center',
@@ -118,16 +119,6 @@ function HomeContent() {
                                             :
                                             null
                                     }
-<div class="decorative-line">
-  <div class="decoration-left">
-    <div class="dot"></div>
-  </div>
-  <div class="decoration-right">
-    <div class="dot"></div>
-  </div>
-</div>
-
-
 
                                     {isLoading ? (
                                         <p>Loading...</p>
@@ -164,6 +155,10 @@ function HomeContent() {
                                             <h1 className='h1-anim' style={{ fontSize: isMobile ? '2rem' : '5rem', textAlign: 'start' }}>
                                                 {contentData[currentContent].name}
                                             </h1>
+                                            <div class="decorative-line">
+                                                <div class="decoration decoration-left"></div>
+                                                <div class="decoration decoration-right"></div>
+                                            </div>
                                             <h3 style={{ color: 'grey', fontSize: isMobile ? '1rem' : '2rem', textAlign: 'start' }}>
                                                 {contentData[currentContent].desc}
                                             </h3>
@@ -191,14 +186,14 @@ function HomeContent() {
                                             </div>
 
                                             {/* Button controls */}
-                                            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '20px' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '20px' }}>
                                                 {contentData.map((_, i) => (
                                                     <button
                                                         key={i}
                                                         onClick={() => handleButtonClick(i)}
                                                         style={{
-                                                            width: '80px',
-                                                            height: '80px',
+                                                            width: '90px',
+                                                            height: '90px',
                                                             borderRadius: '50%',
                                                             background: `url(https://gamebackend.pythonanywhere.com${contentData[i].img}) center center / cover no-repeat`,
                                                             border: 'none',
@@ -218,24 +213,36 @@ function HomeContent() {
                             </div>
                             {/* frame */}
                             <div class="border-frame mt-5">
-                                <div class="inner-frame" style={{ height: '25rem' }}>
+                                <div className="inner-frame" style={{ height: '25rem' }}>
                                     <div className='w-100 h-100 d-flex flex-column'>
-                                        <div className='h-100 w-100'>
-                                            <p className='text-light'>test</p>
-                                            <img src={ico} width={100} alt="" />
+                                        <div className='h-100 w-100 row'>
+                                            <div className='col-3 d-flex flex-column align-items-center justify-content-center'>
+                                                <p style={{color:'#b78846'}}>Weapon</p>
+                                                <img src={ico} width={100} alt="" />
+                                            </div>
+                                            <div className='col-9 d-flex flex-column justify-content-center text-secondary'>
+                                                <p>Ashwatthama invoked Brahmashirshstra using a blade of grass as his weapon. Brahma's celestial weapon.</p>
+                                            </div>
                                         </div>
-                                        <div className='h-100 w-100'>
-                                            <p style={{ color: '#b78846', fontSize: '1.5rem' }}>test</p>
-                                            <p className='text-seconadary'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias distinctio vel velit dignissimos rerum pariatur corrupti officiis debitis est blanditiis! Error molestiae possimus pariatur! Eos cupiditate deleniti necessitatibus molestiae voluptas.</p>
+                                        <div className='h-100 w-100 d-flex flex-column align-items-center justify-content-center'>
+                                            <p style={{ color: '#b78846', fontSize: '1.5rem' }}>Ability</p>
+                                            <p className='text-secondary'>He had the ability to build an army, cross the sea, and kill rāvaṇa. He did not wait for resources or complain about their lack. He continued manifesting his abilities, and the resources kept coming along the way.</p>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+                            <div class="decorative-line mt-5">
+                                <div class="decoration decoration-left"></div>
+                                <div class="decoration decoration-right"></div>
+                            </div>
+
+
                         </div>
                     </div>
+                    <Footer />
                 </div>
             </div>
-
             {/* Video Modal */}
             {modalVideo && (
                 <div className="modal-overlay" onClick={closeModal} style={{
@@ -276,6 +283,7 @@ function HomeContent() {
                     </div>
                 </div>
             )}
+
 
         </div>
     );
