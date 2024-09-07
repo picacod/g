@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import Footer from './Footer';
+// import Footer from './Footer';
 
 function UserLayout({ children, showHeaderAndFooter }) {
     const [isNearTop, setIsNearTop] = useState(true); // Set initial state to true
@@ -28,7 +28,7 @@ function UserLayout({ children, showHeaderAndFooter }) {
             <main className="main-content">
                 {children}
             </main>
-            {showHeaderAndFooter && <Footer />}
+            {/* {showHeaderAndFooter && <Footer />} */}
         </div>
     );
 }

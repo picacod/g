@@ -3,6 +3,7 @@ import bg1 from '../../../assets/bg-2.jpg'; // First fixed background
 import fire from '../../../assets/fire.gif';
 import frame from '../../../assets/frame.png';
 import head2 from '../../../assets/head2.png';
+import ico from '../../../assets/game-icon.png';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -59,14 +60,14 @@ function HomeContent() {
     };
 
     return (
-        <div style={{ minHeight: '200vh' }}>
+        <div style={{ minHeight: '250vh' }}>
             {/* Fixed Background Section */}
             <div style={{
                 backgroundImage: `url(${bg1})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                height: '200vh',
+                height: '250vh',
                 backgroundAttachment: 'fixed',
                 display: 'flex',
                 alignItems: 'center',
@@ -79,10 +80,10 @@ function HomeContent() {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1))',
+                    background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))',
+                    backdropFilter: 'blur(5px)', // Apply blur effect
                     zIndex: 1,
                 }}></div>
-
                 <div className='container' style={{ position: 'relative', zIndex: 2 }}>
                     {/* conetnt */}
                     <div className='d-flex align-items-center justify-content-center no-gutters vh-100'>
@@ -113,10 +114,19 @@ function HomeContent() {
                                 <div className="col-lg-8 col-md-12 d-flex flex-column align-items-center justify-content-center" style={{ textAlign: 'center', paddingRight: isMobile ? '0rem' : '10rem' }}>
                                     {
                                         isMobile ?
-                                            <img src={head2} alt="img" style={{ width: '100%' }} />
+                                            <img src={head2} alt="img" style={{ width: '100%' }} data-aos="fade-in" data-aos-delay="100" />
                                             :
                                             null
                                     }
+<div class="decorative-line">
+  <div class="decoration-left">
+    <div class="dot"></div>
+  </div>
+  <div class="decoration-right">
+    <div class="dot"></div>
+  </div>
+</div>
+
 
 
                                     {isLoading ? (
@@ -126,6 +136,7 @@ function HomeContent() {
                                             src={`https://gamebackend.pythonanywhere.com${contentData[currentContent].img}`}
                                             alt={contentData[currentContent].desc}
                                             className="img-fluid"
+                                            data-aos="fade-up" data-aos-delay="100"
                                             style={{
                                                 maxHeight: isMobile ? '30vh' : '100%',
                                                 maxWidth: '100%',
@@ -145,7 +156,7 @@ function HomeContent() {
                                         <>
                                             {
                                                 !isMobile ?
-                                                    <img src={head2} alt="img" style={{ width: '100%' }} />
+                                                    <img src={head2} alt="img" style={{ width: '100%' }} data-aos="fade-in" data-aos-delay="100" />
                                                     :
                                                     null
                                             }
@@ -158,7 +169,7 @@ function HomeContent() {
                                             </h3>
 
                                             <div className='d-flex flex-column'>
-                                                <button role="button" class="golden-button mt-3 mb-3">
+                                                <button role="button" className="golden-button mt-3 mb-3">
                                                     <span className="golden-text">View more <i className="fa-solid fa-angles-right ms-3"></i></span>
                                                 </button>
 
@@ -192,7 +203,7 @@ function HomeContent() {
                                                             background: `url(https://gamebackend.pythonanywhere.com${contentData[i].img}) center center / cover no-repeat`,
                                                             border: 'none',
                                                             cursor: 'pointer',
-                                                            boxShadow: currentContent === i ? '0 0 0 3px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(255, 215, 0, 0.7)' : '0 0 0 3px rgba(255, 255, 255, 0.5)',
+                                                            boxShadow: currentContent === i ? '0 0 0 3px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(255, 215, 0, 0.7)' : '0 0 0 3px #b78846',
                                                         }}
                                                     />
                                                 ))}
@@ -205,14 +216,21 @@ function HomeContent() {
 
                                 </div>
                             </div>
-                            
-
-
-
-
-
-
-
+                            {/* frame */}
+                            <div class="border-frame mt-5">
+                                <div class="inner-frame" style={{ height: '25rem' }}>
+                                    <div className='w-100 h-100 d-flex flex-column'>
+                                        <div className='h-100 w-100'>
+                                            <p className='text-light'>test</p>
+                                            <img src={ico} width={100} alt="" />
+                                        </div>
+                                        <div className='h-100 w-100'>
+                                            <p style={{ color: '#b78846', fontSize: '1.5rem' }}>test</p>
+                                            <p className='text-seconadary'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias distinctio vel velit dignissimos rerum pariatur corrupti officiis debitis est blanditiis! Error molestiae possimus pariatur! Eos cupiditate deleniti necessitatibus molestiae voluptas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

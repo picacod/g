@@ -34,6 +34,8 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background: #b6b6b6;
 }
+
+/* Golden text waving animation */
 .anim {
   color: hsl(45, 100%, 50%); 
    font-size: 35px!important;
@@ -194,7 +196,7 @@ body{
 
 
 
-/* Button */
+/* Golden button Button */
 /* From Uiverse.io by elijahgummer */ 
 .golden-button {
   touch-action: manipulation;
@@ -245,3 +247,130 @@ body{
 
 
 
+/* frame */
+:root {
+  --color-alpha: #b78846;
+}
+
+.border-frame {
+  position: relative;
+  border: 2px solid var(--color-alpha);
+  padding: 10px;
+}
+
+.border-frame::before,
+.border-frame::after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: var(--color-alpha);
+  border: 2px solid var(--color-alpha);
+  line-height: 12px;
+  text-align: center;
+  z-index: -1;
+}
+
+.border-frame::before {
+  top: 5px;
+  left: 5px;
+}
+
+.border-frame::after {
+  top: 5px;
+  right: 5px;
+}
+
+.border-frame .inner-frame {
+  position: relative;
+  border: 2px solid var(--color-alpha);
+  padding: 20px;
+  background-color: rgba(50, 50, 50, 0); /* Lower opacity for transparency */
+  backdrop-filter: blur(15px); /* Applies blur effect */
+  -webkit-backdrop-filter: blur(15px); /* Support for Safari */
+  border-radius: 0px; /* Optional: smooth edges */
+}
+
+.inner-frame::before,
+.inner-frame::after {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: var(--color-alpha);
+  border: 2px solid var(--color-alpha);
+  line-height: 12px;
+  text-align: center;
+  bottom: -2px;
+}
+
+.inner-frame::before {
+  left: -2px;
+}
+
+.inner-frame::after {
+  right: -2px;
+}
+
+
+/* Horizontal line */
+
+:root {
+  --color-alpha: #b78846;
+}
+
+.decorative-line {
+  position: relative;
+  padding: 20px; /* Adjust padding as needed */
+  height: 20px; /* Ensure there's enough height to accommodate the decorations */
+}
+
+.decorative-line::before {
+  content: "";
+  position: absolute;
+  height: 2px; /* Line thickness */
+  background-color: var(--color-alpha);
+  width: calc(100% - 40px); /* Full width of the line minus space for decorations */
+  top: 50%;
+  transform: translateY(-50%); /* Center the line vertically */
+  z-index: 1;
+}
+
+.decorative-line .decoration-left,
+.decorative-line .decoration-right {
+  position: absolute;
+  width: 20px; /* Width including decoration and line */
+  height: 20px; /* Height to accommodate decoration */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.decorative-line .decoration-left {
+  left: -10px; /* Half width of decoration */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.decorative-line .decoration-right {
+  right: -10px; /* Half width of decoration */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Decorative dots */
+.decorative-line .decoration-left::before,
+.decorative-line .decoration-right::before {
+  content: "•";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  color: var(--color-alpha);
+  border: 2px solid var(--color-alpha);
+  line-height: 12px;
+  text-align: center;
+}
