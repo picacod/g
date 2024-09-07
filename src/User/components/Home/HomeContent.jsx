@@ -9,6 +9,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import axios from 'axios';
 import Footer from '../../common/Footer';
+import Backtotop from '../../utils/Backtotop';
 
 function HomeContent() {
     const [currentContent, setCurrentContent] = useState(0);
@@ -284,6 +285,7 @@ function HomeContent() {
                 </div>
             )}
 
+<Backtotop/>
 
         </div>
     );
