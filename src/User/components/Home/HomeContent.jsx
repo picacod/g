@@ -62,14 +62,14 @@ function HomeContent() {
     };
 
     return (
-        <div style={{ minHeight: '300vh' }}>
+        <div style={{ height:'100vh' }}>
             {/* Fixed Background Section */}
             <div style={{
                 backgroundImage: `url(${bg1})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                height: '300vh',
+                minHeight:"200vh",
                 backgroundAttachment: 'fixed',
                 display: 'flex',
                 alignItems: 'center',
@@ -160,13 +160,14 @@ function HomeContent() {
                                                 <div class="decoration decoration-left"></div>
                                                 <div class="decoration decoration-right"></div>
                                             </div>
-                                            <h3 style={{ color: 'grey', fontSize: isMobile ? '1rem' : '2rem', textAlign: 'start' }}>
+                                            <h3 style={{ color: 'grey', fontSize: isMobile ? '1rem' : '1.3rem', textAlign: 'start' }}>
                                                 {contentData[currentContent].desc}
                                             </h3>
 
                                             <div className='d-flex flex-column'>
                                                 <button role="button" className="golden-button mt-3 mb-3">
-                                                    <span className="golden-text">View more <i className="fa-solid fa-angles-right ms-3"></i></span>
+                                                    {/* <span className="golden-text">View more <i className="fa-solid fa-angles-right ms-3"></i></span> */}
+                                                    <span className="golden-text">Unlock <i class="fa-solid fa-lock"></i></span>
                                                 </button>
 
 
@@ -179,7 +180,7 @@ function HomeContent() {
                                                         autoPlay
                                                         src={`https://gamebackend.pythonanywhere.com${contentData[currentContent].video}`}
                                                         alt={contentData[currentContent].desc}
-                                                        style={{ width: '100%', maxWidth: '350px', borderRadius: '0px' }}
+                                                        style={{ width: '100%', borderRadius: '0px' }}
                                                     />
 
                                                 </button>
@@ -193,8 +194,8 @@ function HomeContent() {
                                                         key={i}
                                                         onClick={() => handleButtonClick(i)}
                                                         style={{
-                                                            width: '90px',
-                                                            height: '90px',
+                                                            width: isMobile ?'60px':'90px',
+                                                            height: isMobile ?'60px':'90px',
                                                             borderRadius: '50%',
                                                             background: `url(https://gamebackend.pythonanywhere.com${contentData[i].img}) center center / cover no-repeat`,
                                                             border: 'none',
@@ -213,7 +214,7 @@ function HomeContent() {
                                 </div>
                             </div>
                             {/* frame */}
-                            <div class="border-frame mt-5">
+                            {/* <div class="border-frame mt-5">
                                 <div className="inner-frame" style={{ height: '25rem' }}>
                                     <div className='w-100 h-100 d-flex flex-column'>
                                         <div className='h-100 w-100 row'>
@@ -232,13 +233,11 @@ function HomeContent() {
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> */}
                             <div class="decorative-line mt-5">
                                 <div class="decoration decoration-left"></div>
                                 <div class="decoration decoration-right"></div>
                             </div>
-
-
                         </div>
                     </div>
                     <Footer />

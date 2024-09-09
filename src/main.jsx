@@ -24,6 +24,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { SnackbarProvider } from 'notistack';
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <GoogleOAuthProvider clientId="736263222806-ge18j4uubciif5rvlmjnbgdtmltl23tu.apps.googleusercontent.com">
       <React.StrictMode>

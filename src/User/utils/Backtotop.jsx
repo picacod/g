@@ -101,7 +101,7 @@ function Backtotop() {
             padding: '10px',
             zIndex: 1000,
             cursor: 'pointer',
-            animation: `bounce 2s infinite`,
+            animation: `bounce 3s infinite`,
             overflow: 'hidden', // Ensure the bow image stays within button bounds
             display: 'flex',
             alignItems: 'center',
@@ -113,7 +113,7 @@ function Backtotop() {
               bottom: '0',
               right: '0',
               width: isMobile? '80px':'160px', // Adjust size as needed
-              height: '100vh',
+              height: '200px',
               display: 'flex',
               alignItems: 'end',
               justifyContent:isMobile ? 'end':'center',
@@ -132,7 +132,7 @@ function Backtotop() {
                   bottom: '0',
                   right:isMobile ? '16px':'40px', // Adjust positioning as needed
                   width: isMobile?'50px':'80px', // Adjust size as needed
-                  height: '250px', // Adjust size as needed
+                  height: '150px', // Adjust size as needed
                 }}
               />
             )}
