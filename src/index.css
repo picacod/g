@@ -395,3 +395,10 @@ body{
     flex-direction: row;
   }
 }
+@media (max-width: 768px) {
+  .swiper-button-pre,
+  .swiper-button-nex {
+    top: 20%;
+    
+  }
+}

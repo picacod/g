@@ -21,17 +21,17 @@ function Purchase() {
     {
       name: 'Brahmashirsha Astra',
       icon: 'https://example.com/path-to-icon1.png',
-      description: 'A powerful celestial weapon used by Ashwatthama.A powerful celestial weapon used by Ashwatthama.'
+      description: 'A powerful celestial weapon used by Ashwatthama.A powerful celestial weapon used by Ashwatthama.A powerful celestial weapon used by Ashwatthama.A powerful celestial weapon used by Ashwatthama.'
     },
     {
       name: 'Pashupatastra',
       icon: 'https://example.com/path-to-icon2.png',
-      description: 'A divine weapon capable of destroying anything when invoked.A divine weapon capable of destroying anything when invoked'
+      description: 'A divine weapon capable of destroying anything when invoked.A divine weapon capable of destroying anything when invokedA divine weapon capable of destroying anything when invoked.A divine weapon capable of destroying anything when invoked'
     },
     {
       name: 'Narayanastra',
       icon: 'https://example.com/path-to-icon3.png',
-      description: 'Weapon of Lord Vishnu, which can destroy entire armies.Weapon of Lord Vishnu, which can destroy entire armies'
+      description: 'Weapon of Lord Vishnu, which can destroy entire armies.Weapon of Lord Vishnu, which can destroy entire armiesWeapon of Lord Vishnu, which can destroy entire armies.Weapon of Lord Vishnu, which can destroy entire armies'
     },
     // Add more weapons as needed
   ];
@@ -155,18 +155,18 @@ function Purchase() {
                     className="swiper-container"
                   >
                     {weaponsData.map((weapon, index) => (
-                      <SwiperSlide key={index}>
-                      <div className="d-flex flex-column flex-md-row align-items-center justify-content-center">
-                        <div className="d-flex flex-column align-items-center justify-content-center text-center text-md-start">
-                          <p style={{ color: '#b78846' }}>{weapon.name}</p>
-                          <img src={ico} width={100} alt={weapon.name} />
-                        </div>
-                        <div className="d-flex flex-column justify-content-center text-secondary text-center text-md-start">
-                          <p>{weapon.description}</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    
+                     <SwiperSlide key={index}>
+                     <div className="row w-100">
+                       <div className="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center text-center text-md-start">
+                         <p style={{ color: '#b78846' }}>{weapon.name}</p>
+                         <img src={ico} width={100} alt={weapon.name} />
+                       </div>
+                       <div className="col-12 col-md-8 d-flex flex-column justify-content-center text-secondary text-center text-md-start">
+                         <p>{weapon.description}</p>
+                       </div>
+                     </div>
+                   </SwiperSlide>
+                   
                     ))}
                   </Swiper>
                   {/* Add Custom Navigation Buttons */}
@@ -179,7 +179,7 @@ function Purchase() {
                 </div>
 
                 {/* Ability Section */}
-                <div className="ability h-100 w-100 d-flex flex-column align-items-center justify-content-center mt-3">
+                <div className="ability h-100 w-100 d-flex flex-column align-items-center justify-content-center mt-5">
                   <p style={{ color: '#b78846', fontSize: '1.5rem' }}>Ability</p>
                   <p className="text-secondary">
                     He had the ability to build an army, cross the sea, and kill Rāvaṇa. He did not wait for resources or complain about their lack. He continued manifesting his abilities, and the resources kept coming along the way.
