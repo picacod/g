@@ -358,10 +358,7 @@ body{
 
 .swiper-slide {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
+  
 }
 
 
@@ -384,4 +381,17 @@ body{
 
 .swiper-button-nex {
   right: 10px;
+}
+
+/* Default layout for larger screens */
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Layout for smaller screens (mobile) */
+@media (max-width: 768px) {
+  .swiper-slide {
+    flex-direction: row;
+  }
 }
