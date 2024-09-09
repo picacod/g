@@ -32,28 +32,29 @@ function Footer() {
               Join our community
             </p>
             <div className="row">
-              {/* First Column with Icons */}
-              <div className="col-12 d-flex justify-content-start flex-wrap">
-                <a href="https://discord.com" className="mx-2">
-                  <i className="fab fa-discord fa-3x" style={iconStyle}></i>
-                </a>
-                <a href="https://twitch.tv" className="mx-2">
-                  <i className="fab fa-twitch fa-3x" style={iconStyle}></i>
-                </a>
-                <a href="https://instagram.com" className="mx-2">
-                  <i className="fab fa-instagram fa-3x" style={iconStyle}></i>
-                </a>
-                <a href="https://facebook.com" className="mx-2">
-                  <i className="fab fa-facebook fa-3x" style={iconStyle}></i>
-                </a>
-                <a href="https://youtube.com" className="mx-2">
-                  <i className="fab fa-youtube fa-3x" style={iconStyle}></i>
-                </a>
-                <a href="https://twitter.com" className="mx-2">
-                  <i className="fab fa-twitter fa-3x" style={iconStyle}></i>
-                </a>
-              </div>
-            </div>
+  {/* First Column with Icons */}
+  <div className="col-12 d-flex justify-content-start flex-wrap">
+    <a href="https://discord.gg/5SXjJQxF" className="mx-2">
+      <i className="fab fa-discord fa-3x" style={iconStyle}></i>
+    </a>
+    <a href="https://www.twitch.tv/ancientsshadows" className="mx-2">
+      <i className="fab fa-twitch fa-3x" style={iconStyle}></i>
+    </a>
+    <a href="https://www.instagram.com/ancientsshadows/" className="mx-2">
+      <i className="fab fa-instagram fa-3x" style={iconStyle}></i>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61565371525817" className="mx-2">
+      <i className="fab fa-facebook fa-3x" style={iconStyle}></i>
+    </a>
+    <a href="https://www.youtube.com/@ancientsshadows" className="mx-2">
+      <i className="fab fa-youtube fa-3x" style={iconStyle}></i>
+    </a>
+    <a href="https://x.com/ancientsshadows" className="mx-2">
+      <i className="fab fa-twitter fa-3x" style={iconStyle}></i>
+    </a>
+  </div>
+</div>
+
           </div>
 
           {/* Other Columns */}
@@ -63,7 +64,7 @@ function Footer() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>About Us</p>
-            <p><a href="/our-story" className=" text-decoration-none fs-5" style={{ color: '#b78846' }}>Our Story</a></p>
+            <p><a href="/about" className=" text-decoration-none fs-5" style={{ color: '#b78846' }}>Our Story</a></p>
             <p><a href="/team" className=" text-decoration-none fs-5" style={{ color: '#b78846' }}>News & updates</a></p>
           </div>
 
