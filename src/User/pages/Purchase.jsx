@@ -5,7 +5,7 @@ import ico from '../../assets/game-icon.png';
 import prevButton from '../../assets/left.png'; // Your previous button image
 import nextButton from '../../assets/right.png'; // Your next button image
 
-// Import Swiper React components/styles
+// Import Swiper React components/styls
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,7 +15,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 function Purchase() {
   const [isReadMore, setIsReadMore] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Set initial state based on screen width
 
   const weaponsData = [
     {
@@ -23,19 +23,33 @@ function Purchase() {
       icon: 'https://example.com/path-to-icon1.png',
       description: 'A powerful celestial weapon used by Ashwatthama.'
     },
-    // Other weapons data...
+    {
+      name: 'Pashupatastra',
+      icon: 'https://example.com/path-to-icon2.png',
+      description: 'A divine weapon capable of destroying anything when invoked.'
+    },
+    {
+      name: 'Narayanastra',
+      icon: 'https://example.com/path-to-icon3.png',
+      description: 'Weapon of Lord Vishnu, which can destroy entire armies.'
+    },
+    // Add more weapons as needed
   ];
 
+  // Function to toggle read more and less
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
 
+  // Handle window resize events to detect mobile view
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
     window.addEventListener('resize', handleResize);
+
+    // Clean up event listener on component unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -46,7 +60,7 @@ function Purchase() {
     consequatur mollitia dignissimos corporis quo sed magnam aperiam reiciendis. Lorem ipsum dolor sit amet, 
     consectetur adipisicing elit. Fugit consequatur mollitia dignissimos corporis quo sed magnam aperiam reiciendis.`;
 
-  const truncatedText = `${fullText.substring(0, 150)}...`;
+  const truncatedText = `${fullText.substring(0, 150)}...`; // Limit the display to around 150 characters (adjust as needed)
 
   return (
     <div
@@ -70,7 +84,7 @@ function Purchase() {
           backgroundImage: `url(${darkbg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'blur(5px)',
+          filter: 'blur(5px)', // Blur only the background
           zIndex: 1,
         }}
       ></div>
@@ -78,7 +92,7 @@ function Purchase() {
       {/* Content on Top */}
       <div
         className="container h-100 d-flex align-items-center justify-content-center flex-column"
-        style={{ position: 'relative', zIndex: 2 }}
+        style={{ position: 'relative', zIndex: 2 }} // Content stays on top of the blurred background
       >
         <div className="row h-75 w-100">
           <div className="col-lg-6 mt-3">
@@ -121,7 +135,7 @@ function Purchase() {
               </div>
             </div>
           </div>
-          {/* Frame */}
+          {/* frame */}
           <div className="border-frame mt-5">
             <div className="inner-frame" style={{ height: '25rem' }}>
               <div className="w-100 h-100 d-flex flex-column">
@@ -132,8 +146,8 @@ function Purchase() {
                     slidesPerView={1}
                     loop={true}
                     navigation={{
-                      prevEl: '.custom-swiper-button-prev',
-                      nextEl: '.custom-swiper-button-next'
+                      prevEl: '.swiper-button-pre',
+                      nextEl: '.swiper-button-nex'
                     }} // Custom navigation
                     pagination={{ clickable: true }}
                     autoplay={{ delay: 2500, disableOnInteraction: false }}
@@ -152,9 +166,13 @@ function Purchase() {
                       </SwiperSlide>
                     ))}
                   </Swiper>
-                  {/* Custom Navigation Buttons */}
-                  <div className="custom-swiper-button custom-swiper-button-prev"></div>
-                  <div className="custom-swiper-button custom-swiper-button-next"></div>
+                  {/* Add Custom Navigation Buttons */}
+                  <div className="swiper-button-pre">
+                    <img width={50} src={prevButton} alt="Previous" />
+                  </div>
+                  <div className="swiper-button-nex">
+                    <img width={50} src={nextButton} alt="Next" />
+                  </div>
                 </div>
 
                 {/* Ability Section */}
@@ -167,7 +185,6 @@ function Purchase() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
