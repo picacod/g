@@ -170,7 +170,7 @@ function HomeContent() {
                                                     <span className="golden-text">Unlock <i class="fa-solid fa-lock"></i></span>
                                                 </button>
 
-{/* 
+                                                    {/* 
                                                 <button
                                                     onClick={() => openModal(`https://gamebackend.pythonanywhere.com${contentData[currentContent].video}`)}
                                                     style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}

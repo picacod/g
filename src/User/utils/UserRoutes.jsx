@@ -18,6 +18,8 @@ import Cookie from '../components/Policy/Cookie';
 import Refund from '../components/Policy/Refund';
 import Support from '../components/Policy/Support';
 import Contact from '../components/Policy/Contact';
+import AllNews from '../components/news/AllNews';
+import News from '../components/news/News';
 
 function UserRoutes() {
   return (
@@ -33,6 +35,8 @@ function UserRoutes() {
         {/* Others */}
         <Route path="about" element={<UserLayout showHeaderAndFooter={true}><About /></UserLayout>} />
         <Route path="purchase" element={  <UserLayout showHeaderAndFooter={true}><ProtectedRoute> <Purchase/> </ProtectedRoute></UserLayout>}/>
+        <Route path="all-news" element={  <UserLayout showHeaderAndFooter={true}><ProtectedRoute> <AllNews/> </ProtectedRoute></UserLayout>}/>
+        <Route path="news" element={  <UserLayout showHeaderAndFooter={true}><ProtectedRoute> <News/> </ProtectedRoute></UserLayout>}/>
         <Route path='p' element={<Preloader/>} />
         <Route path='contact-us' element={<Contact/>} />
         {/* Policy */}

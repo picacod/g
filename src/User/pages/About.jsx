@@ -32,7 +32,7 @@ function About() {
             <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '10rem', paddingBottom: '3rem' }}>
                 <div data-aos="fade-in" className='d-flex flex-column align-items-center' style={{ color: '#cfcfcf', textAlign: 'center' }}>
                     <p className='fs-4'>
-                        <span className='text-warning'>The Mahābhārata is an ancient Indian epic poem written in Sanskrit in the 4th century BCE.</span> 
+                        <span className='text-warning'>The Ramayana is an ancient Indian epic poem written in Sanskrit in the 4th century BCE.</span> 
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                     </p>
                     <p className='fs-4'>

@@ -13,8 +13,8 @@ function Footer() {
     fontSize: isMobile ? '18px' : '20px',  // Adjust icon size for mobile
     color: '#b78846',             // Icon color
     margin: '0px',               // Space between icons
-    width: '50px',
-    height: '50px',
+    width: isMobile ? '40px' : '50px',
+    height: isMobile ? '40px' : '50px',
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -69,8 +69,8 @@ function Footer() {
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2rem' : '1.5rem'  // Adjust text size for mobile
             }}>About Us</p>
-            <p><Link to="/about" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Our Story</Link></p>
-            <p><Link to="/team" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>News & updates</Link></p>
+            <p><Link to="/about" className="text-decoration-none " style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Our Story</Link></p>
+            <p><Link to="/all-news" className="text-decoration-none " style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>News & updates</Link></p>
           </div>
 
           <div className="col-md-2 mb-4">
@@ -80,10 +80,10 @@ function Footer() {
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2em' : '1.5em'  // Adjust text size for mobile
             }}>Support</p>
-            <p><Link to="/help-center" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Help Center</Link></p>
-            <p><Link to="/contact-us" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Contact Us</Link></p>
-            <p><Link to="/refund-policy" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Refund</Link></p>
-            <p><Link to="/terms" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Terms of Service</Link></p>
+            <p><Link to="/help-center" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>Help Center</Link></p>
+            <p><Link to="/contact-us" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Contact Us</Link></p>
+            <p><Link to="/refund-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Refund</Link></p>
+            <p><Link to="/terms" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Terms of Service</Link></p>
           </div>
 
           <div className="col-md-2 mb-4">
@@ -93,9 +93,9 @@ function Footer() {
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2em' : '1.5em'  // Adjust text size for mobile
             }}>Legal</p>
-            <p><Link to="/privacy-policy" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Privacy Policy</Link></p>
-            <p><Link to="/cookie-policy" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Cookie Policy</Link></p>
-            <p><Link to="/licenses" className="text-decoration-none fs-5" style={{ color: '#b78846' }}>Licenses</Link></p>
+            <p><Link to="/privacy-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Privacy Policy</Link></p>
+            <p><Link to="/cookie-policy" className="text-decoration-none" style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Cookie Policy</Link></p>
+            <p><Link to="/licenses" className="text-decoration-none " style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Licenses</Link></p>
           </div>
         </div>
       </div>
