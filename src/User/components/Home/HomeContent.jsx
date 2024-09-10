@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import bg1 from '../../../assets/bg-2.jpg'; // First fixed background
 import head2 from '../../../assets/title-frame.png';
-import ico from '../../../assets/game-icon.png';
+// import ico from '../../../assets/game-icon.png';
 
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -9,15 +9,17 @@ import axios from 'axios';
 import Footer from '../../common/Footer';
 import Backtotop from '../../utils/Backtotop';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 function HomeContent() {
     const [currentContent, setCurrentContent] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const [modalVideo, setModalVideo] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [contentData, setContentData] = useState([]);
+    const [weaponsData, setWeaponsData] = useState([]);
+    const [selectedCharacterId, setSelectedCharacterId] = useState(null);
     const [hoverIndex, setHoverIndex] = useState(null);
-
+    const navigate = useNavigate();
     const handleMouseEnter = (index) => {
         setHoverIndex(index);
     };
@@ -27,8 +29,8 @@ function HomeContent() {
     };
 
     const zoomStyle = {
-        width: '90px',
-        height: '90px',
+        width: isMobile ? '60px' : '90px',
+        height: isMobile ? '60px' : '90px',
         borderRadius: '50%',
         border: 'none',
         cursor: 'pointer',
@@ -59,6 +61,7 @@ function HomeContent() {
         setIsLoading(true);
         axios.get('https://gamebackend.pythonanywhere.com/api/admin_characters/')
             .then(response => {
+
                 setContentData(response.data);
                 if (response.data.length > 0) {
                     setCurrentContent(0);
@@ -72,10 +75,35 @@ function HomeContent() {
             });
     }, []);
 
+    useEffect(() => {
+        if (selectedCharacterId !== null) {
+            setIsLoading(true);
+            axios.get(`https://gamebackend.pythonanywhere.com/api/weapons/?character_id=${selectedCharacterId}`)
+                .then(response => {
+                    console.log('weapons:', response.data);
+
+                    setWeaponsData(response.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching weapons data:', error);
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                });
+        }
+    }, [selectedCharacterId]);
+    
+    useEffect(() => {
+        // Trigger the button click for the first content on initial load
+        if (contentData.length > 0) {
+            handleButtonClick(0); // Simulate click on the first character (index 0)
+        }
+    }, [contentData]);  // Only run when contentData is updated
+
     const handleButtonClick = (index) => {
         setCurrentContent(index);
+        setSelectedCharacterId(contentData[index].id);
     };
-
     const openModal = (videoSrc) => {
         setModalVideo(videoSrc);
     };
@@ -83,7 +111,22 @@ function HomeContent() {
     const closeModal = () => {
         setModalVideo(null);
     };
+    const handleUnlockClick = () => {
+        if (selectedCharacterId !== null) {
+            console.log(('id:', selectedCharacterId));
 
+            const selectedCharacter = contentData.find(c => c.id === selectedCharacterId);
+            navigate(`/purchase`, {
+                state: {
+                    characterId: selectedCharacterId,
+                    characterDetails: selectedCharacter,
+                }
+
+            });
+        } else {
+            console.error('No character selected');
+        }
+    };
     return (
         <div style={{ height: '100vh' }}>
             {/* Fixed Background Section */}
@@ -141,7 +184,7 @@ function HomeContent() {
                                 <div className="col-lg-8 col-md-12 d-flex flex-column align-items-center justify-content-center" style={{ textAlign: 'center', paddingRight: isMobile ? '0rem' : '10rem' }}>
                                     {
                                         isMobile ?
-                                            <img src={head2} alt="img" style={{ width: '100%' }} data-aos="fade-in" data-aos-delay="100" />
+                                            <img src={head2} alt="img" style={{ width: '100%' }} className='mb-5' data-aos="fade-in" data-aos-delay="100" />
                                             :
                                             null
                                     }
@@ -173,7 +216,7 @@ function HomeContent() {
                                         <>
                                             {
                                                 !isMobile ?
-                                                    <img src={head2} alt="img" style={{ width: '100%' }} data-aos="fade-in" data-aos-delay="100" />
+                                                    <img src={head2} alt="img" style={{ width: '100%' }} className='mb-5' data-aos="fade-in" data-aos-delay="100" />
                                                     :
                                                     null
                                             }
@@ -194,9 +237,9 @@ function HomeContent() {
                                             </h3>
 
                                             <div className='d-flex flex-column'>
-                                                <button role="button" className="golden-button mt-3 mb-3">
+                                                <button role="button" className="golden-button mt-3 mb-3" onClick={handleUnlockClick}>
                                                     {/* <span className="golden-text">View more <i className="fa-solid fa-angles-right ms-3"></i></span> */}
-                                                    <Link to={'purchase'}><span className="golden-text">Unlock <i class="fa-solid fa-lock"></i></span></Link>
+                                                    <span className="golden-text">Unlock <i class="fa-solid fa-lock"></i></span>
                                                 </button>
 
                                                 {/* 

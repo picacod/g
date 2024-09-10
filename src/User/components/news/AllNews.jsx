@@ -179,7 +179,10 @@ function AllNews() {
             ></div>
 
             <div className="container-fluid" style={{ padding: '300px' }}>
-                <div className="card-container" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', flexDirection: 'row',
+                            justifyContent: cardData.length <= 2 ? 'center' : 'space-between',
+                            flexWrap: 'wrap',
+                            gap: '50px' }}>
                     {cardData.map((card, index) => (
                         <div className="border-frame" key={index} style={{ width: '30%', height: '450px', marginBottom: '50px' }}>
                             <Link to={'/news'}>

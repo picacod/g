@@ -4,7 +4,8 @@ import ram from '../../assets/ram.png';
 import ico from '../../assets/game-icon.png';
 import prevButton from '../../assets/left.png'; // Your previous button image
 import nextButton from '../../assets/right.png'; // Your next button image
-
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 // Import Swiper React components/styles
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -15,53 +16,54 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Footer from '../common/Footer';
 
 function Purchase() {
+  const [weapons, setWeapons] = useState([]);
   const [isReadMore, setIsReadMore] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Set initial state based on screen width
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const location = useLocation();
+  const { characterId, characterDetails } = location.state || {};
+  const [isLoading, setIsLoading] = useState(true);
 
-  const weaponsData = [
-    {
-      name: 'Brahmashirsha Astra',
-      icon: 'https://example.com/path-to-icon1.png',
-      description: 'A powerful celestial weapon used by Ashwatthama. A powerful celestial weapon used by Ashwatthama. A powerful celestial weapon used by Ashwatthama. A powerful celestial weapon used by Ashwatthama.'
-    },
-    {
-      name: 'Pashupatastra',
-      icon: 'https://example.com/path-to-icon2.png',
-      description: 'A divine weapon capable of destroying anything when invoked. A divine weapon capable of destroying anything when invoked. A divine weapon capable of destroying anything when invoked. A divine weapon capable of destroying anything when invoked.'
-    },
-    {
-      name: 'Narayanastra',
-      icon: 'https://example.com/path-to-icon3.png',
-      description: 'Weapon of Lord Vishnu, which can destroy entire armies. Weapon of Lord Vishnu, which can destroy entire armies. Weapon of Lord Vishnu, which can destroy entire armies. Weapon of Lord Vishnu, which can destroy entire armies.'
-    },
-    // Add more weapons as needed
-  ];
+  
 
-  // Function to toggle read more and less
+  // useEffect(() => {
+  //   fetchWeapons();
+
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth <= 768);
+  //   };
+
+  //   window.addEventListener('resize', handleResize);
+  //   return () => window.removeEventListener('resize', handleResize);
+  // }, []);
+
+  useEffect(() => {
+
+    if (characterId) {
+      setIsLoading(true);
+      axios.get(`https://gamebackend.pythonanywhere.com/api/character_weapons/?character_id=${characterId}`)
+        .then(response => {
+          setWeapons(response.data);
+          
+        })
+        .catch(error => {
+          console.error('Error fetching weapons data:', error);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [characterId]);
+
+
   const toggleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
 
-  // Handle window resize events to detect mobile view
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
 
-    window.addEventListener('resize', handleResize);
-
-    // Clean up event listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const fullText = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit 
-    consequatur mollitia dignissimos corporis quo sed magnam aperiam reiciendis. Lorem ipsum 
-    dolor sit amet, consectetur adipisicing elit. Fugit consequatur mollitia dignissimos corporis 
-    quo sed magnam aperiam reiciendis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit 
-    consequatur mollitia dignissimos corporis quo sed magnam aperiam reiciendis. Lorem ipsum dolor sit amet, 
-    consectetur adipisicing elit. Fugit consequatur mollitia dignissimos corporis quo sed magnam aperiam reiciendis.`;
+  const fullText = characterDetails.desc;
 
   const truncatedText = `${fullText.substring(0, 150)}...`; // Limit the display to around 150 characters (adjust as needed)
+
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
@@ -91,10 +93,10 @@ function Purchase() {
           padding: '2rem',
         }}
       >
-        <div className="container" style={{ minHeight: '100vh', maxHeight: 'fit-content' ,paddingTop:'2rem'}}>
+        <div className="container" style={{ minHeight: '100vh', maxHeight: 'fit-content', paddingTop: '2rem' }}>
           <div className="row h-100">
             <div className="col-lg-6 mt-3">
-              <img className="img-fluid" src={ram} alt="RAM" />
+              <img className="img-fluid" src={`https://gamebackend.pythonanywhere.com${characterDetails.img}`} alt="RAM" />
             </div>
             <div className="col-lg-6 position-relative">
               <div className="w-100 h-100 d-flex flex-column">
@@ -106,13 +108,17 @@ function Purchase() {
                     WebkitTextFillColor: 'transparent',
                   }}
                 >
-                  Buy Now
+                  Ram
                 </h1>
                 <div className="decorative-line mt-1">
                   <div className="decoration decoration-left"></div>
                   <div className="decoration decoration-right"></div>
                 </div>
-                <p className="fs-5" style={{ color: '#b78846' }}>
+                <p className="fs-5" style={{
+                  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}>
                   {isMobile ? (isReadMore ? fullText : truncatedText) : fullText}
                   {isMobile && (
                     <span
@@ -124,11 +130,11 @@ function Purchase() {
                   )}
                 </p>
                 <div className="d-flex align-items-center">
-                  <p className="fs-1 mb-0 me-3" style={{ color: '#b78846' }}>
+                  <p className="fs-1 mb-0 me-3" style={{ color: '#f0c95b' }}>
                     ₹499
                   </p>
                   <button role="button" className="golden-button">
-                    <span className="golden-text">Purchase</span>
+                    <span className="golden-text">Buy Now</span>
                   </button>
                 </div>
               </div>
@@ -151,15 +157,19 @@ function Purchase() {
                       modules={[Navigation, Autoplay]} // Removed Pagination module
                       className="swiper-container"
                     >
-                      {weaponsData.map((weapon, index) => (
+                      {weapons.map((weapon, index) => (
                         <SwiperSlide key={index}>
                           <div className="row w-100">
                             <div className="col-12 col-md-4 d-flex flex-column align-items-center justify-content-center text-center text-md-start">
-                              <p style={{ color: '#b78846' }}>{weapon.name}</p>
-                              <img src={ico} width={100} alt={weapon.name} />
+                              <p style={{ color: '#b78846', fontSize: '1rem', fontWeight: '600' }}>{weapon.name}</p>
+                              <img src={`https://gamebackend.pythonanywhere.com${weapon.img}`} width={100} alt={weapon.name} />
                             </div>
                             <div className="col-12 col-md-8 d-flex flex-column justify-content-center text-secondary text-center text-md-start">
-                              <p>{weapon.description}</p>
+                              <p style={{
+                                background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent', fontWeight: '600'
+                              }}>{weapon.description}</p>
                             </div>
                           </div>
                         </SwiperSlide>
@@ -177,8 +187,12 @@ function Purchase() {
 
                   {/* Ability Section */}
                   <div className="ability h-100 w-100 d-flex flex-column align-items-center justify-content-center mt-5">
-                    <p style={{ color: '#b78846', fontSize: '1.5rem' }}>Ability</p>
-                    <p className="text-secondary">
+                    <p style={{ color: '#b78846', fontSize: '1rem', fontWeight: '600' }}>Ability</p>
+                    <p style={{
+                      background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent', fontWeight: '600'
+                    }}>
                       He had the ability to build an army, cross the sea, and kill Rāvaṇa. He did not wait for resources or complain about their lack. He continued manifesting his abilities, and the resources kept coming along the way.
                     </p>
                   </div>
