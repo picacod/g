@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import bg1 from '../../../assets/bg-2.jpg'; // First fixed background
-import fire from '../../../assets/fire.gif';
-import frame from '../../../assets/frame.png';
 import head2 from '../../../assets/head2.png';
 import ico from '../../../assets/game-icon.png';
 
@@ -10,6 +8,7 @@ import 'aos/dist/aos.css';
 import axios from 'axios';
 import Footer from '../../common/Footer';
 import Backtotop from '../../utils/Backtotop';
+import { Link } from 'react-router-dom';
 
 function HomeContent() {
     const [currentContent, setCurrentContent] = useState(0);
@@ -94,10 +93,12 @@ function HomeContent() {
                             fontSize: '1rem',
                         }}>
                             <h3 className='h1-anim text-center' style={{ color: '#a67c00', fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
-                            <h1
+                            <p
                                 style={{
-                                    color: 'grey',
-                                    fontSize: '2.5rem',
+                                    background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    fontSize: '2rem',
                                     marginTop: '1rem',
                                     marginBottom: '0.5rem',
                                     textAlign: 'justify',
@@ -107,7 +108,7 @@ function HomeContent() {
                                 It's a journey into the heart of one of the greatest stories ever told. Step into a universe
                                 filled with ancient cities, dense forests, and treacherous landscapes, all meticulously
                                 crafted to reflect the grandeur of the Ramayana.
-                            </h1>
+                            </p>
                         </div>
                     </div>
                     <div style={{ padding: '50px 0' }}>
@@ -160,14 +161,16 @@ function HomeContent() {
                                                 <div class="decoration decoration-left"></div>
                                                 <div class="decoration decoration-right"></div>
                                             </div>
-                                            <h3 style={{ color: 'grey', fontSize: isMobile ? '1rem' : '1.3rem', textAlign: 'start' }}>
+                                            <h3 style={{   background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', fontSize: isMobile ? '1rem' : '1.3rem', textAlign: 'start' }}>
                                                 {contentData[currentContent].desc}
                                             </h3>
 
                                             <div className='d-flex flex-column'>
                                                 <button role="button" className="golden-button mt-3 mb-3">
                                                     {/* <span className="golden-text">View more <i className="fa-solid fa-angles-right ms-3"></i></span> */}
-                                                    <span className="golden-text">Unlock <i class="fa-solid fa-lock"></i></span>
+                                                    <Link to={'purchase'}><span className="golden-text">Unlock <i class="fa-solid fa-lock"></i></span></Link>
                                                 </button>
 
                                                     {/* 
@@ -200,7 +203,7 @@ function HomeContent() {
                                                             background: `url(https://gamebackend.pythonanywhere.com${contentData[i].img}) center center / cover no-repeat`,
                                                             border: 'none',
                                                             cursor: 'pointer',
-                                                            boxShadow: currentContent === i ? '0 0 0 3px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(255, 215, 0, 0.7)' : '0 0 0 3px #b78846',
+                                                            boxShadow: currentContent === i ? '0 0 0 3px rgba(255, 255, 255, 0.5), 2px 4px 8px rgba(255, 215, 0, 0.7)' : '0 0 0 3px #b78846',
                                                         }}
                                                     />
                                                 ))}

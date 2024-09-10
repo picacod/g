@@ -1,10 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import bg from '../../../assets/bg-2.jpg';
-import jadayu from '../../../assets/jadayu.png';
 import ram from '../../../assets/ram.png';
 import ram1 from '../../../assets/ram.png';
 import hanuman from '../../../assets/hanuman.png';
 import { Link } from 'react-router-dom';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 const cardData = [
     {
@@ -12,7 +13,7 @@ const cardData = [
         title: 'Beautiful Scenery',
         description:
             'Explore the wonders of nature beauty of urban life after dark Experience the tranquility of the mountains.Explore the wonders of nature beauty of urban life after dark Experience the tranquility of the mountains.Explore the wonders of nature beauty of urban life after dark Experience the tranquility of the mountains.Explore the wonders of nature beauty of urban life after dark Experience the tranquility of the mountains.',
-        backgroundImage: jadayu,
+        backgroundImage: ram1,
     },
     {
         date: 'SEPTEMBER 09, 2024',
@@ -40,7 +41,7 @@ const cardData = [
         title: 'Desert Dunes',
         description:
             'Witness the vast desert beauty Experience the tranquility of the mountains. Experience the tranquility of the mountains..',
-        backgroundImage: jadayu,
+        backgroundImage: ram1,
     },
     {
         date: 'SEPTEMBER 09, 2024',
@@ -54,6 +55,10 @@ const cardData = [
 function AllNews() {
     const [expandedIndex, setExpandedIndex] = useState(null);
     const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        Aos.init({ duration: 500 });
+    }, []);
 
     useEffect(() => {
         const handleResize = () => {
@@ -100,11 +105,11 @@ function AllNews() {
                     zIndex: 10,
                 }}
             >
-                <p style={{ color: '#b78846', width: isMobile? '100%':'50%', fontSize: isMobile? '0.7rem': '1rem' }} className="p-0 m-0">NEWS & UPDATES</p>
-                <p className="p-0 m-0" style={{ fontSize: isMobile? '2rem': '4rem', color: '#b78846', width: isMobile? '100%':'50%', }}>
+                <p style={{ color: '#b78846', width: isMobile? '100%':'50%', fontSize: isMobile? '0.7rem': '1rem' }} className="p-0 m-0" data-aos="fade-in" data-aos-delay="500">NEWS & UPDATES</p>
+                <p className="p-0 m-0" style={{ fontSize: isMobile? '2rem': '4rem', color: '#b78846', width: isMobile? '100%':'50%', }} data-aos="fade-in" data-aos-delay="500">
                     Jatayu Demigod in <br /> Hindu Epic
                 </p>
-                <div style={{width: isMobile? '100%':'50%'}} className="decorative-line ">
+                <div style={{width: isMobile? '100%':'50%'}} className="decorative-line" data-aos="fade-in" data-aos-delay="500">
                     <div className="decoration decoration-left"></div>
                     <div className="decoration decoration-right"></div>
                 </div>
@@ -117,6 +122,7 @@ function AllNews() {
                         textAlign: 'right'
                     }}
                     className="p-0 m-0"
+                    data-aos="fade-in" data-aos-delay="500"
                 >
                     September 09, 2024
                 </p>
@@ -145,6 +151,7 @@ function AllNews() {
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
                 backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                backgroundAttachment:'fixed'
             }}
         >
             <div

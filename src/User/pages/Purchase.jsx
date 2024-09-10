@@ -147,9 +147,8 @@ function Purchase() {
                         prevEl: '.swiper-button-pre',
                         nextEl: '.swiper-button-nex'
                       }} // Custom navigation
-                      pagination={{ clickable: true }}
                       autoplay={{ delay: 2500, disableOnInteraction: false }}
-                      modules={[Navigation, Pagination, Autoplay]}
+                      modules={[Navigation, Autoplay]} // Removed Pagination module
                       className="swiper-container"
                     >
                       {weaponsData.map((weapon, index) => (
@@ -166,6 +165,7 @@ function Purchase() {
                         </SwiperSlide>
                       ))}
                     </Swiper>
+
                     {/* Add Custom Navigation Buttons */}
                     <div className="swiper-button-pre">
                       <img style={{ width: isMobile ? '30px' : '50px' }} src={prevButton} alt="Previous" />
@@ -187,12 +187,12 @@ function Purchase() {
             </div>
           </div>
           <div class="decorative-line mt-5">
-          <div class="decoration decoration-left"></div>
-          <div class="decoration decoration-right"></div>
-        </div>
+            <div class="decoration decoration-left"></div>
+            <div class="decoration decoration-right"></div>
+          </div>
 
         </div>
-       
+
         <Footer />
 
       </div>
