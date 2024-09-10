@@ -8,6 +8,15 @@ import ProtectedRoute from './ProtectedRoute';
 import Characters from '../components/gameManagement/Characters';
 import AddCharacter from '../components/gameManagement/AddCharacter';
 import EditCharacter from '../components/gameManagement/EditCharacter';
+import Weapons from '../components/gameManagement/Weapons';
+import EditWeapon from '../components/gameManagement/EditWeapon';
+import AddWeapons from '../components/gameManagement/AddWeapons';
+import Skills from '../components/gameManagement/Skills';
+import EditSkills from '../components/gameManagement/EditSkills';
+import NewsAndUpdates from '../components/gameManagement/NewsAndUpdates';
+import AddSkills from '../components/gameManagement/AddSkills';
+import EditNews from '../components/gameManagement/EditNews';
+import AddNewsAndUpdates from '../components/gameManagement/AddNewsAndUpdates';
 
 function AdminRoutes() {
   return (
@@ -45,7 +54,7 @@ function AdminRoutes() {
           path="character"
           element={
             <ProtectedRoute>
-              <Characters/>
+              <Characters />
             </ProtectedRoute>
           }
         />
@@ -53,17 +62,84 @@ function AdminRoutes() {
           path="add-character"
           element={
             <ProtectedRoute>
-             <AddCharacter/>
+              <AddCharacter />
             </ProtectedRoute>
           }
         /><Route
-        path="edit-character"
+          path="edit-character"
+          element={
+            <ProtectedRoute>
+              <EditCharacter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="weapons"
+          element={
+            <ProtectedRoute>
+              <Weapons />
+            </ProtectedRoute>
+          }
+        /><Route
+          path="edit-weapons"
+          element={
+            <ProtectedRoute>
+              <EditWeapon />
+            </ProtectedRoute>
+          }
+        /><Route
+          path="add-weapons"
+          element={
+            <ProtectedRoute>
+              <AddWeapons />
+            </ProtectedRoute>
+          }
+        /><Route
+          path="skills"
+          element={
+            <ProtectedRoute>
+              <Skills />
+            </ProtectedRoute>
+          }
+        /><Route
+          path="edit-skills"
+          element={
+            <ProtectedRoute>
+              <EditSkills/>
+            </ProtectedRoute>
+          }
+        /><Route
+        path="add-skills"
         element={
           <ProtectedRoute>
-            <EditCharacter/>
+            <AddSkills/>
           </ProtectedRoute>
         }
       />
+        <Route
+          path="news"
+          element={
+            <ProtectedRoute>
+              <NewsAndUpdates/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="edit-news"
+          element={
+            <ProtectedRoute>
+              <EditNews/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="add-news"
+          element={
+            <ProtectedRoute>
+              <AddNewsAndUpdates/>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );

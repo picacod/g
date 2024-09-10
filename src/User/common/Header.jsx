@@ -10,123 +10,81 @@ function Header() {
     const navigate = useNavigate();
     const user_id = sessionStorage.getItem('user_id');
 
-
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as per your mobile view
+            setIsMobile(window.innerWidth <= 768); // Adjust breakpoint for mobile view
         };
 
-        // Initial check on mount
-        handleResize();
+        handleResize(); // Initial check
 
-        // Add event listener for window resize
         window.addEventListener('resize', handleResize);
 
-        // Clean up the event listener on component unmount
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    // const BuyNow = () =>{
-    //     if(user_id){
-    //         navigate('/purchase')
-    //     }else{
-    //         navigate('/login')
-    //     }
-    // }
-
     const handleLogout = () => {
-        alert('logout')
+        alert('Logout');
         sessionStorage.removeItem('user_id');
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
-
-    }
-
+    };
 
     return (
         <div>
             <Navbar expand="lg" className="fixed-top container-fluid">
-                {/* Logo on the left */}
-                <Navbar.Brand >
+                <Navbar.Brand>
                     <Link to={'/'}>
-                        <img
+                        <img className='ms-4'
                             style={{
                                 width: '10rem',
-                                // filter: 'invert(1) brightness(100)',
                                 ...(isMobile && { width: '7rem' }),
                             }}
                             src={logoimg}
                             alt=""
-                            srcSet=""
                         />
                     </Link>
                 </Navbar.Brand>
 
-                {/* Toggle for mobile view */}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                {/* Collapse for the middle content and right side user icon */}
                 <Navbar.Collapse id="basic-navbar-nav d-flex align-items-center justify-content-center">
-                    {/* Middle text links */}
-                    {/* <Nav className="mx-auto">
-                        <Nav.Link href="#home" className="text-light top-bar">Overview</Nav.Link>
-                        <Nav.Link href="#link" className="text-light top-bar">About</Nav.Link>
-                        <Nav.Link href="#link" className="text-light top-bar">Battlepass</Nav.Link>
-                        <Nav.Link href="#link" className="text-light top-bar">Buy</Nav.Link>
-                        <NavDropdown
-                            id="nav-dropdown-dark-example"
-                            title={<span style={{ color: 'white' }}>Community</span>}
-                            menuVariant="dark"
-                            className="top-bar custom-dropdown2 custom-dropdown-toggle"
-                        >
-                            <NavDropdown.Item href="#action/3.1">Discover</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.2">Career Programs</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.3">My Character</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Jobs</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav> */}
-
-                    {/* User icon on the right */}
                     <Nav className="ms-auto">
-                    {/* <button onClick={BuyNow} className='btn  align-center me-2 button-with-bg'>Buy Now</button> */}
-                        <NavDropdown
-                            id="nav-dropdown-dark-example"
-                            title={<><FaUser style={{ color: 'white' }}  /></>}
-                            menuVariant="dark"
-                            className="mobile-login text-light fw-semibold custom-dropdown1 rounded-5"
-                            drop="down"
-                        >
-                            {
-                                user_id ? (
-                                    <>
-                                        <NavDropdown.Item href="#action/3.3" className='btn' onClick={{ handleLogout }}>Logout</NavDropdown.Item>
-                                    </>
-                                ) : (
-                                    <>
-                                        <Link to={'/login'} style={{ textDecoration: 'none' }}>
-                                            <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-                                        </Link>
-                                        <NavDropdown.Divider />
-                                        <Link to={'/register'} style={{ textDecoration: 'none' }}>
-                                            <NavDropdown.Item href="#action/3.1">Sign Up</NavDropdown.Item>
-                                        </Link>
-                                    </>
-                                )
-                            }
+                        <Nav className="mx-auto">
+                            <div className="d-flex flex-column">
+                                <Nav.Link href="/about" className="top-bar">ABOUT</Nav.Link>
+                                <div className="decorative-line-header m-0">
+                                    <div className="decoration-header decoration-left-header"></div>
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column">
+                                <Nav.Link href="/allnews" className="top-bar">NEWS & UPDATES</Nav.Link>
+                                <div className="decorative-line-header m-0">
+                                    <div className="decoration-header decoration-left-header"></div>
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column">
+                                <Nav.Link href="#characters" className="top-bar">CHARACTERS</Nav.Link>
+                                <div className="decorative-line-header m-0">
+                                    <div className="decoration-header decoration-left-header"></div>
+                                </div>
+                            </div>
+                            <div className="d-flex flex-column">
+                                <Nav.Link href="/about" className="top-bar">SUPPORT</Nav.Link>
+                                <div className="decorative-line-header m-0">
+                                    <div className="decoration-header decoration-left-header"></div>
+                                </div>
+                            </div>
+                        </Nav>
 
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
-                        </NavDropdown>
+                        {/* Mobile and desktop dropdown */}
                         <NavDropdown
                             id="nav-dropdown-dark-example"
-                            title={<><FaUser style={{ color: '#ffbf00', fontSize: '1rem' }} /></>}
+                            title={<FaUser style={{ width: isMobile ? '60%' : '100%', color: '#ffbf00', fontSize: isMobile ? '1rem' : '1.2rem' }} />}
                             menuVariant="dark"
-                            className="desktop-login text-light fw-semibold me-3 custom-dropdown border border-dark rounded-5 px-1"
-                            drop="down"
+                            className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'}`}
+                            align="end" /* Ensures proper alignment */
                         >
+
                             {user_id ? (
                                 <>
                                     <NavDropdown.Item href="#action/3.3" onClick={handleLogout}>Logout</NavDropdown.Item>
@@ -142,12 +100,9 @@ function Header() {
                                     </Link>
                                 </>
                             )}
-
                             <NavDropdown.Divider />
-
                             <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
                         </NavDropdown>
-                            
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -156,3 +111,6 @@ function Header() {
 }
 
 export default Header;
+
+
+

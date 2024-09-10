@@ -20,6 +20,7 @@ import Support from '../components/Policy/Support';
 import Contact from '../components/Policy/Contact';
 import AllNews from '../components/news/AllNews';
 import News from '../components/news/News';
+import Terms from '../components/Policy/Terms';
 
 function UserRoutes() {
   return (
@@ -44,6 +45,8 @@ function UserRoutes() {
         <Route path='cookie-policy' element={<Cookie/>} />
         <Route path='refund-policy' element={<Refund/>} />
         <Route path='support' element={<Support/>} />
+        <Route path='terms' element={<Terms/>} />
+
       </Routes>
     </div>
   );

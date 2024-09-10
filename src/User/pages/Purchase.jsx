@@ -91,7 +91,7 @@ function Purchase() {
           padding: '2rem',
         }}
       >
-        <div className="container" style={{ minHeight: '100vh', maxHeight: 'fit-content' }}>
+        <div className="container" style={{ minHeight: '100vh', maxHeight: 'fit-content' ,paddingTop:'2rem'}}>
           <div className="row h-100">
             <div className="col-lg-6 mt-3">
               <img className="img-fluid" src={ram} alt="RAM" />

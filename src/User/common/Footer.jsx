@@ -80,7 +80,7 @@ function Footer() {
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2em' : '1.5em'  // Adjust text size for mobile
             }}>Support</p>
-            <p><Link to="/help-center" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>Help Center</Link></p>
+            <p><Link to="/support" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>Help Center</Link></p>
             <p><Link to="/contact-us" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Contact Us</Link></p>
             <p><Link to="/refund-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Refund</Link></p>
             <p><Link to="/terms" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Terms of Service</Link></p>

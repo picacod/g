@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import bg1 from '../../../assets/bg-2.jpg'; // First fixed background
-import head2 from '../../../assets/head2.png';
+import head2 from '../../../assets/title-frame.png';
 import ico from '../../../assets/game-icon.png';
 
 import Aos from 'aos';
@@ -16,6 +16,30 @@ function HomeContent() {
     const [modalVideo, setModalVideo] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [contentData, setContentData] = useState([]);
+    const [hoverIndex, setHoverIndex] = useState(null);
+
+    const handleMouseEnter = (index) => {
+        setHoverIndex(index);
+    };
+
+    const handleMouseLeave = () => {
+        setHoverIndex(null);
+    };
+
+    const zoomStyle = {
+        width: '90px',
+        height: '90px',
+        borderRadius: '50%',
+        border: 'none',
+        cursor: 'pointer',
+        boxShadow: '0 0 0 3px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(255, 215, 0, 0.7)',
+        transition: 'transform 0.3s ease',
+    };
+
+    const zoomedStyle = {
+        ...zoomStyle,
+        transform: 'scale(1.1)', // Slight zoom effect
+    };
 
     useEffect(() => {
         const handleResize = () => {
@@ -61,14 +85,14 @@ function HomeContent() {
     };
 
     return (
-        <div style={{ height:'100vh' }}>
+        <div style={{ height: '100vh' }}>
             {/* Fixed Background Section */}
             <div style={{
                 backgroundImage: `url(${bg1})`,
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
-                minHeight:"200vh",
+                minHeight: "200vh",
                 backgroundAttachment: 'fixed',
                 display: 'flex',
                 alignItems: 'center',
@@ -157,13 +181,15 @@ function HomeContent() {
                                             <h1 className='h1-anim' style={{ fontSize: isMobile ? '2rem' : '5rem', textAlign: 'start' }}>
                                                 {contentData[currentContent].name}
                                             </h1>
-                                            <div class="decorative-line">
-                                                <div class="decoration decoration-left"></div>
-                                                <div class="decoration decoration-right"></div>
+                                            <div className="decorative-line">
+                                                <div className="decoration decoration-left"></div>
+                                                <div className="decoration decoration-right"></div>
                                             </div>
-                                            <h3 style={{   background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent', fontSize: isMobile ? '1rem' : '1.3rem', textAlign: 'start' }}>
+                                            <h3 style={{
+                                                background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+                                                WebkitBackgroundClip: 'text',
+                                                WebkitTextFillColor: 'transparent', fontSize: isMobile ? '1rem' : '1.3rem', textAlign: 'start'
+                                            }}>
                                                 {contentData[currentContent].desc}
                                             </h3>
 
@@ -173,7 +199,7 @@ function HomeContent() {
                                                     <Link to={'purchase'}><span className="golden-text">Unlock <i class="fa-solid fa-lock"></i></span></Link>
                                                 </button>
 
-                                                    {/* 
+                                                {/* 
                                                 <button
                                                     onClick={() => openModal(`https://gamebackend.pythonanywhere.com${contentData[currentContent].video}`)}
                                                     style={{ border: 'none', background: 'none', cursor: 'pointer', padding: 0 }}
@@ -196,11 +222,14 @@ function HomeContent() {
                                                     <button
                                                         key={i}
                                                         onClick={() => handleButtonClick(i)}
+                                                        onMouseEnter={() => handleMouseEnter(i)}
+                                                        onMouseLeave={handleMouseLeave}
                                                         style={{
-                                                            width: isMobile ?'60px':'90px',
-                                                            height: isMobile ?'60px':'90px',
+                                                            width: isMobile ? '60px' : '90px',
+                                                            height: isMobile ? '60px' : '90px',
                                                             borderRadius: '50%',
                                                             background: `url(https://gamebackend.pythonanywhere.com${contentData[i].img}) center center / cover no-repeat`,
+                                                            ... (hoverIndex === i ? zoomedStyle : zoomStyle),
                                                             border: 'none',
                                                             cursor: 'pointer',
                                                             boxShadow: currentContent === i ? '0 0 0 3px rgba(255, 255, 255, 0.5), 2px 4px 8px rgba(255, 215, 0, 0.7)' : '0 0 0 3px #b78846',
@@ -287,7 +316,7 @@ function HomeContent() {
                 </div>
             )}
 
-<Backtotop/>
+            <Backtotop />
 
         </div>
     );

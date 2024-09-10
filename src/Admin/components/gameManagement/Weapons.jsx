@@ -1,53 +1,55 @@
+
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import EditCharacter from "./EditCharacter";
+import EditWeapon from "./EditWeapon";
 
-function Characters() {
-  const [characters, setCharacters] = useState([]);
+function Weapons() {
+  const [weapons, setWeapons] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [selectedWeapon, setSelectedWeapon] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleShow = (character) => {
-    setSelectedCharacter(character);
+
+  const handleShow = (weapon) => {
+    setSelectedWeapon(weapon);
     setShowModal(true);
   };
 
   const handleClose = () => setShowModal(false);
 
   useEffect(() => {
-    fetchCharacters();
+    fetchWeapons();
   }, [searchTerm]);
 
-  const fetchCharacters = () => {
+  const fetchWeapons = () => {
     axios
-      .get(`https://gamebackend.pythonanywhere.com/api/admin_characters/?search=${searchTerm}`)
+      .get(`https://gamebackend.pythonanywhere.com/api/weapons/?search=${searchTerm}`)
       .then((response) => {
-        setCharacters(response.data);
+        setWeapons(response.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching characters:", error);
+        console.error("Error fetching weapons:", error);
         setLoading(false);
       });
   };
 
-  const handleDelete = (characterId) => {
+  const handleDelete = (weaponId) => {
     axios
-      .delete(`https://gamebackend.pythonanywhere.com/api/Update_character/${characterId}/`)
+      .delete(`https://gamebackend.pythonanywhere.com/api/weapon_delete/${weaponId}/`)
       .then(() => {
-        // Remove the deleted character from the state
-        setCharacters(characters.filter((c) => c.id !== characterId));
+        // Remove the deleted weapon from the state
+        setWeapons(weapons.filter((w) => w.id !== weaponId));
       })
       .catch((error) => {
         console.error(
-          "Error deleting character:",
+          "Error deleting weapon:",
           error.response ? error.response.data : error.message
         );
-        alert("Error deleting character");
+        alert("Error deleting weapon");
       });
   };
 
@@ -57,7 +59,7 @@ function Characters() {
       style={{ backgroundColor: "black", paddingTop: "10rem" }}
     >
       <div className="w-100 container d-flex justify-content-between">
-        <p className="text-light">Characters</p>
+        <p className="text-light">Weapons</p>
         <Link to={"/admin/overview"}>Back</Link>
       </div>
       {/* Search bar */}
@@ -66,7 +68,7 @@ function Characters() {
           <div className="input-group">
             <input
               type="text"
-              placeholder="Search Username"
+              placeholder="Search Weapon Name"
               aria-describedby="button-addon1"
               className="form-control border-0 bg-light"
               style={{ boxShadow: "none", borderRadius: "1rem" }}
@@ -93,14 +95,12 @@ function Characters() {
           <thead className="sticky-top">
             <tr>
               <th scope="col">No</th>
-              <th scope="col">CharacterId</th>
-              <th scope="col">Name</th>
-              <th scope="col">Image</th>
-              <th scope="col">Video</th>
+              <th scope="col">WeaponId</th>
+              <th scope="col">Character</th>
+              <th scope="col">Weapon Name</th>
               <th scope="col">Description</th>
-              <th scope="col">Price</th>
-              <th scope="col">Uploaded Date</th>
-              <th scope="col">Release Date</th>
+              <th scope="col">Image</th>
+              <th scope="col">Created At</th>
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
             </tr>
@@ -112,46 +112,30 @@ function Characters() {
                   Loading...
                 </td>
               </tr>
-            ) : characters.length > 0 ? (
-              characters.map((character, index) => (
-                <tr key={character.id}>
+            ) : weapons.length > 0 ? (
+              weapons.map((weapon, index) => (
+                <tr key={weapon.id}>
                   <td>{index + 1}</td>
-                  <th scope="row">{character.id}</th>
-                  <td>{character.name}</td>
+                  <th scope="row">{weapon.id}</th>
+                  <td>{weapon.character ? weapon.character.name : "Unknown"}</td>
+                  <td>{weapon.name}</td>
+                  <td>{weapon.description}</td>
                   <td>
                     <img
-                      src={`https://gamebackend.pythonanywhere.com/${character.img}`}
-                      alt={character.name}
+                      src={`https://gamebackend.pythonanywhere.com/${weapon.img}`}
+                      alt={weapon.name}
                       style={{ width: "100px", height: "auto" }}
                     />
                   </td>
-
+                  <td>{new Date(weapon.created_at).toLocaleDateString()}</td>
                   <td>
-                    {character.video && (
-                      <video
-                        controls
-                        style={{ width: "200px", height: "auto" }}
-                      >
-                        <source
-                          src={`https://gamebackend.pythonanywhere.com/${character.video}`}
-                          type="video/mp4"
-                        />
-                        Your browser does not support the video tag.
-                      </video>
-                    )}
-                  </td>
-                  <td>{character.desc}</td>
-                  <td>{character.price}</td>
-                  <td>{new Date(character.created_at).toLocaleDateString()}</td>
-                  <td>{character.release_date}</td>
-                  <td>
-                    <button onClick={() => handleShow(character)}>Edit</button>
+                    <button onClick={() => handleShow(weapon)}>Edit</button>
                   </td>
                   <td>
                     <div className="d-flex">
                       <button
                         className="btn text-light"
-                        onClick={() => handleDelete(character.id)}
+                        onClick={() => handleDelete(weapon.id)}
                       >
                         <i className="fa-solid fa-trash"></i>
                       </button>
@@ -162,22 +146,22 @@ function Characters() {
             ) : (
               <tr>
                 <td colSpan="9" className="text-center">
-                  No Characters found
+                  No Weapons found
                 </td>
               </tr>
             )}
           </tbody>
         </Table>
       </div>
-      <EditCharacter
+      <EditWeapon
         show={showModal}
         handleClose={handleClose}
-        character={selectedCharacter}
-        setCharacters={setCharacters}
-        characters={characters}
+        weapon={selectedWeapon}
+        setWeapons={setWeapons}
+        weapons={weapons}
       />
     </div>
   );
 }
 
-export default Characters;
+export default Weapons;

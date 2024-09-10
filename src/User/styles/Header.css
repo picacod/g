@@ -1,4 +1,5 @@
 
+
 body {
   font-family: "Lato", sans-serif;
 }
@@ -23,161 +24,112 @@ body {
     display: none !important; /* Hide mobile login button on desktop */
   }
 }
-
- .top-bar {
-  color: white !important; /* Default color for links */
-  transition: color 0.3s ease; /* Smooth transition for color change */
+.top-bar {
+  color: #b78846 !important; /* Default color for links */
+  font-size: 1.2rem !important;
+  transition: color 0.3s ease, opacity 0.3s ease; /* Smooth transition for color and line opacity */
+  margin-right: 30px;
+  position: relative;
 }
 
 .top-bar:hover {
-  color: grey !important; /* Red color on hover */
-}
-.custom-dropdown-toggle .dropdown-toggle::after {
-  color: white; /* Set the color of the dropdown arrow */
+  color: white !important; /* Change text color on hover */
 }
 
-
-/* dropdown */
-/* Hide the default down arrow */
-.custom-dropdown .dropdown-toggle::after {
-  display: none;
+/* Initially hide the decorative line */
+.decorative-line-header {
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Smooth transition for showing the line */
+  position: relative;
+  height: 10px;
+  margin:  0;
 }
 
-/* Ensure dropdown opens on click */
-.custom-dropdown .dropdown-menu {
-  display: none;
+.top-bar:hover + .decorative-line-header {
+  opacity: 1; /* Show the decorative line when hovering over the link */
 }
 
-.custom-dropdown .dropdown-menu.show {
-  display: block;
-}
-
-/* Adjust the position of the dropdown items */
-.custom-dropdown .dropdown-menu {
+/* Line and decoration styling */
+.decorative-line-header::before {
+  content: "";
   position: absolute;
-  top: 65px !important;
-  left: -250px !important;
-  z-index: 1000;
-  margin-top: 4rem;
-  width: 300px !important; 
-  background-color: #171717; /* Set background color */
-  border: 1px solid #333;
+  height: 2px; /* Line thickness */
+  background-color: var(--color-alpha);
+  width: calc(100% - 40px); /* Full width of the container minus the width of decorations */
+  top: 50%;
+  left: 20px; /* Offset to account for decoration width */
+  transform: translateY(-50%); /* Center the line vertically */
+  z-index: 1;
 }
 
-/* Optional: Adjust the width based on your design needs */
-.custom-dropdown .dropdown-menu {
-  width: 300px; /* Adjust width as needed */
-}
-/* Optional: Style dropdown items */
-.custom-dropdown .dropdown-menu .dropdown-item {
-  color: #ffffff; /* Set text color to white for contrast */
-}
-
-.custom-dropdown .dropdown-menu .dropdown-item:hover {
-  background-color: #333333; /* Highlight color on hover */
-}
-
-
-
-
-.custom-dropdown {
-background-color: none;
-}
-/* dropdown */
-/* Hide the default down arrow */
-.custom-dropdown1 .dropdown-toggle::after {
-  display: none;
-}
-
-
-
-
-/* Ensure dropdown opens on click */
-.custom-dropdown1 .dropdown-menu {
-  display: none;
-}
-
-.custom-dropdown1 .dropdown-menu.show {
-  display: block;
-}
-
-/* Adjust the position of the dropdown items */
-.custom-dropdown1 .dropdown-menu {
+.decoration-header {
   position: absolute;
-  top: -10px;
-  left: 0px;
-  z-index: 1000;
-  margin-top: 4rem;
-  width: 200px; 
-  background-color: #171717; /* Set background color */
-  border: 1px solid #333;
+  width: 10px; /* Width of decoration */
+  height: 10px; /* Height of decoration */
+  border: 2px solid var(--color-alpha); /* Border for decoration */
+  box-sizing: border-box;
+  z-index: 2;
 }
 
-/* Optional: Adjust the width based on your design needs */
-.custom-dropdown1 .dropdown-menu {
-  width: 320px; /* Adjust width as needed */
-}
-/* Optional: Style dropdown items */
-.custom-dropdown1 .dropdown-menu .dropdown-item {
-  color: #ffffff; /* Set text color to white for contrast */
-}
-
-.custom-dropdown1 .dropdown-menu .dropdown-item:hover {
-  background-color: #333333; /* Highlight color on hover */
-}
-.custom-dropdown1 {
-background-color: none;
+.decoration-left-header {
+  left: 0; /* Position at the left end */
 }
 
 
-/* Ensure dropdown opens on click */
-.custom-dropdown2 .dropdown-menu {
-display: none;
+
+/* Hide dropdown arrow from FaUser icon */
+.dropdown-toggle::after {
+  display: none !important; /* Hides the default dropdown arrow */
 }
 
-.custom-dropdown2 .dropdown-menu.show {
-display: block;
+/* Background color for dropdown in both mobile and desktop views */
+.navbar-dark .dropdown-menu {
+  background-color: #343a40 !important; /* Dark background color */
+  border: none; /* Remove border for a cleaner look */
+  padding: 0.5rem;
 }
 
-/* Adjust the position of the dropdown items */
-.custom-dropdown2 .dropdown-menu {
-position: absolute;
-top: -10px;
-left: 0px;
-z-index: 1000;
-margin-top: 4rem;
-width: 200px; 
-background-color: #171717; /* Set background color */
-border: 1px solid #333;
+/* Additional padding to dropdown items */
+.navbar-dark .dropdown-item {
+  padding: 0.5rem 1rem;
 }
 
-/* Optional: Adjust the width based on your design needs */
-.custom-dropdown2 .dropdown-menu {
-width: 380px; /* Adjust width as needed */
-}
-/* Optional: Style dropdown items */
-.custom-dropdown2 .dropdown-menu .dropdown-item {
-color: #ffffff; /* Set text color to white for contrast */
+/* Media query for small screens (mobile view adjustments) */
+@media (max-width: 768px) {
+  .mobile-login .dropdown-menu {
+      background-color: #282828 !important;
+      width: 80%; /* Customize mobile view background color */
+    
+  }
 }
 
-.custom-dropdown2 .dropdown-menu .dropdown-item:hover {
-background-color: #333333; /* Highlight color on hover */
+/* Optional: Additional styling for hover effect */
+.navbar-dark .dropdown-item:hover {
+  background-color: #495057 !important; /* Slightly lighter shade for hover */
 }
-.custom-dropdown2 {
-background-color: none;
+
+/* Adjust dropdown positioning to be directly under the icon */
+@media (min-width: 769px) {
+  .desktop-login .dropdown-menu {
+    left: -300px !important; /* Aligns the dropdown directly under the icon */
+    right: auto !important; /* Resets any overriding right positioning */
+    transform: translate(0, 0) !important; /* Prevents any shifting */
+    background-color: #282828 !important;
+    width: 300px !important;
+  }
 }
 
 
 /* Only apply this background color on mobile view */
 @media (max-width: 768px) {
 .navbar-collapse {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
     top: 70px; /* Adjust according to the height of your Navbar */
     left: 0;
     width: 100%;
     /* height: 100vh; */
-    height: 3rem;
+    height: 17rem;
     z-index: 1; /* Ensure it is above other content */
     padding-left: 20px;
 }

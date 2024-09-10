@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -9,7 +7,9 @@ function EditCharacter({ show, handleClose, character, setCharacters, characters
         name: '',
         desc: '',
         img: null, // handle image separately
-        price: ''
+        video: null,
+        price: '',
+        release_date:''
     });
 
     useEffect(() => {
@@ -18,7 +18,9 @@ function EditCharacter({ show, handleClose, character, setCharacters, characters
                 name: character.name || '',
                 desc: character.desc || '',
                 img: null,
-                price: character.price || ''
+                video: null,
+                price: character.price || '',
+                release_date: character.release_date || ''
             });
         }
     }, [character]);
@@ -27,7 +29,7 @@ function EditCharacter({ show, handleClose, character, setCharacters, characters
         const { name, value, files } = e.target;
         setFormData(prevData => ({
             ...prevData,
-            [name]: name === 'img' ? files[0] : value
+            [name]: name === 'img' || name === 'video' ? files[0] : value
         }));
     };
 
@@ -37,7 +39,9 @@ function EditCharacter({ show, handleClose, character, setCharacters, characters
         formDataToSend.append('name', formData.name);
         formDataToSend.append('desc', formData.desc);
         if (formData.img) formDataToSend.append('img', formData.img);
+        if (formData.video) formDataToSend.append('video', formData.video);
         formDataToSend.append('price', formData.price);
+        formDataToSend.append('release_date', formData.release_date);
 
         axios.put(`https://gamebackend.pythonanywhere.com/api/Update_character/${character.id}/`, formDataToSend, {
             headers: {
@@ -86,6 +90,15 @@ function EditCharacter({ show, handleClose, character, setCharacters, characters
                             />
                         </Form.Group>
 
+                        <Form.Group className="mb-3" controlId="formCharacterVideo">
+                            <Form.Label>Video</Form.Label>
+                            <Form.Control
+                                type="file"
+                                name="video"
+                                onChange={handleInputChange}
+                            />
+                        </Form.Group>
+
                         <Form.Group className="mb-3" controlId="formCharacterPrice">
                             <Form.Label>Price</Form.Label>
                             <Form.Control
@@ -105,6 +118,17 @@ function EditCharacter({ show, handleClose, character, setCharacters, characters
                                 value={formData.desc || ''}
                                 onChange={handleInputChange}
                                 placeholder="Description"
+                            />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formCharacterDesc">
+                            <Form.Label>Release Date</Form.Label>
+                            <Form.Control
+                                type="date"
+                                name="release_date"
+                                value={formData.release_date || ''}
+                                onChange={handleInputChange}
+                                placeholder="Release Date"
                             />
                         </Form.Group>
 
