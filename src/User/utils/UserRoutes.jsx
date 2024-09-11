@@ -36,7 +36,7 @@ function UserRoutes() {
         {/* Others */}
         {/* <Route path="about" element={<UserLayout showHeaderAndFooter={true}><About /></UserLayout>} /> */}
         <Route path="purchase" element={  <UserLayout showHeaderAndFooter={true}><ProtectedRoute> <Purchase/> </ProtectedRoute></UserLayout>}/>
-        <Route path="all-news" element={  <UserLayout showHeaderAndFooter={true}><ProtectedRoute> <AllNews/> </ProtectedRoute></UserLayout>}/>
+        <Route path="all-news" element={  <UserLayout showHeaderAndFooter={true}><AllNews/> </UserLayout>}/>
         <Route path="news/:id" element={  <UserLayout showHeaderAndFooter={true}><ProtectedRoute> <News/> </ProtectedRoute></UserLayout>}/>
         <Route path='p' element={<Preloader/>} />
         <Route path='contact-us' element={<Contact/>} />

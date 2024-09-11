@@ -26,6 +26,7 @@ function Header() {
     }, []);
 
     const handleLogout = () => {
+        navigate('/')
         alert('Logout');
         sessionStorage.removeItem('user_id');
         localStorage.removeItem('access_token');
@@ -52,7 +53,7 @@ function Header() {
 
                 <Navbar.Collapse id="basic-navbar-nav d-flex align-items-center justify-content-center">
                     <Nav className="ms-auto">
-                        <Nav className="mx-auto">
+                        <Nav className="">
 
                             <div className="d-flex flex-column">
                                 <Nav.Link href="/all-news" className="top-bar">NEWS & UPDATES</Nav.Link>
@@ -77,40 +78,42 @@ function Header() {
                             </div>
                         </Nav>
 
-                        <NavDropdown
-                            id="nav-dropdown-dark-example"
-                            title={
-                                <FaUser
-                                    style={{
-                                        width: isMobile ? '60%' : '100%',
-                                        color: '#b78846',
-                                        fontSize: isMobile ? '1rem' : '1.2rem',
-                                        transition: 'color 0.3s',
-                                    }}
-                                    onMouseEnter={(e) => (e.target.style.color = 'white')}
-                                    onMouseLeave={(e) => (e.target.style.color = '#b78846')}
-                                />
-                            }
-                            menuVariant="dark"
-                            className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'}`}
-                            align="end"
-                        >
-                            {user_id ? (
-                                <>
-                                    <NavDropdown.Item href="#action/3.3" onClick={handleLogout}>Logout</NavDropdown.Item>
-                                </>
-                            ) : (
-                                <>
-                                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
-                                        <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-                                    </Link>
-                                    <NavDropdown.Divider />
-                                    <Link to={'/register'} style={{ textDecoration: 'none' }}>
-                                        <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
-                                    </Link>
-                                </>
-                            )}
-                        </NavDropdown>
+                         <NavDropdown
+            id="nav-dropdown-dark-example"
+            title={
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <FaUser
+                        style={{
+                            width: isMobile ? '10%' : '100%',
+                            color: '#b78846',
+                            fontSize: isMobile ? '1rem' : '1.2rem',
+                            transition: 'color 0.3s',
+                        }}
+                        onMouseEnter={(e) => (e.target.style.color = 'white')}
+                        onMouseLeave={(e) => (e.target.style.color = '#b78846')}
+                    />
+                </div>
+            }
+            menuVariant="dark"
+            className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'}`}
+            align="end"
+        >
+            {user_id ? (
+                <>
+                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                </>
+            ) : (
+                <>
+                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                        <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
+                    </Link>
+                    <NavDropdown.Divider />
+                    <Link to={'/register'} style={{ textDecoration: 'none' }}>
+                        <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                    </Link>
+                </>
+            )}
+        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
