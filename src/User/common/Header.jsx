@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import logoimg from '../../assets/logo.png';
 import '../styles/Header.css';
@@ -9,6 +9,9 @@ function Header() {
     const [isMobile, setIsMobile] = useState(false);
     const navigate = useNavigate();
     const user_id = sessionStorage.getItem('user_id');
+
+    // List the paths where you want to hide the text
+    const hideTextOnPaths = ['/purchase'];
 
     useEffect(() => {
         const handleResize = () => {
@@ -31,7 +34,7 @@ function Header() {
 
     return (
         <div>
-            <Navbar expand="lg" className="fixed-top container-fluid">
+            <Navbar expand="lg" className="fixed-top container-fluid navbar-blur">
                 <Navbar.Brand>
                     <Link to={'/'}>
                         <img className='ms-4'
@@ -50,41 +53,48 @@ function Header() {
                 <Navbar.Collapse id="basic-navbar-nav d-flex align-items-center justify-content-center">
                     <Nav className="ms-auto">
                         <Nav className="mx-auto">
+
                             <div className="d-flex flex-column">
-                                <Nav.Link href="/about" className="top-bar">ABOUT</Nav.Link>
+                                <Nav.Link href="/all-news" className="top-bar">NEWS & UPDATES</Nav.Link>
                                 <div className="decorative-line-header m-0">
                                     <div className="decoration-header decoration-left-header"></div>
                                 </div>
                             </div>
-                            <div className="d-flex flex-column">
-                                <Nav.Link href="/allnews" className="top-bar">NEWS & UPDATES</Nav.Link>
-                                <div className="decorative-line-header m-0">
-                                    <div className="decoration-header decoration-left-header"></div>
+                            {!hideTextOnPaths.includes(location.pathname) && (
+                                <div className="d-flex flex-column">
+                                    <Nav.Link href="#character" className="top-bar">CHARACTERS</Nav.Link>
+                                    <div className="decorative-line-header m-0">
+                                        <div className="decoration-header decoration-left-header"></div>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
+
                             <div className="d-flex flex-column">
-                                <Nav.Link href="#characters" className="top-bar">CHARACTERS</Nav.Link>
-                                <div className="decorative-line-header m-0">
-                                    <div className="decoration-header decoration-left-header"></div>
-                                </div>
-                            </div>
-                            <div className="d-flex flex-column">
-                                <Nav.Link href="/about" className="top-bar">SUPPORT</Nav.Link>
+                                <Nav.Link href="/contact-us" className="top-bar">CONTACT</Nav.Link>
                                 <div className="decorative-line-header m-0">
                                     <div className="decoration-header decoration-left-header"></div>
                                 </div>
                             </div>
                         </Nav>
 
-                        {/* Mobile and desktop dropdown */}
                         <NavDropdown
                             id="nav-dropdown-dark-example"
-                            title={<FaUser style={{ width: isMobile ? '60%' : '100%', color: '#ffbf00', fontSize: isMobile ? '1rem' : '1.2rem' }} />}
+                            title={
+                                <FaUser
+                                    style={{
+                                        width: isMobile ? '60%' : '100%',
+                                        color: '#b78846',
+                                        fontSize: isMobile ? '1rem' : '1.2rem',
+                                        transition: 'color 0.3s',
+                                    }}
+                                    onMouseEnter={(e) => (e.target.style.color = 'white')}
+                                    onMouseLeave={(e) => (e.target.style.color = '#b78846')}
+                                />
+                            }
                             menuVariant="dark"
                             className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'}`}
-                            align="end" /* Ensures proper alignment */
+                            align="end"
                         >
-
                             {user_id ? (
                                 <>
                                     <NavDropdown.Item href="#action/3.3" onClick={handleLogout}>Logout</NavDropdown.Item>
@@ -100,12 +110,11 @@ function Header() {
                                     </Link>
                                 </>
                             )}
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.3">Select a Language</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+
         </div>
     );
 }

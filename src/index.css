@@ -402,3 +402,19 @@ body{
     
   }
 }
+
+/* -------------   navbar   ---------- */
+
+.navbar-blur {
+  backdrop-filter: blur(8px); /* Apply blur */
+  -webkit-backdrop-filter: blur(8px); /* For Safari */
+  border-bottom: 1px solid rgba(50, 50, 50, 0.1); /* Optional border */
+}
+
+.navbar-blur .nav-link {
+  color: white; /* Make sure links are visible */
+}
+
+.navbar-blur .nav-link:hover {
+  color: #b78846; /* Hover effect for links */
+}

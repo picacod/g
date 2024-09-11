@@ -10,7 +10,7 @@ function UserLayout({ children, showHeaderAndFooter }) {
             const scrollTop = window.scrollY;
             
             // Check if the user is within 200px from the top
-            if (scrollTop <= 150) {
+            if (scrollTop <= 100000) {
                 setIsNearTop(true);
             } else {
                 setIsNearTop(false);

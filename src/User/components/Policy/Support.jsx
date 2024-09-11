@@ -33,12 +33,12 @@ function Support() {
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
           If you need assistance or have questions, please contact our support team:
           <ul>
-            <li>Email: <a href="mailto:support@example.com" style={{ color: '#007bff' }}>support@example.com</a></li>
-            <li>Phone: <a href="tel:+1234567890" style={{ color: '#007bff' }}>+123 456 7890</a></li>
+            <li>Email: <a href="mailto:support@example.com" style={{ color: '#007bff' }}>ancientsshadowsgame@gmail.com</a></li>
+            <li>Phone: <a href="tel:+1234567890" style={{ color: '#007bff' }}>+91 9074735094</a></li>
           </ul>
         </p>
         
-        <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Frequently Asked Questions (FAQ)</h2>
+        {/* <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Frequently Asked Questions (FAQ)</h2>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
           Check out our FAQ section to find answers to common questions:
           <ul>
@@ -52,7 +52,7 @@ function Support() {
           <ul>
             <li><a href="/live-chat" style={{ color: '#007bff' }}>Start a live chat</a></li>
           </ul>
-        </p>
+        </p> */}
         
         <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Support Hours</h2>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>

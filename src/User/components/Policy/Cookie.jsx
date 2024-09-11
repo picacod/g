@@ -26,29 +26,38 @@ function Cookie() {
       >
         <h1 style={{ fontSize: '2em', marginBottom: '20px', color: '#333' }}>Cookie Policy</h1>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Last updated September 09, 2024
+        </p>
+        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+          Our website uses cookies to provide you with a better browsing experience, personalize content, and analyze our website traffic. This policy outlines what cookies are, how we use them, and your rights to manage them.
         </p>
         
         <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>What Are Cookies?</h2>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
-          Cookies are small text files that are used to store small pieces of information. They are stored on your device when the website is loaded on your browser. Cookies help us improve your browsing experience by remembering your preferences and providing personalized content.
+          Cookies are small text files stored on your device when you visit a website. These files allow the website to remember your actions and preferences, such as login details and other display preferences, over a period of time.
         </p>
         
         <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>How We Use Cookies</h2>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
-          We use cookies to enhance your experience on our website. This includes remembering your login information, personalizing content, and analyzing site traffic. We may also use cookies to display relevant advertisements to you.
+          We use cookies for several purposes, including:
+          <ul>
+            <li>To ensure the website functions properly</li>
+            <li>To remember your preferences and settings</li>
+            <li>To improve website performance by analyzing user behavior</li>
+            <li>To deliver personalized content and advertisements</li>
+          </ul>
         </p>
         
         <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Managing Cookies</h2>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
-          You can control and manage cookies through your browser settings. However, disabling cookies may affect your ability to use certain features on our website. For more information on how to manage cookies, please refer to your browser’s help section.
+          You can manage or disable cookies through your browser settings. However, please note that disabling cookies may affect the functionality and performance of our website. For detailed instructions on managing cookies, please refer to your browser’s help documentation.
         </p>
         
         <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Contact Us</h2>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
-          If you have any questions about our Cookie Policy, please contact us at:
+          If you have any questions regarding this Cookie Policy or need further information, feel free to reach out to us at:
           <br />
-          <a href="mailto:cookie@example.com" style={{ color: '#007bff' }}>cookie@example.com</a>
+          <a href="mailto:ancientsshadowsgame@gmail.com" style={{ color: '#007bff' }}>ancientsshadowsgame@gmail.com</a>
         </p>
       </div>
     </div>

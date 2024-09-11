@@ -133,15 +133,22 @@ function Hero() {
             <div data-aos="fade-down"
               className='d-flex flex-column flex-md-row gap-2 justify-content-center'
               style={{ width: '100%', maxWidth: isMobile ? '320px' : 'auto' }}>
-              <button role="button" class="golden-button">
-                <span className="golden-text">Watch the trailer</span>
+              <button
+                role="button"
+                className="golden-button"
+                onClick={() => window.location.href = '#character'}
+              >
+                <span className="golden-text">Character Purchase</span>
               </button>
+
+
+
               {
                 !isBooked ? <button role="button" class="golden-button" onClick={handleBooking}>
-                <span className="golden-text">PRE-ORDER NOW</span>
-              </button> : <button role="button" class="golden-button">
-                <span className="golden-text">Ordered <i className="fa-regular fa-lg fa-circle-check"></i></span>
-              </button>
+                  <span className="golden-text">PRE-ORDER NOW</span>
+                </button> : <button role="button" class="golden-button">
+                  <span className="golden-text">Ordered <i className="fa-regular fa-lg fa-circle-check"></i></span>
+                </button>
               }
               {/* {
                 !isBooked ? <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg button-with-bg' onClick={handleBooking}>PRE-ORDER NOW</button> : <button style={{ fontSize: isMobile ? '0.9rem' : '1rem' }} className='btn btn-lg button-with-bg' >Ordered <i className="fa-regular fa-lg fa-circle-check"></i></button>

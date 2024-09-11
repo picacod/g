@@ -17,6 +17,7 @@ import NewsAndUpdates from '../components/gameManagement/NewsAndUpdates';
 import AddSkills from '../components/gameManagement/AddSkills';
 import EditNews from '../components/gameManagement/EditNews';
 import AddNewsAndUpdates from '../components/gameManagement/AddNewsAndUpdates';
+import Messages from '../components/userManagement/Messages';
 
 function AdminRoutes() {
   return (
@@ -137,6 +138,14 @@ function AdminRoutes() {
           element={
             <ProtectedRoute>
               <AddNewsAndUpdates/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="messages"
+          element={
+            <ProtectedRoute>
+              <Messages/>
             </ProtectedRoute>
           }
         />

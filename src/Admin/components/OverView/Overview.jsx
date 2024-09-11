@@ -113,7 +113,11 @@ function Overview() {
                             {!isResponsive ? ' News & Updates' : <i className="fa-solid fa-plus"></i>}
                         </button>
                     </Link>
-                    
+                    <Link to='/admin/messages' className='text-decoration-none mb-2 d-flex align-items-center'>
+                        <button className='btn btn-lg btn-outline-light rounded-0 w-100'>
+                            {!isResponsive ? ' Messages' : <i className="fa-solid fa-plus"></i>}
+                        </button>
+                    </Link>
 
                     <div className='mt-auto d-flex align-items-center'>
                         <Link to='/logout' className='text-decoration-none w-100'>

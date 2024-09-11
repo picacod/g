@@ -11,6 +11,7 @@ import Backtotop from '../../utils/Backtotop';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 function HomeContent() {
+    const user_id = sessionStorage.getItem('user_id');
     const [currentContent, setCurrentContent] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const [modalVideo, setModalVideo] = useState(null);
@@ -92,7 +93,7 @@ function HomeContent() {
                 });
         }
     }, [selectedCharacterId]);
-    
+
     useEffect(() => {
         // Trigger the button click for the first content on initial load
         if (contentData.length > 0) {
@@ -112,6 +113,11 @@ function HomeContent() {
         setModalVideo(null);
     };
     const handleUnlockClick = () => {
+        if (!user_id) {
+            navigate('login')
+            return
+        }
+
         if (selectedCharacterId !== null) {
             console.log(('id:', selectedCharacterId));
 
@@ -152,7 +158,7 @@ function HomeContent() {
                     backdropFilter: 'blur(5px)', // Apply blur effect
                     zIndex: 1,
                 }}></div>
-                <div className='container' style={{ position: 'relative', zIndex: 2 }}>
+                <div className='container mb-3' style={{ position: 'relative', zIndex: 2 }}>
                     {/* conetnt */}
                     <div className='d-flex align-items-center justify-content-center no-gutters vh-100'>
                         <div className="text-light" data-aos="fade-in" data-aos-delay="100" style={{
@@ -168,8 +174,7 @@ function HomeContent() {
                                     fontSize: '2rem',
                                     marginTop: '1rem',
                                     marginBottom: '0.5rem',
-                                    textAlign: 'justify',
-                                    lineHeight: '1.2',
+                                    textAlign: 'center',
                                     ...(isMobile && { fontSize: '1.5rem' }),
                                 }}>
                                 It's a journey into the heart of one of the greatest stories ever told. Step into a universe
@@ -178,8 +183,8 @@ function HomeContent() {
                             </p>
                         </div>
                     </div>
-                    <div style={{ padding: '50px 0' }}>
-                        <div className="container">
+                    <div style={{ padding: '0px 0' }}>
+                        <div className="container vh-100 d-flex align-items-center justify-content center" id='character'>
                             <div className="row d-flex align-items-center no-gutters w-100 m-0">
                                 <div className="col-lg-8 col-md-12 d-flex flex-column align-items-center justify-content-center" style={{ textAlign: 'center', paddingRight: isMobile ? '0rem' : '10rem' }}>
                                     {
@@ -288,34 +293,13 @@ function HomeContent() {
 
                                 </div>
                             </div>
-                            {/* frame */}
-                            {/* <div class="border-frame mt-5">
-                                <div className="inner-frame" style={{ height: '25rem' }}>
-                                    <div className='w-100 h-100 d-flex flex-column'>
-                                        <div className='h-100 w-100 row'>
-                                            <div className='col-3 d-flex flex-column align-items-center justify-content-center'>
-                                                <p style={{color:'#b78846'}}>Weapon</p>
-                                                <img src={ico} width={100} alt="" />
-                                            </div>
-                                            <div className='col-9 d-flex flex-column justify-content-center text-secondary'>
-                                                <p>Ashwatthama invoked Brahmashirshstra using a blade of grass as his weapon. Brahma's celestial weapon.</p>
-                                            </div>
-                                        </div>
-                                        <div className='h-100 w-100 d-flex flex-column align-items-center justify-content-center'>
-                                            <p style={{ color: '#b78846', fontSize: '1.5rem' }}>Ability</p>
-                                            <p className='text-secondary'>He had the ability to build an army, cross the sea, and kill rāvaṇa. He did not wait for resources or complain about their lack. He continued manifesting his abilities, and the resources kept coming along the way.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div> */}
-                            <div class="decorative-line mt-5">
-                                <div class="decoration decoration-left"></div>
-                                <div class="decoration decoration-right"></div>
-                            </div>
                         </div>
                     </div>
-                    <Footer />
+                    <div class="decorative-line mt-5">
+                        <div class="decoration decoration-left"></div>
+                        <div class="decoration decoration-right"></div>
+                    </div>
+                    <Footer/>
                 </div>
             </div>
             {/* Video Modal */}

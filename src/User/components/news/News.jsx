@@ -1,24 +1,48 @@
-import React, { useEffect ,useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import bg from '../../../assets/bg-2.jpg';
+import axios from 'axios';
+import { useMediaQuery } from 'react-responsive';
 
 function News() {
-    const [isMobile, setIsMobile] = useState(false);
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
+  const { id } = useParams(); // Get the news ID from the route
+  const [newsItem, setNewsItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+  // Define isMobile using a media query
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
+  useEffect(() => {
+    // Fetch the news item from the backend using the ID
+    axios.get(`https://gamebackend.pythonanywhere.com/api/selected_news/${id}/`)
+      .then((response) => {
+        setNewsItem(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the news item!", error);
+        setError("Error loading the news item.");
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+
   return (
     <>
       {/* Top section with background image */}
       <div
         style={{
           height: '70vh',
-          backgroundImage: `url(https://img.freepik.com/free-photo/person-praying-inside-mosque-focus-architecture_1258-289387.jpg?t=st=1725854748~exp=1725858348~hmac=9c1a055867174d98e7cd02a21bf1da2b332f4fb9ed2d46f3eeec80610c8856e3&w=1480)`,
+          backgroundImage: `url(https://gamebackend.pythonanywhere.com${newsItem.image})`,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
@@ -94,20 +118,22 @@ function News() {
 
         {/* Main content container */}
         <div className="container" style={{ position: 'relative', zIndex: 2, paddingTop: '3rem', paddingBottom: '3rem' }}>
-          <p style={{ color: '#b78846' , fontSize: isMobile?'0.9rem':'1rem',}}>SEPTEMBER 09, 2024</p>
-          <p className="mb-1 anim" style={{ fontSize: isMobile?'2rem':'5rem', color: '#b78846' }}>Jatayu Demigod in Hindu Epic</p>
+          <p style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1rem' }}>
+            {new Date(newsItem.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+          </p>
+          <p className="mb-1 anim" style={{ fontSize: isMobile ? '2rem' : '5rem', color: '#b78846' }}>
+            {newsItem.title}
+          </p>
           <div className="decorative-line mb-5">
             <div className="decoration decoration-left"></div>
             <div className="decoration decoration-right"></div>
           </div>
-          {/* Paragraphs for the article */}
+          {/* News content */}
           <p className="fs-4 mt- text-secondary p-1" style={{ textAlign: 'justify' }}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam nemo, hic neque quae ab consequatur saepe nulla sunt dolorum placeat est facilis commodi natus dolores. Pariatur vitae dicta vero aperiam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. At blanditiis minus, atque quas aut omnis sequi vel ipsam impedit non ipsa adipisci voluptates beatae. Dolorum amet quod voluptatem odit nam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. At blanditiis minus, atque quas aut omnis sequi vel ipsam impedit non ipsa adipisci voluptates beatae. Dolorum amet quod voluptatem odit nam.
-          </p>
-          <p className="fs-4 text-secondary" style={{ textAlign: 'justify' }}>
-            At blanditiis minus, atque quas aut omnis sequi vel ipsam impedit non ipsa adipisci voluptates beatae. Dolorum amet quod voluptatem odit nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo ducimus modi quia necessitatibus quasi dicta dolore iure deleniti quae atque omnis inventore eos corporis, optio ex iste unde. Quod, eligendi.Lorem ipsum dolor sit amet, consectetur adipisicing elit. At blanditiis minus, atque quas aut omnis sequi vel ipsam impedit non ipsa adipisci voluptates beatae. Dolorum amet quod voluptatem odit nam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. At blanditiis minus, atque quas aut omnis sequi vel ipsam impedit non ipsa adipisci voluptates beatae. Dolorum amet quod voluptatem odit nam.
+            {newsItem.content}
           </p>
         </div>
+
       </div>
     </>
   );

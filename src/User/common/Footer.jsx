@@ -69,7 +69,7 @@ function Footer() {
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2rem' : '1.5rem'  // Adjust text size for mobile
             }}>About Us</p>
-            <p><Link to="/about" className="text-decoration-none " style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Our Story</Link></p>
+            {/* <p><Link to="/about" className="text-decoration-none " style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Our Story</Link></p> */}
             <p><Link to="/all-news" className="text-decoration-none " style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>News & updates</Link></p>
           </div>
 
@@ -94,7 +94,7 @@ function Footer() {
               fontSize: isMobile ? '1.2em' : '1.5em'  // Adjust text size for mobile
             }}>Legal</p>
             <p><Link to="/privacy-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Privacy Policy</Link></p>
-            <p><Link to="/cookie-policy" className="text-decoration-none" style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Cookie Policy</Link></p>
+            {/* <p><Link to="/cookie-policy" className="text-decoration-none" style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Cookie Policy</Link></p> */}
             <p><Link to="/licenses" className="text-decoration-none " style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Licenses</Link></p>
           </div>
         </div>
