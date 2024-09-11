@@ -49,7 +49,14 @@ function Header() {
                     </Link>
                 </Navbar.Brand>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle
+    aria-controls="basic-navbar-nav"
+    style={{
+        backgroundColor: '#0000', // Change to desired color
+        borderColor: 'grey',     // Optional: Border color
+    }}
+/>
+
 
                 <Navbar.Collapse id="basic-navbar-nav d-flex align-items-center justify-content-center">
                     <Nav className="ms-auto">
@@ -78,42 +85,42 @@ function Header() {
                             </div>
                         </Nav>
 
-                         <NavDropdown
-            id="nav-dropdown-dark-example"
-            title={
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <FaUser
-                        style={{
-                            width: isMobile ? '10%' : '100%',
-                            color: '#b78846',
-                            fontSize: isMobile ? '1rem' : '1.2rem',
-                            transition: 'color 0.3s',
-                        }}
-                        onMouseEnter={(e) => (e.target.style.color = 'white')}
-                        onMouseLeave={(e) => (e.target.style.color = '#b78846')}
-                    />
-                </div>
-            }
-            menuVariant="dark"
-            className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'}`}
-            align="end"
-        >
-            {user_id ? (
-                <>
-                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-                </>
-            ) : (
-                <>
-                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
-                        <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-                    </Link>
-                    <NavDropdown.Divider />
-                    <Link to={'/register'} style={{ textDecoration: 'none' }}>
-                        <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
-                    </Link>
-                </>
-            )}
-        </NavDropdown>
+                        <NavDropdown
+                            id="nav-dropdown-dark-example"
+                            title={
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <FaUser
+                                        style={{
+                                            width: isMobile ? '10%' : '100%',
+                                            color: '#b78846',
+                                            fontSize: isMobile ? '1rem' : '1.2rem',
+                                            transition: 'color 0.3s',
+                                        }}
+                                        onMouseEnter={(e) => (e.target.style.color = 'white')}
+                                        onMouseLeave={(e) => (e.target.style.color = '#b78846')}
+                                    />
+                                </div>
+                            }
+                            menuVariant="dark"
+                            className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'}`}
+                            align="end"
+                        >
+                            {user_id ? (
+                                <>
+                                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                                </>
+                            ) : (
+                                <>
+                                    <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                                        <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
+                                    </Link>
+                                    <NavDropdown.Divider />
+                                    <Link to={'/register'} style={{ textDecoration: 'none' }}>
+                                        <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                    </Link>
+                                </>
+                            )}
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
