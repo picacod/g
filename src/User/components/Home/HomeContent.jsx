@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import bg1 from '../../../assets/bg-2.jpg'; // First fixed background
-import head2 from '../../../assets/title-frame.png';
+import head2 from '../../../assets/tf-final.png';
 // import ico from '../../../assets/game-icon.png';
 
 import Aos from 'aos';

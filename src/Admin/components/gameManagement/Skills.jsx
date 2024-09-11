@@ -25,6 +25,20 @@ function Skills() {
       });
   };
 
+  
+  const deleteSkill = (skillId) => {
+    if (window.confirm("Are you sure you want to delete this skill?")) {
+      axios
+        .delete(`https://gamebackend.pythonanywhere.com/api/delete_skill/${skillId}/`)
+        .then(() => {
+          setSkills(skills.filter(skill => skill.id !== skillId));
+        })
+        .catch((error) => {
+          console.error("Error deleting skill:", error);
+        });
+    }
+  };
+
   return (
     <div
       className="vh-100 d-flex flex-column "
@@ -65,13 +79,14 @@ function Skills() {
         className="w-100 container"
         style={{ maxHeight: "35rem", overflowY: "auto" }}
       >
-        <Table striped bordered hover variant="dark">
+         <Table striped bordered hover variant="dark">
           <thead className="sticky-top">
             <tr>
               <th scope="col">No</th>
               <th scope="col">Character Name</th>
               <th scope="col">Skill Name</th>
               <th scope="col">Created At</th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -88,6 +103,14 @@ function Skills() {
                   <td>{skill.character.name}</td>
                   <td>{skill.name}</td>
                   <td>{new Date(skill.created_at).toLocaleDateString()}</td>
+                  <td>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => deleteSkill(skill.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))
             ) : (
@@ -99,6 +122,7 @@ function Skills() {
             )}
           </tbody>
         </Table>
+        
       </div>
     </div>
   );
