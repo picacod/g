@@ -30,7 +30,7 @@ function Terms() {
                 </p>
                 <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>AGREEMENT TO OUR LEGAL TERMS</h2>
 
-                <p>We are Ancients Shadows ('Company', 'we', 'us', or 'our'), a company registered in India at
+                <p>We are Picacod Consultancy Services Pvt. Ltd ('Company', 'we', 'us', or 'our'), a company registered in India at
                     Heavenly Plaza, 11th Floor, Office NO: H11, Ernakulam, Kerala 682021.</p>
                 <p>We operate the website http://www.ancientsshadows.com (the 'Site'), as well as any other
                     related products and services that refer or link to these legal terms (the 'Legal Terms')

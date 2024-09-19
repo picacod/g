@@ -50,12 +50,12 @@ function Header() {
                 </Navbar.Brand>
 
                 <Navbar.Toggle
-    aria-controls="basic-navbar-nav"
-    style={{
-        backgroundColor: '#0000', // Change to desired color
-        borderColor: 'grey',     // Optional: Border color
-    }}
-/>
+                    aria-controls="basic-navbar-nav"
+                    style={{
+                        backgroundColor: '#0000', // Change to desired color
+                        borderColor: 'grey',     // Optional: Border color
+                    }}
+                />
 
 
                 <Navbar.Collapse id="basic-navbar-nav d-flex align-items-center justify-content-center">

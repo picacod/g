@@ -5,8 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import axios from 'axios'; 
 
-
-const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, value, onChange }) => {
+const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, value, onChange, validationErrors }) => {
     return (
         <FloatingLabel controlId={`floatingPassword-${label}`} label={label} className={`${styles.passwordField} mb-3`}>
             <Form.Control
@@ -16,6 +15,7 @@ const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, val
                 onChange={onChange}
                 style={{ borderRadius: '0px' }}
                 required
+                isInvalid={!!validationErrors} // Highlight field if there are errors
             />
             <Button
                 variant="link"
@@ -25,30 +25,70 @@ const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, val
             >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
             </Button>
+            <Form.Control.Feedback type="invalid">
+                {validationErrors}
+            </Form.Control.Feedback>
         </FloatingLabel>
     );
 };
 
+// Password validation function
+const validatePassword = (password) => {
+    let errors = '';
+    const minLength = 8;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
+    if (password.length < minLength) {
+        errors = `Password must be at least ${minLength} characters long.`;
+    } else if (!hasUppercase) {
+        errors = 'Password must contain at least one uppercase letter.';
+    } else if (!hasLowercase) {
+        errors = 'Password must contain at least one lowercase letter.';
+    } else if (!hasNumber) {
+        errors = 'Password must contain at least one number.';
+    } else if (!hasSpecialChar) {
+        errors = 'Password must contain at least one special character.';
+    }
+
+    return errors;
+};
 
 function ResetPassword() {
     const { uid, token } = useParams(); // Get the uid and token from the URL
     const navigate = useNavigate();
 
-    const [showOldPassword, setShowOldPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+    const [newPasswordErrors, setNewPasswordErrors] = useState('');
+    const [confirmPasswordErrors, setConfirmPasswordErrors] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
     
-        if (newPassword !== confirmPassword) {
-            setError("Passwords do not match.");
-            setMessage('');
+        // Validate new password
+        const newPasswordValidation = validatePassword(newPassword);
+        if (newPasswordValidation) {
+            setNewPasswordErrors(newPasswordValidation);
+            setError('');
             return;
+        } else {
+            setNewPasswordErrors('');
+        }
+
+        // Validate confirm password
+        if (newPassword !== confirmPassword) {
+            setConfirmPasswordErrors("Passwords do not match.");
+            setError('');
+            return;
+        } else {
+            setConfirmPasswordErrors('');
         }
     
         try {
@@ -75,7 +115,6 @@ function ResetPassword() {
             setMessage('');
         }
     };
-    
 
     return (
         <div style={{ backgroundColor: 'black' }} className="vh-100 d-flex align-items-center justify-content-center">
@@ -88,15 +127,24 @@ function ResetPassword() {
                         showPassword={showNewPassword}
                         onTogglePassword={() => setShowNewPassword(!showNewPassword)}
                         value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
+                        onChange={(e) => {
+                            setNewPassword(e.target.value);
+                            const errors = validatePassword(e.target.value);
+                            setNewPasswordErrors(errors);
+                        }}
+                        validationErrors={newPasswordErrors}
                     />
                     <PasswordField
                         label="Confirm Password"
                         placeholder="Confirm Password"
-                        showPassword={showOldPassword}
-                        onTogglePassword={() => setShowOldPassword(!showOldPassword)}
+                        showPassword={showConfirmPassword}
+                        onTogglePassword={() => setShowConfirmPassword(!showConfirmPassword)}
                         value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        onChange={(e) => {
+                            setConfirmPassword(e.target.value);
+                            setConfirmPasswordErrors(newPassword !== e.target.value ? 'Passwords do not match.' : '');
+                        }}
+                        validationErrors={confirmPasswordErrors}
                     />
                     <button
                         style={{ backgroundColor: '#171717', color: 'white' }}

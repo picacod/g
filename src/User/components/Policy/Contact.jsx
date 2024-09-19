@@ -150,15 +150,17 @@ function Contact() {
                         }}
                     />
                     
+                    <div className='w-100 d-flex justify-content-center'>
                     <button
                         type="submit"
                         style={{
                             
                         }}
-                        className='golden-button'
+                        className='golden-button w-50 text-center mt-3'
                     >
                         Send Message
                     </button>
+                    </div>
                 </form>
                 {formStatus === 'success' && <p className='text-center mt-3' style={{ color: 'green' }}>Your message has been sent successfully!</p>}
                 {formStatus === 'error' && <p className='text-center mt-3' style={{ color: 'red' }}>There was an error sending your message.</p>}

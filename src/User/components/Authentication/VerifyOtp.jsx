@@ -41,7 +41,7 @@ function VerifyOtp() {
      return (
         <div style={{ backgroundColor: 'black', width: '100%', minHeight: '100vh', maxHeight: 'fit-content' }} className='d-flex align-items-center justify-content-center'>
             <div style={{ backgroundColor: 'black' }} className='card shadow p-5 rounded-0'>
-                <h3 className='mb-3 text-secondary'>Verify OTP</h3>
+                <h5 className='mb-3 text-secondary'>Verify OTP</h5>
                 <form onSubmit={handleSubmit}>
                     <FloatingLabel controlId="floatingOtp" label="OTP" className="rounded-0 mb-3">
                         <Form.Control

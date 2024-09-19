@@ -160,7 +160,7 @@ function HomeContent() {
                 }}></div>
                 <div className='container mb-3' style={{ position: 'relative', zIndex: 2 }}>
                     {/* conetnt */}
-                    <div className='d-flex align-items-center justify-content-center no-gutters vh-100'>
+                    <div className='d-flex align-items-center justify-content-center no-gutters' style={{ height: isMobile ? '80vh' : '100vh' }}>
                         <div className="text-light" data-aos="fade-in" data-aos-delay="100" style={{
                             padding: '10px',
                             fontSize: '1rem',
@@ -174,7 +174,7 @@ function HomeContent() {
                                     fontSize: '2rem',
                                     marginTop: '1rem',
                                     marginBottom: '0.5rem',
-                                    textAlign: 'center',
+                                    textAlign: isMobile ? 'justify' : 'center',
                                     ...(isMobile && { fontSize: '1.5rem' }),
                                 }}>
                                 It's a journey into the heart of one of the greatest stories ever told. Step into a universe
@@ -195,13 +195,21 @@ function HomeContent() {
                                     }
 
                                     {isLoading ? (
-                                        <p>Loading...</p>
+                                        <div style={{
+                                            border: "2px solid #f3f3f3", /* Light grey */
+                                            borderTop: "2px solid #b78846", /* Blue */
+                                            borderRadius: "50%",
+                                            width: "50%",
+                                            height: "50%",
+                                            animation: "spin 2s linear infinite"
+                                        }}>
+                                        </div>
                                     ) : contentData.length > 0 ? (
-                                        <img
+                                        <img loading="lazy"
                                             src={`https://gamebackend.pythonanywhere.com${contentData[currentContent].img}`}
                                             alt={contentData[currentContent].desc}
                                             className="img-fluid"
-                                            data-aos="fade-up" data-aos-delay="100"
+                                            data-aos="fade-in" data-aos-delay="100"
                                             style={{
                                                 maxHeight: isMobile ? '30vh' : '100%',
                                                 maxWidth: '100%',
@@ -213,7 +221,17 @@ function HomeContent() {
                                     ) : (
                                         <p>No content available</p>
                                     )}
+
+                                    <style>
+                                        {`
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        `}
+                                    </style>
                                 </div>
+
                                 <div className="col-lg-4 col-md-12 text-light ">
                                     {isLoading ? (
                                         <p>Loading...</p>
@@ -299,7 +317,7 @@ function HomeContent() {
                         <div class="decoration decoration-left"></div>
                         <div class="decoration decoration-right"></div>
                     </div>
-                    <Footer/>
+                    <Footer />
                 </div>
             </div>
             {/* Video Modal */}

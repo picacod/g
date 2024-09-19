@@ -130,7 +130,7 @@ body{
 
 
 body{
-  cursor: url('pointer.png') 32 32, auto;/* Ensure the path points to your image */
+  cursor: url('pointer.png') 32 32 , auto !important;/* Ensure the path points to your image */
 }
 
 
@@ -406,15 +406,15 @@ body{
 /* -------------   navbar   ---------- */
 
 .navbar-blur {
-  backdrop-filter: blur(8px); /* Apply blur */
-  -webkit-backdrop-filter: blur(8px); /* For Safari */
-  border-bottom: 1px solid rgba(50, 50, 50, 0.1); /* Optional border */
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); 
+  border-bottom: 1px solid rgba(50, 50, 50, 0.1); 
 }
 
 .navbar-blur .nav-link {
-  color: white; /* Make sure links are visible */
+  color: white;
 }
 
 .navbar-blur .nav-link:hover {
-  color: #b78846; /* Hover effect for links */
+  color: #b78846;
 }

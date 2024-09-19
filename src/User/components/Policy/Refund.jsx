@@ -22,7 +22,7 @@ function Refund() {
         borderRadius: '8px',
         boxShadow: '0 0 10px rgba(0,0,0,0.1)'
       }}
-      className='container fs-5'
+        className='container fs-5'
       >
         <h1 style={{ fontSize: '2em', marginBottom: '20px', color: '#333' }}>Refund Policy</h1>
         <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Refund and Cancellation Policy</h2>
@@ -63,14 +63,14 @@ function Refund() {
             permitted.</p>
         </div>
         <div>
-        <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>4. Processing of Refunds</h2>
-        <p>Approved refunds will be processed within 7-10 business days and will be credited to the
-original payment method. We are not responsible for any delays caused by the payment
-processor or your financial institution.</p>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>4. Processing of Refunds</h2>
+          <p>Approved refunds will be processed within 7-10 business days and will be credited to the
+            original payment method. We are not responsible for any delays caused by the payment
+            processor or your financial institution.</p>
         </div>
         <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Contact Us</h2>
         <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
-        For assistance with refunds or cancellations, please email us at
+          For assistance with refunds or cancellations, please email us at
           <br />
           <a href="mailto:ancientsshadowsgame@gmail.com" style={{ color: '#007bff' }}>ancientsshadowsgame@gmail.com</a>
         </p>

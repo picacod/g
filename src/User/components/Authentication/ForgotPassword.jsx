@@ -41,7 +41,7 @@ function ForgotPassword() {
             }} 
             className='card shadow rounded-0'
         >
-            <h3 className='mb-3 text-secondary'>Forgot Password?</h3>
+            <h5 className='mb-3 text-secondary'>Forgot Password?</h5>
             <Form onSubmit={handleSubmit}>
                 <FloatingLabel controlId="floatingInput" label="Email" className="rounded-0 mb-3">
                     <Form.Control

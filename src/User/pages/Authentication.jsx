@@ -37,6 +37,7 @@ const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, nam
   </FloatingLabel>
 );
 
+
 function Authentication({ insideRegister }) {
   const [userInputs, setUserInputs] = useState({
     username: '',
@@ -44,6 +45,7 @@ function Authentication({ insideRegister }) {
     password: ''
   });
   const [validationErrors, setValidationErrors] = useState('');
+  const [passwordErrors, setPasswordErrors] = useState('');
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -58,42 +60,54 @@ function Authentication({ insideRegister }) {
   }
 
   // Password validation function
-  // const validatePassword = (password) => {
-  //   let errors = '';
-  //   const minLength = 8;
-  //   const hasUppercase = /[A-Z]/.test(password);
-  //   const hasLowercase = /[a-z]/.test(password);
-  //   const hasNumber = /[0-9]/.test(password);
-  //   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+  const validatePassword = (password) => {
+    let errors = '';
+    const minLength = 8;
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-  //   if (password.length < minLength) {
-  //     errors = `Password must be at least ${minLength} characters long.`;
-  //   } else if (!hasUppercase) {
-  //     errors = 'Password must contain at least one uppercase letter.';
-  //   } else if (!hasLowercase) {
-  //     errors = 'Password must contain at least one lowercase letter.';
-  //   } else if (!hasNumber) {
-  //     errors = 'Password must contain at least one number.';
-  //   } else if (!hasSpecialChar) {
-  //     errors = 'Password must contain at least one special character.';
-  //   }
+    if (password.length < minLength) {
+      errors = `Password must be at least ${minLength} characters long.`;
+    } else if (!hasUppercase) {
+      errors = 'Password must contain at least one uppercase letter.';
+    } else if (!hasLowercase) {
+      errors = 'Password must contain at least one lowercase letter.';
+    } else if (!hasNumber) {
+      errors = 'Password must contain at least one number.';
+    } else if (!hasSpecialChar) {
+      errors = 'Password must contain at least one special character.';
+    }
 
-  //   return errors;
-  // };
+    return errors;
+  };
 
+  const handlePasswordChange = (event) => {
+    const { name, value } = event.target;
+    setUserInputs({ ...userInputs, [name]: value });
+    if (name === 'password') {
+      const errors = validatePassword(value);
+      setPasswordErrors(errors);
+    }
+  };
+
+ 
   const handleSubmit = async (event) => {
     event.preventDefault();
+  
+    const passwordValidation = validatePassword(userInputs.password);
+    if (passwordValidation) {
+      setValidationErrors(passwordValidation);
+      return;
+    } else {
+      setValidationErrors(''); // Clear errors if password is valid
+    }
 
-    // const passwordValidation = validatePassword(userInputs.password);
-    // if (passwordValidation) {
-    //   setValidationErrors(passwordValidation);
-    //   return;
-    // }
-
-
+  
     const endpoint = insideRegister ? 'https://gamebackend.pythonanywhere.com/api/register/' : 'https://gamebackend.pythonanywhere.com/api/login/';
-
-    // Prepare the data based on whether the user is registering or logging in
+  
+    // Prepare the data
     const data = insideRegister ? {
       username: userInputs.username,
       email: userInputs.email,
@@ -102,40 +116,41 @@ function Authentication({ insideRegister }) {
       email: userInputs.email,
       password: userInputs.password
     };
-
-    console.log("Submitting data to:", endpoint);
-    console.log("Data:", data);
-
+  
     try {
       // Make the API call
       const response = await axios.post(endpoint, data);
-      console.log("Response:", response);
-
+  
+      // Check for registration success
       if (insideRegister) {
-        // Handle registration success
-        if (response.data.message === 'user registered successfully. A verifucation email has been sent.') {
-          alert(response.data.message);
+        if (response.data.message === 'User registered successfully. A verification email has been sent.') {
+          // setSuccessMessage(response.data.message);
+          // setErrorMessage('');
+          enqueueSnackbar(response.data.message, { variant: 'success', autoHideDuration: 2500 });
           localStorage.setItem('user_id', response.data.user_id);
           navigate('/verify-otp');
-        } return (alert('error user alreadt exist'))
+        } else {
+          // setErrorMessage('Error: User already exists or another issue occurred');
+          // setSuccessMessage('');     
+          enqueueSnackbar(' User already exists or another issue occurred', { variant: 'error', autoHideDuration: 2500 }); 
+          }
       } else {
         // Handle login success
         localStorage.setItem('access_token', response.data.access_token);
         localStorage.setItem('refresh_token', response.data.refresh_token);
         sessionStorage.setItem('user_id', response.data.user_id);
-        // alert(response.data.message);
-        enqueueSnackbar('Loggined successfully!', {
-          variant: 'success',
-          autoHideDuration: 2500,
-        });
+        enqueueSnackbar('Logged in successfully!', { variant: 'success', autoHideDuration: 2500 });
         navigate('/');
       }
     } catch (error) {
-      // Handle error
       console.error("Error during API call:", error);
-      alert(error.response?.data?.message || 'An error occurred');
-    }
+      // setErrorMessage(error.response?.data?.message || 'An error occurred');
+      // setSuccessMessage('');  
+      enqueueSnackbar(error.response?.data?.message || 'An error occurred', { variant: 'error', autoHideDuration: 2500 });
+      }
   };
+  
+
 
 
 
@@ -155,13 +170,19 @@ function Authentication({ insideRegister }) {
       navigate('/');
     } catch (error) {
       console.error('Google login error:', error);
-      alert('An error occurred during Google login');
+      enqueueSnackbar('An error occured during google login!', {
+        variant: 'success',
+        autoHideDuration: 2500,
+      });
     }
   };
 
   const handleGoogleError = (error) => {
     console.error('Google login error:', error);
-    alert('An error occurred during Google login');
+    enqueueSnackbar('An error occured during google login!', {
+      variant: 'success',
+      autoHideDuration: 2500,
+    });
   };
 
 
@@ -205,13 +226,13 @@ function Authentication({ insideRegister }) {
 
           }} className='card-shadow rounded-0 mb-5 '>
             <Link className='text-secondary' style={{ textDecoration: 'none' }} to={'/'}> <ArrowBackIosIcon style={{ fontSize: '1rem' }} /></Link>
-            <h6 style={{ color: 'grey' }} className='text-center'>
-              {insideRegister ? 'New user' : 'Sign in'}
-            </h6>
-
             <h5 style={{ color: 'black' }} className='fw-bolder text-center'>
-              {insideRegister ? 'Register' : 'Login to your account'}
+            {insideRegister ? 'Join us today!' : 'Welcome back!'}
             </h5>
+
+            <h6 style={{ color: 'grey' }} className='text-center'>
+              {insideRegister ? 'Sign up now to become a member' : 'Sign in to your account'}
+            </h6>
 
 
             <Form onSubmit={handleSubmit}>
@@ -236,17 +257,13 @@ function Authentication({ insideRegister }) {
               <PasswordField
                 label="Password"
                 showPassword={showPassword}
-                placeholder="Password"
                 onTogglePassword={() => setShowPassword(!showPassword)}
                 name="password"
                 value={userInputs.password}
-                onChange={e => {
-                 
-                  setUserInputs({ ...userInputs, password:e.target.value });
-                  // setValidationErrors(validatePassword(password));
-                }}
-                // validationErrors={validationErrors}
+                onChange={handlePasswordChange}
+                validationErrors={passwordErrors}
               />
+
               <div className='mt-4'>
                 <button
                   type="submit"
@@ -269,9 +286,9 @@ function Authentication({ insideRegister }) {
                 </div>
                 <p style={{ color: 'black' }} className='mt-3 text-center'>
                   {insideRegister ? (
-                    <>Already have an account? Click here to <Link style={{ color: '#171717' }} to={'/login'}>Login</Link></>
+                    <>Already have an account? <Link  to={'/login'}>Click here to Login</Link></>
                   ) : (
-                    <>New user? Click here to <Link style={{ color: '#171717' }} to={'/register'}>Register</Link></>
+                    <>New user? <Link  to={'/register'}>Click here to Register</Link></>
                   )}
                 </p>
               </div>
@@ -326,13 +343,13 @@ function Authentication({ insideRegister }) {
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
           }} className='card-shadow rounded-0'>
             {/* Content of the overlapping box */}
-            <h6 style={{ color: 'grey' }} className='text-center'>
-              {insideRegister ? 'New user' : 'Sign in'}
-            </h6>
-
             <h5 style={{ color: 'black' }} className='fw-bolder text-center'>
-              {insideRegister ? 'Register' : 'Login to your account'}
+            {insideRegister ? 'Join us today!' : 'Welcome back!'}
             </h5>
+
+            <h6 style={{ color: 'grey' }} className='text-center'>
+              {insideRegister ? 'Sign up now to become a member' : 'Sign in to your account'}
+            </h6>
 
             <Form onSubmit={handleSubmit}>
               {insideRegister &&
@@ -356,15 +373,11 @@ function Authentication({ insideRegister }) {
               <PasswordField
                 label="Password"
                 showPassword={showPassword}
-                placeholder="Password"
                 onTogglePassword={() => setShowPassword(!showPassword)}
+                name="password"
                 value={userInputs.password}
-                onChange={e => {
-                 
-                  setUserInputs({ ...userInputs, password:e.target.value });
-                  // setValidationErrors(validatePassword(password));
-                }}
-                // validationErrors={validationErrors}
+                onChange={handlePasswordChange}
+                validationErrors={passwordErrors}
               />
               <div className='mt-4'>
                 <button
@@ -389,9 +402,9 @@ function Authentication({ insideRegister }) {
                 </div>
                 <p style={{ color: 'black' }} className='mt-3 text-center'>
                   {insideRegister ? (
-                    <>Already have an account? Click here to <Link style={{ color: '#171717' }} to={'/login'}>Login</Link></>
+                    <>Already have an account ? <Link to={'/login'}>Click here to Login</Link></>
                   ) : (
-                    <>New user? Click here to <Link style={{ color: '#171717' }} to={'/register'}>Register</Link></>
+                    <>New user? <Link  to={'/register'}>Click here to Register</Link></>
                   )}
                 </p>
               </div>

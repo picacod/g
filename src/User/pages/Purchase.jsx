@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import darkbg from '../../assets/bg-2.jpg';
-import ram from '../../assets/ram.png';
-import ico from '../../assets/game-icon.png';
+
 import prevButton from '../../assets/left.png'; // Your previous button image
 import nextButton from '../../assets/right.png'; // Your next button image
 import { useLocation } from 'react-router-dom';
@@ -109,7 +108,7 @@ function Purchase() {
 
           <div className="row h-100" >
             <div className="col-lg-6 mt-3">
-              <img className="img-fluid" src={`https://gamebackend.pythonanywhere.com${characterDetails.img}`} alt="RAM" />
+              <img className="img-fluid" loading="lazy" src={`https://gamebackend.pythonanywhere.com${characterDetails.img}`} alt="RAM" />
             </div>
             <div className="col-lg-6 position-relative">
               <div className="w-100 h-100 d-flex flex-column mt-5">
