@@ -36,7 +36,7 @@ const PasswordField = ({ label, placeholder, showPassword, onTogglePassword, nam
       >
         {showPassword ? <FaEye /> : <FaEyeSlash />}
       </Button>
-   
+
     </FloatingLabel>
     {/* Error message display */}
     {validationErrors && (
@@ -130,7 +130,7 @@ function Authentication({ insideRegister }) {
 
     try {
       setLoading(true); // Start loader when the form is submitted
-      
+
       // Make the API call
       const response = await axios.post(endpoint, data);
 
@@ -214,7 +214,7 @@ function Authentication({ insideRegister }) {
           background: 'linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1))',
           zIndex: 1,
         }}></div>
-        <div className='text-center d-lg-none'>
+        <div className='text-center d-none'>
           <p className='text-light h2-anim' style={{
             fontSize: '24px',
             fontWeight: '600',
@@ -299,8 +299,8 @@ function Authentication({ insideRegister }) {
                   className='btn rounded-0 golden-button'
                 >
                   {loading ? (
-        <CircularProgress size={24} color="inherit" /> 
-      ) : ( insideRegister ? 'Register' : 'Login')}
+                    <CircularProgress size={24} color="inherit" />
+                  ) : (insideRegister ? 'Register' : 'Login')}
                 </button>
                 <div className='d-flex justify-content-between align-items-center w-100 mt-1'>
                   {
@@ -447,12 +447,12 @@ function Authentication({ insideRegister }) {
                 // disabled={!!validationErrors}
                 >
                   {loading ? (
-        <CircularProgress size={24} color="inherit" /> // Show loader if loading
-      ) : ( insideRegister ? 'Register' : 'Login')}
+                    <CircularProgress size={24} color="inherit" /> // Show loader if loading
+                  ) : (insideRegister ? 'Register' : 'Login')}
                 </button>
                 <div className='d-flex justify-content-between align-items-center w-100 mt-1'>
                   {
-                    loginError == 'Verification record not found. Please verify your OTP.' ? <p style={{ color: 'blue'}}>
+                    loginError == 'Verification record not found. Please verify your OTP.' ? <p style={{ color: 'blue' }}>
                       <Link style={{ color: '#171717', fontSize: '0.9rem' }} to={'/resend-otp'}>
                         Verify Otp
                       </Link>
