@@ -61,9 +61,9 @@ function Header() {
                     icon: "success",
                     customClass: {
                         popup: 'custom-swal-background', // Applying the custom style again for success alert
-                         title: 'custom-swal-title',       // Title color
-                htmlContainer: 'custom-swal-text', // Text color
-                confirmButton: 'custom-swal-confirm-button' // Confirm button style
+                        title: 'custom-swal-title',       // Title color
+                        htmlContainer: 'custom-swal-text', // Text color
+                        confirmButton: 'custom-swal-confirm-button' // Confirm button style
                     },
                 });
                 navigate('/');
@@ -145,49 +145,58 @@ function Header() {
                         </Nav>
 
                         {
-  isMobile ? (
-    <div>
-      <Nav.Link href="/login" className="top-bar mt-0">LOGIN</Nav.Link>
-    </div>
-  ) : (
-    <NavDropdown
-      id="nav-dropdown-dark-example"
-      title={
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <FaUser
-            style={{
-              width: isMobile ? '10%' : '100%',
-              color: '#b78846',
-              fontSize: isMobile ? '1rem' : '1.2rem',
-              transition: 'color 0.3s',
-            }}
-            onMouseEnter={(e) => (e.target.style.color = 'white')}
-            onMouseLeave={(e) => (e.target.style.color = '#b78846')}
-          />
-        </div>
-      }
-      menuVariant="dark"
-      className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'} custom-dropdown`}
-      align="end"
-    >
-      {user_id ? (
-        <>
-          <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-        </>
-      ) : (
-        <>
-          <Link to={'/login'} style={{ textDecoration: 'none' }}>
-            <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-          </Link>
-          <NavDropdown.Divider />
-          <Link to={'/register'} style={{ textDecoration: 'none' }}>
-            <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
-          </Link>
-        </>
-      )}
-    </NavDropdown>
-  )
-}
+                            isMobile ? (
+
+                                <>
+                                    {
+                                        !user_id ? <div>
+                                            <Nav.Link href="/login" className="top-bar mt-0">LOGIN</Nav.Link>
+                                        </div> : <div>
+                                            <Nav.Link  className="top-bar mt-0" onClick={handleLogout}>LOGOUT</Nav.Link>
+                                        </div>
+                                    }
+
+                                </>
+
+                            ) : (
+                                <NavDropdown
+                                    id="nav-dropdown-dark-example"
+                                    title={
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <FaUser
+                                                style={{
+                                                    width: isMobile ? '10%' : '100%',
+                                                    color: '#b78846',
+                                                    fontSize: isMobile ? '1rem' : '1.2rem',
+                                                    transition: 'color 0.3s',
+                                                }}
+                                                onMouseEnter={(e) => (e.target.style.color = 'white')}
+                                                onMouseLeave={(e) => (e.target.style.color = '#b78846')}
+                                            />
+                                        </div>
+                                    }
+                                    menuVariant="dark"
+                                    className={`text-light me-5 fw-semibold ${isMobile ? 'mobile-login' : 'desktop-login'} custom-dropdown`}
+                                    align="end"
+                                >
+                                    {user_id ? (
+                                        <>
+                                            <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link to={'/login'} style={{ textDecoration: 'none' }}>
+                                                <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
+                                            </Link>
+                                            <NavDropdown.Divider />
+                                            <Link to={'/register'} style={{ textDecoration: 'none' }}>
+                                                <NavDropdown.Item href="#action/3.2">Sign Up</NavDropdown.Item>
+                                            </Link>
+                                        </>
+                                    )}
+                                </NavDropdown>
+                            )
+                        }
 
                     </Nav>
                 </Navbar.Collapse>
