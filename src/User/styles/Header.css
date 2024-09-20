@@ -17,16 +17,19 @@ body {
   .desktop-login {
     display: none !important; /* Hide desktop login button on mobile */
   }
+  
+  
 }
 
 @media (min-width: 769px) {
   .mobile-login {
     display: none !important; /* Hide mobile login button on desktop */
   }
+  
 }
 .top-bar {
   color: #b78846 !important; /* Default color for links */
-  font-size: 1.2rem !important;
+  font-size: 1rem !important;
   transition: color 0.3s ease, opacity 0.3s ease; /* Smooth transition for color and line opacity */
   margin-right: 30px;
   position: relative;
@@ -118,6 +121,46 @@ body {
     width: 300px !important;
   }
 }
+
+/* SweetAlert2 Custom Styling */
+.custom-swal-background {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(55, 50, 55, 0.2); /* Adjust transparency if needed */
+  border: 1px solid rgba(50, 50, 50, 0.1);
+  border-radius: 0px;
+  padding: 5px;
+  top: 10%; 
+}
+
+/* Title text styling */
+.custom-swal-title {
+  color: grey; /* Change the title color */
+  font-weight: 400; /* Add bold effect */
+}
+
+/* Body text styling */
+.custom-swal-text {
+  color: #666666; /* Change the body text color */
+  font-size: 16px; /* Adjust the font size */
+}
+
+/* Confirm button styling */
+.custom-swal-confirm-button {
+  background-color:#b78846 !important; /* Green confirm button */
+  border-radius: 0px; /* Rounded corners for the button */
+  padding: 10px 20px; /* Add padding for better button sizing */
+  color: black  !important;;
+}
+
+/* Cancel button styling */
+.custom-swal-cancel-button {
+  background-color: #b78846 !important; /* Red cancel button */
+  border-radius: 0px; /* Rounded corners for the button */
+  padding: 10px 20px; /* Add padding for better button sizing */
+  color: black !important;
+}
+
 
 
 /* Only apply this background color on mobile view */

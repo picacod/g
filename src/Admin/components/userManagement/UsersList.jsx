@@ -96,7 +96,9 @@ function UsersList() {
                                     <th scope="row">{user.id}</th>
                                     <td>{user.date_joined}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.username}</td>
+                                    <td>
+                                        {user.username} {user.is_verified ? '' : <span className='text-danger'>(Unverified)</span>}
+                                    </td>
                                    
                                     <td>
                                         <div className='d-flex'>

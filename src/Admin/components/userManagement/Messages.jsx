@@ -84,7 +84,7 @@ function Messages() {
                             contacts.map((contact) => (
                                 <tr key={contact.id}>
                                     <th scope="row">{contact.id}</th>
-                                    <td>{contact.date}</td>
+                                    <td>{new Date(contact.created_at).toLocaleDateString('en-GB')}</td>
                                     <td>{contact.email}</td>
                                     <td>{contact.name}</td>
                                     <td>{contact.subject}</td>

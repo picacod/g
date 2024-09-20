@@ -21,6 +21,7 @@ import Contact from '../components/Policy/Contact';
 import AllNews from '../components/news/AllNews';
 import News from '../components/news/News';
 import Terms from '../components/Policy/Terms';
+import ResendOTP from '../components/Authentication/ResendOtp';
 
 function UserRoutes() {
   return (
@@ -32,6 +33,7 @@ function UserRoutes() {
         <Route path='register' element={<Authentication insideRegister />} />
         <Route path='forgot-password' element={<ForgotPassword/>} />
         <Route path='verify-otp' element={<VerifyOtp/>} />
+        <Route path='resend-otp' element={<ResendOTP/>} />
         <Route path='resetpassword/:uid/:token' element={<ResetPassword/>} />
         {/* Others */}
         {/* <Route path="about" element={<UserLayout showHeaderAndFooter={true}><About /></UserLayout>} /> */}

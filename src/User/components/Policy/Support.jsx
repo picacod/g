@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Footer from '../../common/Footer';
+import { Link } from 'react-router-dom';
 
 function Support() {
+  
+
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
+  
   return (
+    <>
     <div style={{ 
         fontFamily: 'Arial, sans-serif', 
         minHeight: '100vh', 
         maxWidth: '100%', 
         padding: '20px', 
-        backgroundColor: '#f9f9f9', 
+        backgroundColor: '#0000', 
         borderRadius: '8px',
         display: 'flex',
         flexDirection: 'column',
@@ -16,21 +25,29 @@ function Support() {
       }}
     >
       <div style={{ 
-          maxWidth: '800px', 
-          width: '100%', 
-          backgroundColor: '#ffffff', 
-          padding: '20px', 
+          width: '100%',
+          backgroundColor: 'rgba(55, 55, 55, 0.3)', // Slight transparency for better blur effect
+          padding: '20px',
           borderRadius: '8px',
-          boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+          boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+          backdropFilter: 'blur(10px)', // Blur effect
+          WebkitBackdropFilter: 'blur(10px)', // Safari support
+          color:'#b78846'
         }}
+        className='container'
       >
-        <h1 style={{ fontSize: '2em', marginBottom: '20px', color: '#333' }}>Support</h1>
-        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+        <Link to={'/'}><p>Back</p></Link>
+        <h1 style={{ fontSize: '2em', marginBottom: '20px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>Support</h1>
+        <p style={{ fontSize: '1em', lineHeight: '1.6', }}>
           Welcome to our support page. We're here to help you with any questions or issues you may have. Below are the different ways you can reach out to us and the resources available to assist you.
         </p>
         
-        <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Contact Us</h2>
-        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+        <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>Contact Us</h2>
+        <p style={{ fontSize: '1em', lineHeight: '1.6',  }}>
           If you need assistance or have questions, please contact our support team:
           <ul>
             <li>Email: <a href="mailto:support@example.com" style={{ color: '#007bff' }}>ancientsshadowsgame@gmail.com</a></li>
@@ -54,8 +71,10 @@ function Support() {
           </ul>
         </p> */}
         
-        <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Support Hours</h2>
-        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+        <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>Support Hours</h2>
+        <p style={{ fontSize: '1em', lineHeight: '1.6'}}>
           Our support team is available during the following hours:
           <ul>
             <li>Monday to Friday: 9:00 AM - 6:00 PM</li>
@@ -65,6 +84,8 @@ function Support() {
         </p>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }
 

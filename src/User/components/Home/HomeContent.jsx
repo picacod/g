@@ -165,7 +165,7 @@ function HomeContent() {
                             padding: '10px',
                             fontSize: '1rem',
                         }}>
-                            <h3 className='h1-anim text-center' style={{ color: '#a67c00', fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
+                            <h3 className='h2-anim text-center' style={{ color: '#a67c00', fontSize: '3rem', ...(isMobile && { fontSize: '2rem' }), }}>The Rebirth of Legends</h3>
                             <p
                                 style={{
                                     background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
@@ -175,11 +175,9 @@ function HomeContent() {
                                     marginTop: '1rem',
                                     marginBottom: '0.5rem',
                                     textAlign: isMobile ? 'justify' : 'center',
-                                    ...(isMobile && { fontSize: '1.5rem' }),
+                                    ...(isMobile && { fontSize: '1.2rem' }),
                                 }}>
-                                It's a journey into the heart of one of the greatest stories ever told. Step into a universe
-                                filled with ancient cities, dense forests, and treacherous landscapes, all meticulously
-                                crafted to reflect the grandeur of the Ramayana.
+                                Embark on a riveting journey into the world of Ramayana, one of the greatest stories ever told. Navigate through ancient cities, treacherous landscapes, and dense forests that are meticulously crafted to make you swoon at the grasp of its grandeur. Don the roles of epic characters and take on new adventures of cosmic magnitude to define their destiny through your choices.
                             </p>
                         </div>
                     </div>
@@ -244,7 +242,7 @@ function HomeContent() {
                                                     null
                                             }
 
-                                            <h1 className='h1-anim' style={{ fontSize: isMobile ? '2rem' : '5rem', textAlign: 'start' }}>
+                                            <h1 className='h2-anim' style={{ fontSize: isMobile ? '2rem' : '5rem', textAlign: 'start' }}>
                                                 {contentData[currentContent].name}
                                             </h1>
                                             <div className="decorative-line">

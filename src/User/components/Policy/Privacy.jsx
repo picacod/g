@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Footer from '../../common/Footer';
+import { Link} from 'react-router-dom';
 
 function Privacy() {
+
+useEffect(()=>{
+  window.scrollTo(0, 0);
+},[])
   return (
+   <>
     <div style={{
       minHeight: '100vh',
       maxWidth: '100%',
       padding: '20px',
-      backgroundColor: '#f9f9f9',
+      backgroundColor: '#0000',
       borderRadius: '8px',
       display: 'flex',
       flexDirection: 'column',
@@ -16,18 +23,24 @@ function Privacy() {
     >
       <div style={{
         width: '100%',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'rgba(55, 55, 55, 0.3)', // Slight transparency for better blur effect
         padding: '20px',
         borderRadius: '8px',
-        boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+        boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+        backdropFilter: 'blur(10px)', // Blur effect
+        WebkitBackdropFilter: 'blur(10px)', // Safari support
+        color:'#b78846'
       }}
         className='container fs-5'
       >
-        <h1 style={{ fontSize: '2em', marginBottom: '20px', color: '#333' }}>Privacy Policy</h1>
-        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+        <Link to={'/'}><p>Back</p></Link>
+        <h1 style={{ fontSize: '2em', marginBottom: '20px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>Privacy Policy</h1>
+        <p style={{ fontSize: '1em', lineHeight: '1.6',  }}>
           Last updated September 09, 2024
         </p>
-        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+        <p style={{ fontSize: '1em', lineHeight: '1.6', }}>
           This Privacy Notice for Picacod Consultancy Services Pvt. Ltd (doing business as PCS) ('we',
           'us', or 'our'), describes how and why we might access, collect, store, use, and/or share
           ('process') your personal information when you use our services (Services), including when you
@@ -44,8 +57,10 @@ function Privacy() {
           ancientsshadowsgame@gmail.com
         </p>
 
-        <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>SUMMARY OF KEY POINTS</h2>
-        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+        <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>SUMMARY OF KEY POINTS</h2>
+        <p style={{ fontSize: '1em', lineHeight: '1.6' }}>
           This summary provides key points from our Privacy Notice, but you can find out more details
           about any of these topics by clicking the link following each key point or by using our table of
           contents below find the section you are looking for.
@@ -85,10 +100,12 @@ function Privacy() {
         </p>
 
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>
             TABLE OF CONTENTS
           </h2>
-          <ol style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+          <ol style={{ fontSize: '1em', lineHeight: '1.6' }}>
             <li>WHAT INFORMATION DO WE COLLECT?</li>
             <li>HOW DO WE PROCESS YOUR INFORMATION?</li>
             <li>WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</li>
@@ -106,7 +123,9 @@ function Privacy() {
 
 
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>1. WHAT INFORMATION DO WE COLLECT?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>1. WHAT INFORMATION DO WE COLLECT?</h2>
           <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
             Personal information you disclose to us
           </p>
@@ -156,7 +175,9 @@ function Privacy() {
             Policy, including the Limited Use requirements</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>2. HOW DO WE PROCESS YOUR INFORMATION?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>2. HOW DO WE PROCESS YOUR INFORMATION?</h2>
           <p>In Short: We process your information to provide, improve, and administer our Services,
             communicate with you, for security and fraud prevention, and to comply with law. We may also
             process your information for other purposes with your consent.</p>
@@ -191,8 +212,10 @@ function Privacy() {
             obligations, respond to legal requests, and exercise, establish, or defend our legal rights.</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>3. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</h2>
-          <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>3. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</h2>
+          <p style={{ fontSize: '1em', lineHeight: '1.6',  }}>
             In Short: We may share information in specific situations described in this section and/or with
             the following third parties.
           </p>
@@ -219,7 +242,9 @@ function Privacy() {
             certain products, services, or promotions.</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>4. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>4. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</h2>
           <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
             In Short: We may use cookies and other tracking technologies to collect and store your
             information
@@ -238,7 +263,9 @@ function Privacy() {
             cookies is set out in our Cookie Notice.</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>5. HOW DO WE HANDLE YOUR SOCIAL LOGINS?</h2>
           <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
             In Short: If you choose to register or log in to our Services using a social media account, we
             may have access to certain information about you.
@@ -257,7 +284,9 @@ function Privacy() {
             your privacy preferences on their sites and apps.</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>6. HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>6. HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
           <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
             In Short: We keep your information for as long as necessary to fulfil the purposes outlined in this
             Privacy Notice unless otherwise redired by law.
@@ -273,7 +302,9 @@ function Privacy() {
             personal information and isolate it from any further processing until deletion is possible.</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>7. DO WE COLLECT INFORMATION FROM MINORS?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>7. DO WE COLLECT INFORMATION FROM MINORS?</h2>
           <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
             In Short: We do not knowingly collect data from or market to children under 18 years of age.
           </p>
@@ -286,7 +317,9 @@ function Privacy() {
             collected from children under age 18, please contact us at ancientsshadowsgames@gmail.com.</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>8. WHAT ARE YOUR PRIVACY RIGHTS?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>8. WHAT ARE YOUR PRIVACY RIGHTS?</h2>
           <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
             In Short: You may review, change, or terminate your account at any time, depending on your
             country, province, or state of residence.
@@ -322,8 +355,10 @@ function Privacy() {
             ancientsshadowsgame@gmail.com</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>9. CONTROLS FOR DO-NOT-TRACK FEATURES</h2>
-          <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>9. CONTROLS FOR DO-NOT-TRACK FEATURES</h2>
+          <p style={{ fontSize: '1em', lineHeight: '1.6',  }}>
             Most web browsers and some mobile operating systems and mobile applications include a
             Do-Not-Track ('DNT') feature or setting you can activate to signal your privacy preference not to
             have data about your online browsing activities monitored and collected. At this stage, no
@@ -335,7 +370,9 @@ function Privacy() {
           </p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>10. DO WE MAKE UPDATES TO THIS NOTICE?</h2>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>10. DO WE MAKE UPDATES TO THIS NOTICE?</h2>
           <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
             In Short: Yes, we will update this notice as necessary to stay compliant with relevant laws
           </p>
@@ -346,8 +383,10 @@ function Privacy() {
             be informed of how we are protecting your information.</p>
         </div>
         <div>
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>11. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
-          <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>11. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
+          <p style={{ fontSize: '1em', lineHeight: '1.6',}}>
             If you have questions or comments about this notice, you may email us at
             ancientsshadowsgames@gmail.com or contact us by post at
             Picacod Consultancy Services Pvt. Ltd Heavenly Plaza 11th Floor, Office NO: H11 Ernakulam,
@@ -363,14 +402,20 @@ function Privacy() {
           circumstances by applicable law. To request to review, update, or delete your personal
           information, please fill out and submit a data subject access request.
         </div>
-        <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>Contact Us</h2>
-        <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+        <h2 style={{ fontSize: '1.5em', marginTop: '30px',  background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>Contact Us</h2>
+        <p style={{ fontSize: '1em', lineHeight: '1.6' }}>
           For any questions regarding this Privacy Policy, please contact us at:
           <br />
           <a href="mailto:ancientsshadowsgames@gmail.com" style={{ color: '#007bff' }}>ancientsshadowsgames@gmail.com</a>
         </p>
       </div>
+      
     </div>
+    <Footer/>
+   </>
+    
   );
 }
 

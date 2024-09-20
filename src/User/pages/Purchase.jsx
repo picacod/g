@@ -22,6 +22,7 @@ function Purchase() {
   const { characterId, characterDetails } = location.state || {};
   const [isLoading, setIsLoading] = useState(true);
   const [skills, setSkills] = useState([]);
+  const [isPurchased, setIspurchased] = useState(false)
 
 
   // useEffect(() => {
@@ -75,6 +76,42 @@ function Purchase() {
 
   const truncatedText = `${fullText.substring(0, 150)}...`; // Limit the display to around 150 characters (adjust as needed)
 
+  const handlePayment = async () => {
+    try {
+      const response = await axios.post('https://gamebackend.pythonanywhere.com/api/create_order/', {
+        amount: 499 * 100 // Amount in paise
+      });
+      const { id, currency, amount } = response.data;
+      const options = {
+        key: 'rzp_test_3YXYem8NpYQGGw', // Replace with your Razorpay Key ID
+        amount: amount,
+        currency: currency,
+        name: 'Picacod Consultancy Services Pvt. Ltd',
+        description: 'Payment for purchase',
+        order_id: id,
+        handler: async function (response) {
+          await axios.post('https://gamebackend.pythonanywhere.com/api/verify_payment/', {
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature
+          });
+          alert('Payment Successful!');
+        },
+        prefill: {
+          name: 'Your Name',
+          email: 'your.email@example.com',
+          contact: '9999999999'
+        },
+        theme: {
+          color: '#3399cc'
+        }
+      };
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } catch (error) {
+      console.error('Error during payment:', error);
+    }
+  };
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
@@ -121,7 +158,7 @@ function Purchase() {
                   }}
                 >
 
-                  {characterDetails.name  }
+                  {characterDetails.name}
                 </h1>
                 <div className="decorative-line mt-1">
                   <div className="decoration decoration-left"></div>
@@ -143,12 +180,18 @@ function Purchase() {
                   )}
                 </p>
                 <div className="d-flex align-items-center">
-                  <p className="fs-1 mb-0 me-3" style={{ color: '#f0c95b' }}>
+                  {
+                    !isPurchased  ? <><p className="fs-1 mb-0 me-3" style={{ color: '#f0c95b' }}>
                     ₹499
                   </p>
                   <button role="button" className="golden-button">
-                    <span className="golden-text" >Buy Now</span>
+                    <span className="golden-text" onClick={handlePayment}>Buy Now</span>
+                  </button></> : <button role="button" className="golden-button mt-3 mb-3">
+                    <span className="golden-text">Purchased</span>
                   </button>
+                  }
+                 
+                  
                 </div>
               </div>
             </div>
@@ -216,11 +259,11 @@ function Purchase() {
                 </div>
               </div>
             </div>
-            <div style={{paddingTop: isMobile ? '1rem' : '10rem' }}>
-            <div class="decorative-line mt-5" >
-              <div class="decoration decoration-left"></div>
-              <div class="decoration decoration-right"></div>
-            </div>
+            <div style={{ paddingTop: isMobile ? '1rem' : '10rem' }}>
+              <div class="decorative-line mt-5" >
+                <div class="decoration decoration-left"></div>
+                <div class="decoration decoration-right"></div>
+              </div>
             </div>
           </div>
         </div>

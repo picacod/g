@@ -64,42 +64,60 @@ function Footer() {
           </div>
 
           {/* Other Columns */}
-          <div className="col-md-2 mb-4 d-flex flex-column align-items-center" style={{ color: '#b78846' }}>
-            {/* <p className="text-uppercase" style={{
+          {
+            !isMobile && <div className="col-md-2 mb-4 d-flex flex-column align-items-center" style={{ color: '#b78846' }}>
+              {/* <p className="text-uppercase" style={{
               background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2rem' : '1.5rem'  // Adjust text size for mobile
             }}>About Us</p>
             <p><Link to="/all-news" className="text-decoration-none " style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>News & updates</Link></p> */}
-            <img width={100} src={unity} alt="" style={{ filter: "invert(25%) sepia(57%) saturate(527%) hue-rotate(341deg) brightness(98%) contrast(77%)" }} />
-            <img width={70} src={ue} alt="" style={{ filter: "invert(25%) sepia(57%) saturate(527%) hue-rotate(341deg) brightness(98%) contrast(77%)" }} />
+              <img width={100} src={unity} alt="" style={{ filter: "invert(25%) sepia(57%) saturate(527%) hue-rotate(341deg) brightness(98%) contrast(77%)" }} />
+              <img width={70} src={ue} alt="" style={{ filter: "invert(25%) sepia(57%) saturate(527%) hue-rotate(341deg) brightness(98%) contrast(77%)" }} />
+            </div>
+          }
 
-          </div>
-
-          <div className="col-md-2 col-sm-1 mb-4">
+          <div className="col-md-2 col-6  mb-4 ">
             <p className="text-uppercase" style={{
               background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2em' : '1.5em'  // Adjust text size for mobile
             }}>Support</p>
-            <p><Link to="/support" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>Help Center</Link></p>
-            <p><Link to="/contact-us" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Contact Us</Link></p>
-            <p><Link to="/refund-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Refund</Link></p>
+            <p><Link to="/support" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>‣ Help Center</Link></p>
+            <p><Link to="/contact-us" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>‣ Contact Us</Link></p>
+            <p><Link to="/refund-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>‣ Refund Policy</Link></p>
           </div>
 
-          <div className="col-md-2 col-sm-1 mb-4">
+          <div className="col-md-2 col-6 mb-4">
             <p className="text-uppercase" style={{
               background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               fontSize: isMobile ? '1.2em' : '1.5em'  // Adjust text size for mobile
             }}>Legal</p>
-            <p><Link to="/privacy-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Privacy Policy</Link></p>
+            <p><Link to="/privacy-policy" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>‣ Privacy Policy</Link></p>
             {/* <p><Link to="/cookie-policy" className="text-decoration-none" style={{ color: '#b78846' , fontSize: isMobile ? '0.9rem' : '1.2em' }}>Cookie Policy</Link></p> */}
-            <p><Link to="/terms" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>Terms & Conditions</Link></p>
+            <p><Link to="/terms" className="text-decoration-none" style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em' }}>‣ Terms & Conditions</Link></p>
           </div>
+
+          {
+            isMobile && <div className="col-md-2 mb-4 d-flex flex-row align-items-center" style={{ color: '#b78846' }}>
+              {/* <p className="text-uppercase" style={{
+              background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontSize: isMobile ? '1.2rem' : '1.5rem'  // Adjust text size for mobile
+            }}>About Us</p>
+            <p><Link to="/all-news" className="text-decoration-none " style={{ color: '#b78846', fontSize: isMobile ? '0.9rem' : '1.2em'  }}>News & updates</Link></p> */}
+                          <img width={70} src={ue} alt="" style={{ filter: "invert(25%) sepia(57%) saturate(527%) hue-rotate(341deg) brightness(98%) contrast(77%)" }} />
+
+              <img width={100} src={unity} alt="" style={{ filter: "invert(25%) sepia(57%) saturate(527%) hue-rotate(341deg) brightness(98%) contrast(77%)" }} />
+
+
+            </div>
+          }
         </div>
       </div>
     </div>

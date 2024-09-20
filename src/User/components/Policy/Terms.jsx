@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Footer from '../../common/Footer'
+import { Link } from 'react-router-dom';
+
 
 function Terms() {
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+      },[])
+
     return (
+        <>
         <div style={{
             fontFamily: 'Arial, sans-serif',
             minHeight: '100vh',
             maxWidth: '100%',
             padding: '20px',
-            backgroundColor: '#f9f9f9',
+            backgroundColor: '#0000',
             borderRadius: '8px',
             display: 'flex',
             flexDirection: 'column',
@@ -16,19 +25,27 @@ function Terms() {
         }}
         >
             <div style={{
-                width: '100%',
-                backgroundColor: '#ffffff',
-                padding: '20px',
-                borderRadius: '8px',
-                boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+               width: '100%',
+               backgroundColor: 'rgba(55, 55, 55, 0.3)', // Slight transparency for better blur effect
+               padding: '20px',
+               borderRadius: '8px',
+               boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+               backdropFilter: 'blur(10px)', // Blur effect
+               WebkitBackdropFilter: 'blur(10px)', // Safari support
+               color:'#b78846'
             }}
             className='container fs-5'
             >
-                <h1 style={{ fontSize: '2em', marginBottom: '20px', color: '#333' }}>TERMS AND CONDITIONS</h1>
-                <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+                 <Link to={'/'}><p>Back</p></Link>
+                <h1 style={{ fontSize: '2em', marginBottom: '20px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>TERMS AND CONDITIONS</h1>
+                <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#b78846' }}>
                     Last updated September 10, 2024
                 </p>
-                <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>AGREEMENT TO OUR LEGAL TERMS</h2>
+                <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>AGREEMENT TO OUR LEGAL TERMS</h2>
 
                 <p>We are Picacod Consultancy Services Pvt. Ltd ('Company', 'we', 'us', or 'our'), a company registered in India at
                     Heavenly Plaza, 11th Floor, Office NO: H11, Ernakulam, Kerala 682021.</p>
@@ -60,10 +77,12 @@ function Terms() {
                 <p>We recommend that you print a copy of these Legal Terms for your records.</p>
 
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>
                         TABLE OF CONTENTS
                     </h2>
-                    <ol style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+                    <ol style={{ fontSize: '1em', lineHeight: '1.6', color: '#b78846' }}>
                         <li>OUR SERVICES</li>
                         <li>INTELLECTUAL PROPERTY RIGHTS</li>
                         <li>USER REPRESENTATIONS</li>
@@ -90,7 +109,9 @@ function Terms() {
                     </ol>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>1. OUR SERVICES</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px',background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>1. OUR SERVICES</h2>
                     <p>The information provided when using the Services is not intended for distribution to or use by
                         any person or entity in any jurisdiction or country where such distribution or use would be
                         contrary to law or regulation or which would subject us to any registration requirement within
@@ -99,8 +120,10 @@ function Terms() {
                         laws, if and to the extent local laws are applicable.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>2. INTELLECTUAL PROPERTY RIGHTS</h2>
-                    <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>2. INTELLECTUAL PROPERTY RIGHTS</h2>
+                    <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#b78846' }}>
                         Our intellectual property
                     </p>
                     <p>We are the owner or the licensee of all intellectual property rights in our Services, including all
@@ -113,7 +136,7 @@ function Terms() {
                     <p>Our Content and Marks are protected by copyright and trademark laws (and various other
                         intellectual property rights and unfair competition laws) and treaties in the United States and
                         around the world.</p>
-                    <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+                    <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#b78846' }}>
                         Your use of our Services
                     </p>
                     <p>Subject to your compliance with these Legal Terms, including the 'PROHIBITED ACTIVITIES'
@@ -160,7 +183,9 @@ function Terms() {
                         party's intellectual property rights, or (c) applicable law.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>3. USER REPRESENTATIONS</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>3. USER REPRESENTATIONS</h2>
                     <p>By using the Services, you represent and warrant that: (1) all registration information you submit
                         will be true, accurate, current, and complete, (2) you will maintain the accuracy of such
                         information and promptly update such registration information as necessary; (3) you have the
@@ -175,14 +200,18 @@ function Terms() {
                         Services (or any portion thereof).</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>4. USER REGISTRATION</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>4. USER REGISTRATION</h2>
                     <p>You may be required to register to use the Services. You agree to keep your password
                         confidential and will be responsible for all use of your account and password. We reserve the
                         right to remove, reclaim, or change a username you select if we determine, in our sole
                         discretion, that such username is inappropriate, obscene, or otherwise objectionable.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>5. PURCHASES AND PAYMENT</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px',background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>5. PURCHASES AND PAYMENT</h2>
                     <p>We accept the following forms of payment:</p>
                     <p>QR Code</p>
                     <p>You agree to provide current, complete, and accurate purchase and account information for all
@@ -204,7 +233,9 @@ function Terms() {
                     <p>resellers, or distributors.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>6. PROHIBITED ACTIVITIES</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>6. PROHIBITED ACTIVITIES</h2>
                     <p>You may not access or use the Services for any purpose other than that for which we make the
                         Services available. The Services may not be used in connection with any commercial
                         endeavours except those that are specifically endorsed or approved by us.</p>
@@ -256,7 +287,9 @@ function Terms() {
 
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>7. USER GENERATED CONTRIBUTIONS</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>7. USER GENERATED CONTRIBUTIONS</h2>
                     <p>The Services does not offer users to submit or post content. We may provide you with the
                         opportunity to create, submit, post, display, transmit, perform,
                         publish, distribute, or broadcast content and materials to us or on the Services, including but not
@@ -296,7 +329,9 @@ function Terms() {
                         in, among other things, termination or suspension of your rights to use the Services.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>8. CONTRIBUTION LICENCE</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px',background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>8. CONTRIBUTION LICENCE</h2>
                     <p>You and Services agree that we may access, store, process, and use any information and
                         personal data that you provide and your choices (including settings).</p>
                     <p>By submitting suggestions or other feedback regarding the Services, you agree that we can use
@@ -309,13 +344,17 @@ function Terms() {
                         refrain from any legal action against us regarding your Contributions.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>9. ADVERTISERS</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>9. ADVERTISERS</h2>
                     <p>We allow advertisers to display their advertisements and other information in certain areas of
                         the Services, such as sidebar advertisements or banner advertisements. We simply provide the
                         space to place such advertisements, and we have no other relationship with advertisers.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>10. SERVICES MANAGEMENT</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>10. SERVICES MANAGEMENT</h2>
                     <p>We reserve the right, but not the obligation, to: (1) monitor the Services for violations of these
                         Legal Terms; (2) take appropriate legal action against anyone who, in our sole discretion,
                         violates the law or these Legal Terms, including without limitation, reporting such user to law
@@ -328,7 +367,9 @@ function Terms() {
                         the Services.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>11. PRIVACY POLICY</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>11. PRIVACY POLICY</h2>
                     <p>We care about data privacy and security. By using the Services, you agree to be bound by our
                         Privacy Policy posted on the Services, which is incorporated into these Legal Terms. Please be
                         advised the Services are hosted in India. If you access the Services from any other region of the
@@ -338,7 +379,9 @@ function Terms() {
                         processed in India</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>12. TERM AND TERMINATION</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>12. TERM AND TERMINATION</h2>
                     <p>These Legal Terms shall remain in full force and effect while you use the Services. WITHOUT
                         LIMITING ANY OTHER PROVISION OF THESE LEGAL</p>
                     <p>TERMS, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT
@@ -356,7 +399,9 @@ function Terms() {
                         limitation pursuing civil, criminal, and injunctive redress.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>13. MODIFICATIONS AND INTERRUPTIONS</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>13. MODIFICATIONS AND INTERRUPTIONS</h2>
                     <p>
                         We reserve the right to change, modify, or remove the contents of the Services at any time or for
                         any reason at our sole discretion without notice. However, we have no obligation to update any
@@ -373,13 +418,17 @@ function Terms() {
                         support the Services or to supply any corrections, updates, or releases in connection therewith.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>14. GOVERNING LAW</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>14. GOVERNING LAW</h2>
                     <p>These Legal Terms shall be governed by and defined following the laws of India. Ancients
                         Shadows and yourself irrevocably consent that the courts of India shall have exclusive
                         jurisdiction to resolve any dispute which may arise in connection with these Legal Terms.</p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>15. DISPUTE RESOLUTION</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>15. DISPUTE RESOLUTION</h2>
                     <p>
                         Informal Negotiations
                     </p>
@@ -423,7 +472,9 @@ function Terms() {
                     </p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>16. CORRECTIONS</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>16. CORRECTIONS</h2>
                     <p>
                         There may be information on the Services that contains typographical errors, inaccuracies, or
                         omissions, including descriptions, pricing, availability, and various other information. We reserve
@@ -432,7 +483,9 @@ function Terms() {
                     </p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>17. DISCLAIMER</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>17. DISCLAIMER</h2>
                     <p>
                         THE SERVICES ARE PROVIDED ON AN AS-IS AND AS-AVAILABLE BASIS. YOU AGREE
                         THAT YOUR USE OF THE SERVICES WILL BE AT YOUR SOLE RISK. TO THE FULLEST
@@ -465,7 +518,9 @@ function Terms() {
                     </p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>18. LIMITATIONS OF LIABILITY</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>18. LIMITATIONS OF LIABILITY</h2>
                     <p>
                         IN NO EVENT WILL WE OR OUR DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE TO
                         YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, CONSEQUENTIAL,
@@ -476,7 +531,9 @@ function Terms() {
                     </p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>19. INDEMNIFICATION</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',}}>19. INDEMNIFICATION</h2>
                     <p>
                         You agree to defend, indemnify, and hold us harmless, including our subsidiaries, affiliates, and
                         all of our respective officers, agents, partners, and employees, from and against any loss,
@@ -493,7 +550,9 @@ function Terms() {
                     </p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>20. USER DATA</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>20. USER DATA</h2>
                     <p>
                         We will maintain certain data that you transmit to the Services for the purpose of managing the
                         performance of the Services, as well as data relating to your use of the Services. Although we
@@ -504,7 +563,9 @@ function Terms() {
                     </p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>21. ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>21. ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES</h2>
                     <p>
                         Visiting the Services, sending us emails, and completing online forms constitute electronic
                         communications. You consent to receive electronic communications, and you agree that all
@@ -520,7 +581,9 @@ function Terms() {
                     </p>
                 </div>
                 <div>
-                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>22. MISCELLANEOUS</h2>
+                    <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>22. MISCELLANEOUS</h2>
                     <p>
                         These Legal Terms and any policies or operating rules posted by us on the Services or in
                         respect to the Services constitute the entire agreement and understanding between you and us.
@@ -539,8 +602,10 @@ function Terms() {
                         Terms.
                     </p>
                 </div>
-                <h2 style={{ fontSize: '1.5em', marginTop: '30px', color: '#333' }}>23. CONTACT US</h2>
-                <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#555' }}>
+                <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent', }}>23. CONTACT US</h2>
+                <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#b78846' }}>
                 In order to resolve a complaint regarding the Services or to receive further information regarding
                 use of the Services, please contact us at:
                     <br />
@@ -552,6 +617,8 @@ function Terms() {
                 </p>
             </div>
         </div>
+        <Footer/>
+        </>
     )
 }
 

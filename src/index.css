@@ -61,17 +61,14 @@ body{
 }
 
 .h1-anim {
-  /* color: hsl(45, 100%, 50%); 
-   font-size: 40px!important;
-  font-weight: bold!important;
-  letter-spacing: 7px!important; */
+  font-size: 40px !important;
+  font-weight: bold !important;
+  letter-spacing: 1px !important;
   cursor: pointer;
-  background: linear-gradient(to right, hsl(45, 100%, 40%) 0%, hsl(45, 100%, 70%) 10%, hsl(45, 100%, 40%) 20%); 
+  background: linear-gradient(to right, #b78846 0%, #f2d199 20%, #b78846 40%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shinehero 4s infinite linear;
-    /* font-family: monospace; */
-
+  animation: shinehero 3s infinite linear;
 }
 .h2-anim{
   cursor: pointer;
@@ -417,4 +414,31 @@ body{
 
 .navbar-blur .nav-link:hover {
   color: #b78846;
+}
+
+.custom-dropdown .dropdown-menu {
+  backdrop-filter: blur(10px); /* Blur effect */
+  background-color: rgba(0, 0, 0, 0.7); /* Slight transparency */
+  border: none; /* Remove border */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth opening/closing animation */
+  opacity: 0;
+  transform: translateX(20px); /* Initially position the menu to the right */
+  display: block; /* Override Bootstrap display */
+  visibility: hidden;
+}
+
+.custom-dropdown.show .dropdown-menu {
+  opacity: 1;
+  transform: translateX(0); /* Move the menu from right to left */
+  visibility: visible;
+}
+
+.custom-dropdown .dropdown-item {
+  color: #b78846; /* Text color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background-color: rgba(183, 136, 70, 0.1); /* Hover effect */
+  color: white;
 }

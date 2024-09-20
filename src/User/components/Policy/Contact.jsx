@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import bg from '../../../assets/bg-2.jpg';
+import Footer from '../../common/Footer';
 
 function Contact() {
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+      },[])
+  
+      
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -37,10 +44,13 @@ function Contact() {
     };
 
     return (
+        <>
         <div style={{
             position: 'relative',
             minHeight: '100vh',
+            maxHeight:'fit-content',
             display: 'flex',
+            flexDirection:'column',
             alignItems: 'center',
             justifyContent: 'center',
             overflow: 'hidden',
@@ -166,6 +176,8 @@ function Contact() {
                 {formStatus === 'error' && <p className='text-center mt-3' style={{ color: 'red' }}>There was an error sending your message.</p>}
             </div>
         </div>
+        <Footer/>
+        </>
     );
 }
 
