@@ -204,7 +204,7 @@ function Authentication({ insideRegister }) {
   return (
     <div style={{ height: '100vh', position: 'relative', backgroundColor: 'black', msOverflowY: 'hidden', overflowX: 'hidden' }} className='d-flex flex-wrap'>
       {/* Main Content Column */}
-      <div className='col-lg-8 col-md-12 d-flex flex-column justify-content-center' style={{ position: 'relative', backgroundSize: 'cover', backgroundImage: 'url("https://t4.ftcdn.net/jpg/02/20/01/05/240_F_220010501_8bLxNEZBnJlHKLorWN1WvksavwAtLnyJ.jpg")', height: '100vh' }}>
+      <div className='col-lg-8 col-md-12 d-flex flex-column justify-content-center' style={{ position: 'relative', backgroundSize: 'cover', backgroundImage: 'url("https://picacod.github.io/files/fire.gif")', height: '100vh' }}>
         <div className='' style={{
           position: 'absolute',
           top: 0,

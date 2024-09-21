@@ -197,7 +197,7 @@ function Purchase() {
             </div>
             {/* frame */}
             <div className="border-frame mt-5" >
-              <div className="inner-frame" style={{ minHeight: '25rem', maxHeight: 'fit-content' }}>
+              <div className="inner-frame" style={{ minHeight: '20rem', maxHeight: 'fit-content' }}>
                 <div className="w-100 h-100 d-flex flex-column">
                   {/* Swiper Slider for Weapons */}
                   <div className="weapon w-100 h-100">
