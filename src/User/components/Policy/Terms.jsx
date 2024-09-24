@@ -41,7 +41,7 @@ function Terms() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent', }}>TERMS AND CONDITIONS</h1>
                 <p style={{ fontSize: '1em', lineHeight: '1.6', color: '#b78846' }}>
-                    Last updated September 10, 2024
+                    Last updated September 23, 2024
                 </p>
                 <h2 style={{ fontSize: '1.5em', marginTop: '30px', background: 'linear-gradient(to bottom right, #ffffff 0%, #b78846 100%)',
               WebkitBackgroundClip: 'text',
@@ -49,7 +49,7 @@ function Terms() {
 
                 <p>We are Picacod Consultancy Services Pvt. Ltd ('Company', 'we', 'us', or 'our'), a company registered in India at
                     Heavenly Plaza, 11th Floor, Office NO: H11, Ernakulam, Kerala 682021.</p>
-                <p>We operate the website http://www.ancientsshadows.com (the 'Site'), as well as any other
+                <p>We operate the website https://www.ancientsshadows.com (the 'Site'), as well as any other
                     related products and services that refer or link to these legal terms (the 'Legal Terms')
                     (collectively, the 'Services').</p>
                 <p>You can contact us by phone at 8089998645, email at ancientsshadowsgame@gmail.com, or

@@ -242,7 +242,7 @@ function Authentication({ insideRegister }) {
             width: '100%'
 
           }} className='card-shadow rounded-0 mb-5 '>
-            <Link className='text-secondary' style={{ textDecoration: 'none' }} to={'/'}> <ArrowBackIosIcon style={{ fontSize: '1rem' }} /></Link>
+            <Link className='text-dark' style={{ textDecoration: 'none' }} to={'/'}> <ArrowBackIosIcon style={{ fontSize: '1rem' }} />Back</Link>
             <h5 style={{ color: 'black' }} className='fw-bolder text-center'>
               {insideRegister ? 'Join us today!' : 'Welcome back!'}
             </h5>

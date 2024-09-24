@@ -38,14 +38,14 @@ useEffect(()=>{
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',}}>Privacy Policy</h1>
         <p style={{ fontSize: '1em', lineHeight: '1.6',  }}>
-          Last updated September 09, 2024
+          Last updated September 23, 2024
         </p>
         <p style={{ fontSize: '1em', lineHeight: '1.6', }}>
           This Privacy Notice for Picacod Consultancy Services Pvt. Ltd (doing business as PCS) ('we',
           'us', or 'our'), describes how and why we might access, collect, store, use, and/or share
           ('process') your personal information when you use our services (Services), including when you
 
-          Visit our website at http://www.ancientsshadows.com, or any website of ours that links to this
+          Visit our website at https://www.ancientsshadows.com, or any website of ours that links to this
           Privacy Notice
 
           Engage with us in other related ways, including any sales, marketing, or events

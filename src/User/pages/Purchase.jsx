@@ -185,7 +185,7 @@ function Purchase() {
                     ₹499
                   </p>
                   <button role="button" className="golden-button">
-                    <span className="golden-text" onClick={handlePayment}>Buy Now</span>
+                    <span className="golden-text" >Buy Now</span>
                   </button></> : <button role="button" className="golden-button mt-3 mb-3">
                     <span className="golden-text">Purchased</span>
                   </button>
